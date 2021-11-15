@@ -4,6 +4,6 @@ import GlobalState from './GlobalState';
 
 const GlobalContext = React.createContext<
   [GlobalState, React.Dispatch<GlobalAction>]
->([{}, () => undefined]);
+>([{}, function () {}]);
 
 export default GlobalContext;
