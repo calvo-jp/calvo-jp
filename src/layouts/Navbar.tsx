@@ -33,9 +33,6 @@ const Navbar: React.FC<NavbarProps> = ({ mobile, open }) => {
         <li>
           <NavbarLink href="/contact">Contact</NavbarLink>
         </li>
-        <li>
-          <NavbarLink href="/contact">Blog</NavbarLink>
-        </li>
       </ul>
     </nav>
   );
