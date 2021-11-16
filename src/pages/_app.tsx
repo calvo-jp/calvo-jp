@@ -16,7 +16,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
 
       <GlobalProvider>
-        <div className="min-h-screen text-gray-700 bg-white">
+        <div className="min-h-screen text-gray-700 bg-white font-sans">
           <Component {...pageProps} />
         </div>
       </GlobalProvider>
