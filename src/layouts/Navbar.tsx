@@ -51,7 +51,7 @@ const NavbarLink: React.FC<NavbarLinkProps> = ({ href, children }) => {
       className={clsx(
         'p-2',
         router.pathname === href &&
-          'text-purple-400 md:border-b md:border-purple-500 md:text-purple-600'
+          'text-blue-400 md:border-b md:border-blue-500 md:text-blue-600'
       )}
     >
       <Link href={href} passHref>

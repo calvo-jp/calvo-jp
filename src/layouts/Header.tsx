@@ -26,13 +26,13 @@ const Logo = () => {
   return (
     <Link href="/" passHref>
       <a className="flex items-center">
-        <div className="text-3xl text-purple-400">
+        <div className="text-3xl text-blue-400">
           JUAN
-          <span className="text-purple-600 font-bold">ON</span>W
-          <span className="text-purple-600 font-bold">E</span>B
+          <span className="text-blue-600 font-bold">ON</span>W
+          <span className="text-blue-600 font-bold">E</span>B
         </div>
         <span className="border-l h-4 border-gray-200 mx-3" />
-        <div className="text-md text-yellow-700 uppercase">Modern websites</div>
+        <div className="text-sm text-yellow-600 uppercase">Modern websites</div>
       </a>
     </Link>
   );
