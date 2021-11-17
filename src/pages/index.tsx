@@ -41,9 +41,6 @@ const About = () => {
         Awesome developer of modern websites
       </p>
 
-      {/* <button className="mt-5 w-[150px] bg-purple-500 text-purple-50 text-lg p-3 shadow-md flex items-center justify-center gap-2 rounded-xl focus:ring-4 focus:ring-purple-200 transition-shadow duration-300 focus:text-white">
-        <span>Chat now</span>
-      </button> */}
       <button className="mt-5 w-[150px] border-2 border-blue-500 p-3 rounded-2xl text-blue-500 font-bold text-lg hover:bg-blue-500 hover:text-white transition-colors duration-200">
         <span>Chat now</span>
       </button>
