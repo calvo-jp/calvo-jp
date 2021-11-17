@@ -9,11 +9,15 @@ const Footer = () => {
         <li>
           <Link href="https://www.github.com/calvo-jp">Github</Link>
         </li>
-        <li className="w-1 h-1 rounded-full bg-gray-400" />
+        <li>
+          <Divider />
+        </li>
         <li>
           <Link href="https://www.twitter.com/calvo__jp">Twitter</Link>
         </li>
-        <li className="w-1 h-1 rounded-full bg-gray-400" />
+        <li>
+          <Divider />
+        </li>
         <li>
           <Link href="https://www.facebook.com/calvojp">Facebook</Link>
         </li>
@@ -22,6 +26,10 @@ const Footer = () => {
       <div className="text-sm">&copy; juanonweb {currentYear}</div>
     </footer>
   );
+};
+
+const Divider = () => {
+  return <div className="w-1 h-1 rounded-full bg-gray-400" />;
 };
 
 interface LinkProps {
