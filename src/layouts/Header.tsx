@@ -32,7 +32,7 @@ const Logo = () => {
           <span className="text-blue-600 font-bold">E</span>B
         </div>
         <span className="border-l h-4 border-gray-200 mx-3" />
-        <div className="text-sm text-yellow-600 uppercase">Modern websites</div>
+        <div className="text-sm text-yellow-600 uppercase">JP CALVO</div>
       </a>
     </Link>
   );
