@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import useGlobalState from 'hooks/store/useGlobalState';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
@@ -45,6 +46,15 @@ interface NavbarLinkProps {
 
 const NavbarLink: React.FC<NavbarLinkProps> = ({ href, children }) => {
   const router = useRouter();
+  const [state, dispatch] = useGlobalState();
+
+  const handleClick = () => {
+    if (state.navbarOpen) {
+      dispatch({
+        type: 'navbar.toggle',
+      });
+    }
+  };
 
   return (
     <div
@@ -55,7 +65,7 @@ const NavbarLink: React.FC<NavbarLinkProps> = ({ href, children }) => {
       )}
     >
       <Link href={href} passHref>
-        <a>{children}</a>
+        <a onClick={handleClick}>{children}</a>
       </Link>
     </div>
   );
