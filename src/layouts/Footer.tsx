@@ -21,6 +21,14 @@ const Footer = () => {
         <li>
           <Link href="https://www.facebook.com/calvojp">Facebook</Link>
         </li>
+        <li>
+          <Divider />
+        </li>
+        <li>
+          <Link href="https://api.whatsapp.com/send?phone=639567416960">
+            Whatsapp
+          </Link>
+        </li>
       </ul>
 
       <div className="text-sm">&copy; juanonweb {currentYear}</div>
