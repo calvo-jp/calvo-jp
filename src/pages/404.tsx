@@ -9,7 +9,7 @@ const NotFound = () => {
       </Head>
 
       <div className="min-h-screen flex items-center justify-center p-2">
-        <h1 className="text-9xl font-bold text-gray-300">404</h1>
+        <h1 className="text-gray-300 text-9xl font-bold">4O4</h1>
       </div>
     </React.Fragment>
   );
