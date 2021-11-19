@@ -24,7 +24,12 @@ const Navbar: React.FC<NavbarProps> = ({ mobile, open }) => {
           'flex md:hidden items-center justify-center fixed top-0 left-0 h-full w-full z-10 bg-black bg-opacity-90 text-gray-300 text-2xl'
       )}
     >
-      <ul className={clsx(mobile_ && 'flex flex-col gap-1', desktop && 'flex')}>
+      <ul
+        className={clsx(
+          mobile_ && 'flex flex-col gap-1 items-center',
+          desktop && 'flex gap-3'
+        )}
+      >
         <li>
           <NavbarLink href="/">About</NavbarLink>
         </li>
@@ -59,9 +64,9 @@ const NavbarLink: React.FC<NavbarLinkProps> = ({ href, children }) => {
   return (
     <div
       className={clsx(
-        'p-2',
-        router.pathname === href &&
-          'text-blue-400 md:border-b md:border-blue-500 md:text-blue-600'
+        'py-2',
+        router.pathname !== href && 'md:hover:text-yellow-600',
+        router.pathname === href && 'md:text-blue-600 text-blue-400'
       )}
     >
       <Link href={href} passHref>
