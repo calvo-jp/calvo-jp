@@ -7,9 +7,11 @@ type BaseProps = React.DetailedHTMLProps<
   HTMLDivElement
 >;
 
+type Variant = 'info' | 'success' | 'warning' | 'error';
+
 interface AlertProps extends BaseProps {
   open?: boolean;
-  variant?: string;
+  variant?: Variant;
   onClose?: () => void;
 }
 
@@ -21,10 +23,19 @@ const Alert: React.FC<AlertProps> = ({
   className,
   ...props
 }) => {
+  const info = variant === 'info';
+  const error = variant === 'error';
+  const success = variant === 'success';
+  const warning = variant === 'warning';
+
   return (
     <div
       className={clsx(
-        'border-l-4 border-red-300 bg-red-100 p-3 text-sm text-red-800 flex items-center',
+        'p-3 text-sm flex items-center',
+        info && 'border-l-4 border-blue-300 bg-blue-100 text-gray-800',
+        error && 'border-l-4 border-red-300 bg-red-100 text-red-800',
+        success && 'border-l-4 border-green-300 bg-green-100 text-green-800',
+        warning && 'border-l-4 border-yellow-300 bg-yellow-100 text-yellow-800',
         !open && 'hidden',
         className
       )}
@@ -45,7 +56,7 @@ const CloseButton: React.FC<
 > = (props) => {
   return (
     <button {...props}>
-      <CloseIcon className="w-5 h-5 text-red-800 opacity-30 hover:opacity-60 transition-opacity duration-200" />
+      <CloseIcon className="w-5 h-5 opacity-30 hover:opacity-60 transition-opacity duration-200" />
     </button>
   );
 };
