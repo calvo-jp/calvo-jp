@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="p-2 flex flex-col justify-center items-center gap-1">
       <ul className="flex gap-2 items-center">
         <li>
-          <Link href="https://www.github.com/calvo-jp">Github</Link>
+          <Link href="https://www.github.com/calvo-jp">GitHub</Link>
         </li>
         <li>
           <Divider />
@@ -26,7 +26,7 @@ const Footer = () => {
         </li>
         <li>
           <Link href="https://api.whatsapp.com/send?phone=639567416960">
-            Whatsapp
+            WhatsApp
           </Link>
         </li>
       </ul>
