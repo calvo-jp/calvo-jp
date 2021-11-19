@@ -41,7 +41,7 @@ const TextField: React.FC<TextFieldProps> = ({
   onChange,
   ...props
 }) => {
-  const inputRef = React.useRef<HTMLInputElement | null>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const [value, setValue] = React.useState(props.value);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,6 +61,7 @@ const TextField: React.FC<TextFieldProps> = ({
       </Label>
 
       <Input
+        // @ts-ignore
         ref={inputRef}
         error={!!error}
         fullWidth={fullWidth}
@@ -77,26 +78,26 @@ interface InputProps extends Omit<TextFieldProps, 'label' | 'error'> {
   error?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({
-  error,
-  fullWidth,
-  className,
-  ...props
-}) => {
-  return (
-    <input
-      className={clsx(
-        'p-2 border border-gray-300 rounded-md outline-none transition-all duration-300',
-        !error &&
-          'hover:border-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-200',
-        error && 'border-red-400 focus:ring-4 focus:ring-red-200',
-        fullWidth && 'block w-full',
-        className
-      )}
-      {...props}
-    />
-  );
-};
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ error, fullWidth, className, ...props }, ref) => {
+    return (
+      <input
+        ref={ref}
+        className={clsx(
+          'p-2 border border-gray-300 rounded-md outline-none transition-all duration-300',
+          !error &&
+            'hover:border-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-200',
+          error && 'border-red-400 focus:ring-4 focus:ring-red-200',
+          fullWidth && 'block w-full',
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
+
+Input.displayName = 'Input';
 
 interface ErrorAlertProps
   extends React.DetailedHTMLProps<
