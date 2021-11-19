@@ -4,7 +4,7 @@ const Footer = () => {
   const currentYear = React.useMemo(() => new Date().getUTCFullYear(), []);
 
   return (
-    <footer className="p-2 flex flex-col justify-center items-center">
+    <footer className="p-2 flex flex-col justify-center items-center gap-1">
       <ul className="flex gap-2 items-center">
         <li>
           <Link href="https://www.github.com/calvo-jp">Github</Link>
@@ -46,7 +46,12 @@ interface LinkProps {
 
 const Link: React.FC<LinkProps> = ({ href, children }) => {
   return (
-    <a target="_blank" rel="noreferrer" href={href}>
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href={href}
+      className="hover:text-blue-600"
+    >
       {children}
     </a>
   );
