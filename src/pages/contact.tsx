@@ -11,6 +11,8 @@ const Contact = () => {
     e.preventDefault();
   };
 
+  const [error, setError] = React.useState('This is an error message');
+
   return (
     <React.Fragment>
       <Head>
@@ -28,8 +30,12 @@ const Contact = () => {
               </section>
 
               <section>
-                <Alert className="mb-4">
-                  You have entered an invalid email
+                <Alert
+                  className="mb-4"
+                  open={!!error}
+                  onClose={() => setError('')}
+                >
+                  <p>{error}</p>
                 </Alert>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
