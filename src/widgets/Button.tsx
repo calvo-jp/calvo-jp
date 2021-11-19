@@ -25,7 +25,8 @@ const Button: React.FC<ButtonProps> = ({
       className={clsx(
         'p-2 rounded-md text-white outline-none',
         primary &&
-          'border border-blue-500 bg-blue-500 focus:ring-4 focus:ring-blue-200'
+          'border border-blue-500 bg-blue-500 focus:ring-4 focus:ring-blue-200',
+        className
       )}
       {...props}
     >

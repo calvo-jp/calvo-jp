@@ -32,6 +32,7 @@ const TextField: React.FC<TextFieldProps> = ({
   label,
   fullWidth,
   onChange,
+  className,
   ...props
 }) => {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -65,7 +66,8 @@ const TextField: React.FC<TextFieldProps> = ({
       <input
         className={clsx(
           'p-2 border border-gray-300 rounded-md hover:border-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-300 outline-none transition-all duration-300',
-          fullWidth && 'block w-full'
+          fullWidth && 'block w-full',
+          className
         )}
         onChange={handleChange}
         ref={inputRef}
