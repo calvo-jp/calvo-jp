@@ -22,7 +22,7 @@ const Contact = () => {
       <div className="flex flex-col min-h-screen">
         <Header />
 
-        <main className="flex-grow flex flex-col justify-center p-2">
+        <main className="flex-grow flex flex-col justify-center p-4">
           <div>
             <div className="max-w-[350px] mx-auto">
               <section className="mb-4 text-sm text-gray-500 text-center">
