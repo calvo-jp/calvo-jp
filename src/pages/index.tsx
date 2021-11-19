@@ -4,6 +4,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
+import ChatIcon from 'widgets/icons/Chat';
+
+const facebookPageId = '111766744660449';
 
 const Landing = () => {
   return (
@@ -30,7 +33,8 @@ const Landing = () => {
             </p>
 
             <Link href="/chat" passHref>
-              <button className="mt-5 w-[150px] border-2 border-blue-500 p-3 rounded-2xl text-blue-500 font-bold text-lg hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white focus:ring-4 focus:ring-blue-200 transition-colors duration-200 outline-none">
+              <button className="mt-5 w-[150px] border-2 border-blue-500 p-3 rounded-2xl text-blue-500 font-bold text-lg hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white focus:ring-4 focus:ring-blue-200 transition-colors duration-200 outline-none flex items-center justify-center gap-2">
+                <ChatIcon />
                 <span>Chat now</span>
               </button>
             </Link>
