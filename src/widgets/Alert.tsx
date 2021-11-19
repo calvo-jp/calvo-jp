@@ -30,7 +30,7 @@ const Alert: React.FC<AlertProps> = ({
       )}
       {...props}
     >
-      <p className="flex-grow">{children}</p>
+      <div className="flex-grow">{children}</div>
 
       {!!onClose && <CloseButton tabIndex={-1} onClick={onClose} />}
     </div>
