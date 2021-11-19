@@ -25,6 +25,7 @@ const Alert: React.FC<AlertProps> = ({
     <div
       className={clsx(
         'border-l-4 border-red-300 bg-red-100 p-3 text-sm text-red-800 flex items-center',
+        !open && 'hidden',
         className
       )}
       {...props}
