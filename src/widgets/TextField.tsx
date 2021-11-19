@@ -20,19 +20,25 @@ type TextFieldType =
   | 'url'
   | 'week';
 
+type BooleanOrString = boolean | string;
+
 interface TextFieldProps extends BaseProps {
   type?: TextFieldType;
-  error?: boolean;
   label?: string;
+  error?: BooleanOrString;
   fullWidth?: boolean;
+
+  /** WARNING: Feature not implemented yet */
+  multiline?: boolean;
 }
 
 const TextField: React.FC<TextFieldProps> = ({
-  error,
   label,
+  error,
   fullWidth,
-  onChange,
+  multiline,
   className,
+  onChange,
   ...props
 }) => {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -45,35 +51,103 @@ const TextField: React.FC<TextFieldProps> = ({
 
   const handleClick = (e: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
     e.preventDefault();
-    if (!!inputRef.current) inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
   return (
     <div className="inline-block relative">
-      {!!label && (
-        <label
-          className={clsx(
-            'absolute transition-all duration-100 cursor-text',
-            !!value && '-top-2 left-2 bg-white px-1 text-sm',
-            !value && 'top-2 left-3'
-          )}
-          onClick={handleClick}
-        >
-          {label}
-        </label>
-      )}
+      <Label visible={!!label} active={!!value} onClick={handleClick}>
+        {label}
+      </Label>
 
-      <input
-        className={clsx(
-          'p-2 border border-gray-300 rounded-md hover:border-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-300 outline-none transition-all duration-300',
-          fullWidth && 'block w-full',
-          className
-        )}
-        onChange={handleChange}
+      <Input
         ref={inputRef}
+        error={!!error}
+        fullWidth={fullWidth}
+        onChange={handleChange}
         {...props}
       />
+
+      <ErrorAlert open={typeof error === 'string'}>{error}</ErrorAlert>
     </div>
+  );
+};
+
+interface InputProps extends Omit<TextFieldProps, 'label' | 'error'> {
+  error?: boolean;
+}
+
+const Input: React.FC<InputProps> = ({
+  error,
+  fullWidth,
+  className,
+  ...props
+}) => {
+  return (
+    <input
+      className={clsx(
+        'p-2 border border-gray-300 rounded-md outline-none transition-all duration-300',
+        !error &&
+          'hover:border-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-200',
+        error && 'border-red-400 focus:ring-4 focus:ring-red-200',
+        fullWidth && 'block w-full',
+        className
+      )}
+      {...props}
+    />
+  );
+};
+
+interface ErrorAlertProps
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
+  open?: boolean;
+}
+
+const ErrorAlert: React.FC<ErrorAlertProps> = ({
+  open,
+  children,
+  ...props
+}) => {
+  if (!open) return <React.Fragment />;
+
+  return (
+    <div className="mt-1.5 ml-1.5 flex gap-1 items-center" {...props}>
+      <p className="text-sm text-red-500">{children}</p>
+    </div>
+  );
+};
+
+interface LabelProps
+  extends React.DetailedHTMLProps<
+    React.LabelHTMLAttributes<HTMLLabelElement>,
+    HTMLLabelElement
+  > {
+  active?: boolean;
+  visible?: boolean;
+}
+
+const Label: React.FC<LabelProps> = ({
+  active,
+  visible,
+  children,
+  ...props
+}) => {
+  if (!visible) return <React.Fragment />;
+
+  return (
+    <label
+      className={clsx(
+        'text-gray-600 absolute transition-all duration-100 cursor-text',
+        active && '-top-2 left-2 bg-white px-1 text-sm',
+        !active && 'top-2 left-3'
+      )}
+      {...props}
+    >
+      {children}
+    </label>
   );
 };
 
