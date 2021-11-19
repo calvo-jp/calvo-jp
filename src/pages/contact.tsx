@@ -31,17 +31,26 @@ const Contact = () => {
 
               <section>
                 <Alert
-                  className="mb-4"
                   open={!!error}
                   onClose={() => setError('')}
+                  variant="error"
+                  className="mb-4"
                 >
                   <p>{error}</p>
                 </Alert>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                  <TextField id="email" label="Email" fullWidth autoFocus />
+                  <TextField
+                    id="email"
+                    label="Email"
+                    error="Invalid email"
+                    fullWidth
+                    autoFocus
+                    required
+                  />
                   <TextField id="subject" label="Subject" fullWidth />
-                  <TextField id="message" label="Message" fullWidth />
+                  <TextField id="message" label="Message" fullWidth multiline />
+
                   <Button variant="primary" type="submit">
                     Send
                   </Button>
