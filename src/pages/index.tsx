@@ -33,7 +33,7 @@ const Landing = () => {
             </p>
 
             <Link href="/chat" passHref>
-              <button className="mt-5 w-[150px] border-2 border-blue-500 p-3 rounded-2xl text-blue-500 font-bold text-lg hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white focus:ring-4 focus:ring-blue-200 transition-colors duration-200 outline-none flex items-center justify-center gap-2">
+              <button className="mt-5 border-2 border-blue-500 py-3 px-6 rounded-2xl text-blue-500 font-bold text-lg hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white focus:ring-4 focus:ring-blue-200 transition-colors duration-200 outline-none flex items-center justify-center gap-2">
                 <ChatIcon />
                 <span>Chat now</span>
               </button>
