@@ -6,8 +6,6 @@ import Link from 'next/link';
 import * as React from 'react';
 import ChatIcon from 'widgets/icons/Chat';
 
-const facebookPageId = '111766744660449';
-
 const Landing = () => {
   return (
     <React.Fragment>
@@ -19,7 +17,7 @@ const Landing = () => {
         <Header />
 
         <main className="flex-grow flex flex-col md:flex-row p-2 items-center justify-center gap-8 lg:gap-16">
-          <section className="w-[200px] h-[200px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] xl:w-[325px] xl:h-[325px] relative rounded-full overflow-hidden border-8 border-gray-100"></section>
+          <section className="w-[200px] h-[200px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] xl:w-[325px] xl:h-[325px] relative rounded-full overflow-hidden border-8 border-gray-100 cursor-pointer"></section>
 
           <section className="flex flex-col items-center justify-center">
             <p className="text-4xl md:text-5xl lg:text-6xl text-center">
