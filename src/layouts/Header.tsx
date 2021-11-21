@@ -49,7 +49,7 @@ const Hamburger = () => {
 
   return (
     <button
-      className={clsx('md:hidden z-20', !!state.navbarOpen && 'text-gray-200')}
+      className={clsx('z-20 md:hidden', state.navbarOpen && 'text-gray-400')}
       onClick={toggleNavbar}
     >
       Toggle Menu
