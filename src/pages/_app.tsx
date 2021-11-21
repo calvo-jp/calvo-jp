@@ -11,8 +11,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="JP Calvo's portfolio" />
         <meta name="keywords" content="jp calvo, portfolio" />
-        <meta name="author" content="jp calvo [https://github.com/calvo-jp]" />
-        <meta name="version" content="0.1.0" />
+        <meta name="author" content="jp calvo" />
       </Head>
 
       <GlobalProvider>
