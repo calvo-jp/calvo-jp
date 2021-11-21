@@ -41,11 +41,7 @@ const Logo = () => {
 const Hamburger = () => {
   const [state, dispatch] = useGlobalState();
 
-  const toggleNavbar = () => {
-    dispatch({
-      type: 'navbar.toggle',
-    });
-  };
+  const toggleNavbar = () => dispatch({ type: 'navbar.toggle' });
 
   return (
     <button
