@@ -47,9 +47,9 @@ interface LinkProps {
 const Link: React.FC<LinkProps> = ({ href, children }) => {
   return (
     <a
+      href={href}
       target="_blank"
       rel="noreferrer"
-      href={href}
       className="hover:text-blue-600"
     >
       {children}
