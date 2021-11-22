@@ -25,9 +25,7 @@ const Footer = () => {
           <Divider />
         </li>
         <li>
-          <Link href="https://api.whatsapp.com/send?phone=639567416960">
-            WhatsApp
-          </Link>
+          <Link href="https://wa.me/639567416960">WhatsApp</Link>
         </li>
       </ul>
 
