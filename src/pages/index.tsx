@@ -1,10 +1,7 @@
 import Footer from 'layouts/Footer';
 import Header from 'layouts/Header';
 import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
 import * as React from 'react';
-import ChatIcon from 'widgets/icons/Chat';
 
 const Landing = () => {
   return (
@@ -36,8 +33,7 @@ const Landing = () => {
               rel="noreferrer"
               className="mt-5 border-2 border-blue-500 py-3 px-6 rounded-2xl text-blue-500 font-bold text-lg hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white focus:ring-4 focus:ring-blue-200 transition-colors duration-200 outline-none flex items-center justify-center gap-2"
             >
-              <ChatIcon />
-              <span>Chat now</span>
+              Chat now
             </a>
           </section>
         </main>
