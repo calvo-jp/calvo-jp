@@ -56,7 +56,7 @@ const TextField: React.FC<TextFieldProps> = ({
 
   return (
     <div className="inline-block relative">
-      <Label active={!!value} onClick={handleClick}>
+      <Label active={!!value} htmlFor={props.id} onClick={handleClick}>
         {label}
       </Label>
 
