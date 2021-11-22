@@ -11,7 +11,7 @@ const Contact = () => {
     e.preventDefault();
   };
 
-  const [error, setError] = React.useState('This is an error message');
+  const [error, setError] = React.useState('');
 
   return (
     <React.Fragment>
@@ -43,7 +43,6 @@ const Contact = () => {
                   <TextField
                     id="email"
                     label="Email"
-                    error="Invalid email"
                     fullWidth
                     autoFocus
                     required
