@@ -56,7 +56,7 @@ const TextField: React.FC<TextFieldProps> = ({
 
   return (
     <div className="inline-block relative">
-      <Label visible={!!label} active={!!value} onClick={handleClick}>
+      <Label active={!!value} onClick={handleClick}>
         {label}
       </Label>
 
@@ -127,17 +127,9 @@ interface LabelProps
     HTMLLabelElement
   > {
   active?: boolean;
-  visible?: boolean;
 }
 
-const Label: React.FC<LabelProps> = ({
-  active,
-  visible,
-  children,
-  ...props
-}) => {
-  if (!visible) return <React.Fragment />;
-
+const Label: React.FC<LabelProps> = ({ active, children, ...props }) => {
   return (
     <label
       className={clsx(
