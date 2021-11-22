@@ -11,7 +11,7 @@ const Contact = () => {
     e.preventDefault();
   };
 
-  const [error, setError] = React.useState('');
+  const [error, setError] = React.useState<string>();
 
   return (
     <React.Fragment>
