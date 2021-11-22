@@ -39,7 +39,11 @@ const Contact = () => {
                   <p>{error}</p>
                 </Alert>
 
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <form
+                  noValidate
+                  onSubmit={handleSubmit}
+                  className="flex flex-col gap-4"
+                >
                   <TextField
                     id="email"
                     label="Email"
