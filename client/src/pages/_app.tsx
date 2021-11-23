@@ -12,6 +12,11 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         <meta name="description" content="JP Calvo's portfolio" />
         <meta name="keywords" content="jp calvo, portfolio" />
         <meta name="author" content="jp calvo" />
+
+        <meta property="og:url" content="calvo-jp.vercel.app" />
+        <meta property="og:title" content="JP Calvo" />
+        <meta property="og:description" content="JP Calvo's portfolio" />
+        <meta property="og:keywords" content="jp calvo, portfolio" />
       </Head>
 
       <GlobalProvider>
