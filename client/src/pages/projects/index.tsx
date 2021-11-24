@@ -1,10 +1,26 @@
 import Footer from 'layouts/Footer';
 import Header from 'layouts/Header';
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import * as React from 'react';
 
-const Projects = () => {
+interface IProject {}
+
+interface Props {
+  data: IProject[];
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  return {
+    props: {
+      data: [],
+    },
+    revalidate: 60 * 60 * 24, // revalidate everyday
+  };
+};
+
+const Projects: NextPage<Props> = (props) => {
   return (
     <React.Fragment>
       <Head>
@@ -15,14 +31,14 @@ const Projects = () => {
         <Header />
         <main className="flex-grow p-4 lg:p-16 pt-0 lg:pt-8">
           <section className="grid gap-8 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            <Item
+            <Project
               href=""
               title="Pedicab"
               description="Get a shorter, more meaningful url"
               image="/images/projects-showcase/does-not-exist.jpeg"
             />
-            <Skeleton />
-            <Skeleton />
+            <ProjectSkeleton />
+            <ProjectSkeleton />
           </section>
         </main>
         <Footer />
@@ -31,7 +47,7 @@ const Projects = () => {
   );
 };
 
-const Skeleton: React.FC = () => {
+const ProjectSkeleton: React.FC = () => {
   return (
     <div className="animate-pulse md:p-2 rounded-md outline-none border border-transparent transition-all duration-300">
       <div className="w-full h-[250px] relative flex items-center justify-center overflow-hidden bg-gray-100" />
@@ -44,14 +60,19 @@ const Skeleton: React.FC = () => {
   );
 };
 
-interface ItemProps {
+interface ProjectProps {
   href: string;
   title: string;
   description: string;
   image: string;
 }
 
-const Item: React.FC<ItemProps> = ({ href, title, description, image }) => {
+const Project: React.FC<ProjectProps> = ({
+  href,
+  title,
+  description,
+  image,
+}) => {
   return (
     <a
       href={href}
