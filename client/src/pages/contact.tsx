@@ -6,24 +6,24 @@ import Alert from 'widgets/Alert';
 import Button from 'widgets/Button';
 import TextField from 'widgets/TextField';
 
-interface Mail {
+interface Email {
   from: string;
   body: string;
   subject: string;
 }
 
-type ValidationError = Partial<Record<keyof Mail, boolean>>;
+type ValidationError = Partial<Record<keyof Email, boolean>>;
 
-const sendMail = async (mail: Mail) => {};
+const sendEmail = async (email: Email) => {};
 
-const initMail: Mail = {
+const defaultEmail: Email = {
   body: '',
   from: '',
   subject: '',
 };
 
 const Contact = () => {
-  const [mail, setMail] = React.useState<Mail>(initMail);
+  const [email, setEmail] = React.useState<Email>(defaultEmail);
 
   const [validationErrors, setValidationErrors] =
     React.useState<ValidationError>({});
@@ -34,13 +34,16 @@ const Contact = () => {
   const handler = {
     /** input onchange handler */
     onChange(e: React.ChangeEvent<HTMLInputElement>) {
-      setMail((state) => ({ ...state, [e.target.name]: e.target.value }));
+      setEmail((state) => ({
+        ...state,
+        [e.target.name]: e.target.value,
+      }));
     },
 
     /** form onsubmit handler */
     async onSubmit(e: React.FormEvent<HTMLFormElement>) {
       e.preventDefault();
-      await sendMail(mail);
+      await sendEmail(email);
     },
 
     /** reset http error */
@@ -51,7 +54,7 @@ const Contact = () => {
 
   React.useEffect(() => {
     return () => {
-      setMail(initMail);
+      setEmail(defaultEmail);
       setValidationErrors({});
       setHttpRequestError(undefined);
     };
@@ -102,7 +105,7 @@ const Contact = () => {
                     id="email"
                     name="from"
                     label="Email"
-                    value={mail.from}
+                    value={email.from}
                     onChange={handler.onChange}
                     autoFocus
                     required
@@ -113,7 +116,7 @@ const Contact = () => {
                     id="subject"
                     name="subject"
                     label="Subject"
-                    value={mail.subject}
+                    value={email.subject}
                     onChange={handler.onChange}
                     fullWidth
                   />
@@ -122,7 +125,7 @@ const Contact = () => {
                     id="message"
                     name="body"
                     label="Message"
-                    value={mail.body}
+                    value={email.body}
                     onChange={handler.onChange}
                     fullWidth
                     multiline
