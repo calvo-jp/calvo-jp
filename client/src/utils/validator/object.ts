@@ -14,8 +14,10 @@ type Result<T extends Schema> = {
   values: { [P in keyof T]?: ReturnType<T[P]['validate']> };
 };
 
-class ObjectValidator {
-  validate<T extends Schema>(schema: T, subject: Subject<T>) {
+class ObjectValidator<T extends Schema> {
+  constructor(private schema: T) {}
+
+  validate(subject: Subject<T>) {
     const result: Result<T> = {
       errors: {},
       values: {},
@@ -23,7 +25,7 @@ class ObjectValidator {
 
     if (!isObject(subject)) throw 'Subject must be an object';
 
-    for (const [k, fn] of Object.entries(schema)) {
+    for (const [k, fn] of Object.entries(this.schema)) {
       try {
         // @ts-ignore
         result.values[k] = fn.validate(subject[k]);
@@ -34,6 +36,10 @@ class ObjectValidator {
     }
 
     return result;
+  }
+
+  static __new__<T extends Schema>(schema: T) {
+    return new ObjectValidator(schema);
   }
 }
 

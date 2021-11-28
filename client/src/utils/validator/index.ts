@@ -3,15 +3,8 @@ import NumberValidator from './number';
 import ObjectValidator from './object';
 import StringValidator from './string';
 
-interface Validator {
-  string: () => StringValidator;
-  number: () => NumberValidator;
-  object: () => ObjectValidator;
-  boolean: () => BooleanValidator;
-}
-
-const validator: Validator = {
-  object: () => new ObjectValidator(),
+const validator = {
+  object: ObjectValidator.__new__,
   string: () => new StringValidator(),
   number: () => new NumberValidator(),
   boolean: () => new BooleanValidator(),
