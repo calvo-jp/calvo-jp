@@ -6,59 +6,8 @@ import Alert from 'widgets/Alert';
 import Button from 'widgets/Button';
 import TextField from 'widgets/TextField';
 
-interface Email {
-  from: string;
-  body: string;
-  subject: string;
-}
-
-type ValidationError = Partial<Record<keyof Email, boolean>>;
-
-const sendEmail = async (email: Email) => {};
-
-const defaultEmail: Email = {
-  body: '',
-  from: '',
-  subject: '',
-};
-
 const Contact = () => {
-  const [email, setEmail] = React.useState<Email>(defaultEmail);
-
-  const [validationErrors, setValidationErrors] =
-    React.useState<ValidationError>({});
-
-  const [httpRequestError, setHttpRequestError] = React.useState<string>();
-
-  /** event handler */
-  const handler = {
-    /** input onchange handler */
-    onChange(e: React.ChangeEvent<HTMLInputElement>) {
-      setEmail((state) => ({
-        ...state,
-        [e.target.name]: e.target.value,
-      }));
-    },
-
-    /** form onsubmit handler */
-    async onSubmit(e: React.FormEvent<HTMLFormElement>) {
-      e.preventDefault();
-      await sendEmail(email);
-    },
-
-    /** reset http error */
-    onClose() {
-      setHttpRequestError(undefined);
-    },
-  };
-
-  React.useEffect(() => {
-    return () => {
-      setEmail(defaultEmail);
-      setValidationErrors({});
-      setHttpRequestError(undefined);
-    };
-  }, []);
+  const [error, setError] = React.useState<string>();
 
   return (
     <React.Fragment>
@@ -88,25 +37,19 @@ const Contact = () => {
 
               <section>
                 <Alert
-                  open={!!httpRequestError}
+                  open={!!error}
+                  onClose={() => setError(undefined)}
                   variant="error"
-                  onClose={handler.onClose}
                   className="mb-4"
                 >
-                  <p>{httpRequestError}</p>
+                  <p>{error}</p>
                 </Alert>
 
-                <form
-                  noValidate
-                  onSubmit={handler.onSubmit}
-                  className="flex flex-col gap-4"
-                >
+                <form noValidate className="flex flex-col gap-4">
                   <TextField
                     id="email"
                     name="from"
                     label="Email"
-                    value={email.from}
-                    onChange={handler.onChange}
                     autoFocus
                     required
                     fullWidth
@@ -116,8 +59,6 @@ const Contact = () => {
                     id="subject"
                     name="subject"
                     label="Subject"
-                    value={email.subject}
-                    onChange={handler.onChange}
                     fullWidth
                   />
 
@@ -125,8 +66,6 @@ const Contact = () => {
                     id="message"
                     name="body"
                     label="Message"
-                    value={email.body}
-                    onChange={handler.onChange}
                     fullWidth
                     multiline
                   />
