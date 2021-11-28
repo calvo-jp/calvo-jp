@@ -60,7 +60,7 @@ class NumberValidator extends Validator<number> {
   }
 
   private ensureNumber() {
-    const fn = (subject: number) => typeof typeof subject === 'number';
+    const fn = (subject: number) => typeof subject === 'number';
     this.fnx(fn, coalesce(this.constructError, errors.main));
   }
 }
