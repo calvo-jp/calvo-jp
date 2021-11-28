@@ -6,7 +6,8 @@ interface Schema {
   [key: string]: NumberValidator | StringValidator | BooleanValidator;
 }
 
-type Subject<T> = Partial<Record<keyof T, any>> & Record<string, any>;
+type Subject<T extends {}> =
+  | Partial<Record<keyof T, any>> & Record<string, any>;
 
 type Result<T extends Schema> = {
   errors: { [_ in keyof T]?: string };
