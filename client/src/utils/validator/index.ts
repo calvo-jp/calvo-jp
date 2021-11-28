@@ -4,7 +4,7 @@ import ObjectValidator from './object';
 import StringValidator from './string';
 
 const validator = {
-  object: ObjectValidator.__new__,
+  schema: ObjectValidator.__new__,
   string: () => new StringValidator(),
   number: () => new NumberValidator(),
   boolean: () => new BooleanValidator(),
