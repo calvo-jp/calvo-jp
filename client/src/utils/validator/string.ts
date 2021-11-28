@@ -45,8 +45,8 @@ class StringValidator extends Validator<string> {
 
   /**
    * @example
-   * validator.number().int().validate(1.4) // throws "value must be an integer"
-   * validator.number().float().validate(1.4) // returns 1.4
+   * validator.number().int().validate(1.4) // false
+   * validator.number().float().validate(1.4) // true
    *
    * validator
    *    .number()
@@ -55,25 +55,48 @@ class StringValidator extends Validator<string> {
    *    .int()
    *    .max(25)
    *    .fn(n => n % 5 === 0)
-   *    .validate(10.5) // returns 15 due to pipe and middleware
+   *    .validate(10.5) // true
    *
    */
-  validate(subject: any): string {
+  validate(subject: any): boolean {
     subject = this.pipes.reduce((v, fn) => fn(v), subject);
 
-    super.validate(subject);
+    if (this.shouldSkip(subject)) return true;
+    if (!this.validateRequired(subject)) return false;
+
     this.ensureString();
+
+    subject = this.middlewares.reduce((v, fn) => fn(v), subject);
+
+    for (const [validate] of this.validators)
+      if (!validate(subject)) return false;
+
+    return true;
+  }
+
+  validateOrFail(subject: any) {
+    subject = this.pipes.reduce((v, fn) => fn(v), subject);
+
+    if (this.shouldSkip(subject)) return subject as undefined;
+
+    this.validateRequiredOrFail(subject);
+    this.ensureStringOrFail(subject);
 
     subject = this.middlewares.reduce((v, fn) => fn(v), subject);
 
     for (const [validate, error] of this.validators)
       if (!validate(subject)) throw error;
 
-    return subject;
+    return subject as string;
+  }
+
+  private ensureStringOrFail(subject: any) {
+    if (typeof subject !== 'string')
+      throw coalesce(this.constructError, errors.main);
   }
 
   private ensureString() {
-    const fn = (subject: string) => typeof typeof subject === 'string';
+    const fn = (subject: string) => typeof subject === 'string';
     this.fnx(fn, coalesce(this.constructError, errors.main));
   }
 }

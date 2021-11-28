@@ -45,18 +45,41 @@ class NumberValidator extends Validator<number> {
    * validator.number().int().validate(1.4) // throws "value must be an integer"
    * validator.number().float().validate(1.4) // returns 1.4
    */
-  validate(subject: any): number {
+  validate(subject: any) {
     subject = this.pipes.reduce((v, fn) => fn(v), subject);
 
-    super.validate(subject);
+    if (this.shouldSkip(subject)) return true;
+    if (!this.validateRequired(subject)) return false;
+
     this.ensureNumber();
+
+    subject = this.middlewares.reduce((v, fn) => fn(v), subject);
+
+    for (const [validate] of this.validators)
+      if (!validate(subject)) return false;
+
+    return true;
+  }
+
+  validateOrFail(subject: any) {
+    subject = this.pipes.reduce((v, fn) => fn(v), subject);
+
+    if (this.shouldSkip(subject)) return subject as number;
+
+    this.validateRequiredOrFail(subject);
+    this.ensureNumberOrFail(subject);
 
     subject = this.middlewares.reduce((v, fn) => fn(v), subject);
 
     for (const [validate, error] of this.validators)
       if (!validate(subject)) throw error;
 
-    return subject;
+    return subject as undefined;
+  }
+
+  private ensureNumberOrFail(subject: any) {
+    if (typeof subject !== 'number')
+      throw coalesce(this.constructError, errors.main);
   }
 
   private ensureNumber() {

@@ -1,4 +1,5 @@
 import BooleanValidator from './boolean';
+import coalesce from './coalesce';
 import NumberValidator from './number';
 import StringValidator from './string';
 
@@ -11,13 +12,15 @@ type Subject<T extends {}> =
 
 type Result<T extends Schema> = {
   errors: { [_ in keyof T]?: string };
+
+  /** validated and posibly parsed values */
   values: { [P in keyof T]?: ReturnType<T[P]['validate']> };
 };
 
 class ObjectValidator<T extends Schema> {
   constructor(private schema: T) {}
 
-  validate(subject: Subject<T>) {
+  validate(subject: Subject<T>): Result<T> {
     const result: Result<T> = {
       errors: {},
       values: {},
@@ -28,7 +31,7 @@ class ObjectValidator<T extends Schema> {
     for (const [k, fn] of Object.entries(this.schema)) {
       try {
         // @ts-ignore
-        result.values[k] = fn.validate(subject[k]);
+        result.values[k] = fn.validateOrFail(subject[k]);
       } catch (e) {
         // @ts-ignore
         result.errors[k] = e;

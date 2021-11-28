@@ -57,9 +57,16 @@ class Validator<T> {
     return this;
   }
 
-  /** general validations eg. required are done here */
-  protected validate(subject: any) {
-    if (this.required && subject === 'undefined') throw this.requiredError;
+  protected validateRequired(subject: any) {
+    return !(this.required && typeof subject === 'undefined');
+  }
+
+  protected validateRequiredOrFail(subject: any) {
+    if (!this.validateRequired(subject)) throw this.requiredError;
+  }
+
+  protected shouldSkip(subject: any) {
+    return !this.required && typeof subject === 'undefined';
   }
 }
 

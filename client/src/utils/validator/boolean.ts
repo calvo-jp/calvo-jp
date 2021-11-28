@@ -23,12 +23,36 @@ class BooleanValidator extends Validator<boolean> {
 
   /**
    * @example
-   * validator.boolean().falsy().validate("false") // returns true
-   * validator.boolean().falsy().strict().validate("false") // throws an error
+   * validator.boolean().falsy().validate("false") // true
+   * validator.boolean().falsy().strict().validate("false") // false
    */
-  validate(subject: any): boolean {
-    super.validate(subject);
-    return this.isTruthy(subject);
+  validate(subject: any) {
+    subject = this.pipes.reduce((v, fn) => fn(v), subject);
+
+    if (this.shouldSkip(subject)) return true;
+    if (!this.validateRequired(subject)) return false;
+
+    subject = this.middlewares.reduce((v, fn) => fn(v), subject);
+
+    for (const [validate] of this.validators)
+      if (!validate(subject)) return false;
+
+    return this.parse(subject);
+  }
+
+  validateOrFail(subject: any) {
+    subject = this.pipes.reduce((v, fn) => fn(v), subject);
+
+    if (this.shouldSkip(subject)) return subject as undefined;
+
+    this.validateRequiredOrFail(subject);
+
+    subject = this.middlewares.reduce((v, fn) => fn(v), subject);
+
+    for (const [validate, error] of this.validators)
+      if (!validate(subject)) throw error;
+
+    return this.parse(subject);
   }
 
   private isTruthy(subject: any): subject is true {
@@ -55,6 +79,10 @@ class BooleanValidator extends Validator<boolean> {
     if (typeof subject === 'function') return this.isFalsy(subject());
 
     return false;
+  }
+
+  private parse(subject: any) {
+    return this.isTruthy(subject);
   }
 }
 
