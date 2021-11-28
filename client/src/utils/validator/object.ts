@@ -21,6 +21,18 @@ class ObjectValidator {
       values: {},
     };
 
+    if (!isObject(subject)) throw 'Subject must be an object';
+
+    for (const [k, fn] of Object.entries(schema)) {
+      try {
+        // @ts-ignore
+        result.values[k] = fn.validate(subject[k]);
+      } catch (e) {
+        // @ts-ignore
+        result.errors[k] = e;
+      }
+    }
+
     return result;
   }
 }
