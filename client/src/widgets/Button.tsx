@@ -18,14 +18,16 @@ const Button: React.FC<ButtonProps> = ({
   className,
   ...props
 }) => {
-  const primary = variant === 'primary';
+  const disable = !!props.disabled;
+  const primary = variant === 'primary' && !disable;
 
   return (
     <button
       className={clsx(
-        'p-2 rounded-md text-white outline-none',
+        'p-2 rounded-md outline-none',
+        disable && 'bg-gray-100 text-gray-400 cursor-not-allowed',
         primary &&
-          'border border-blue-500 bg-blue-500 focus:ring-4 focus:ring-blue-200',
+          'text-white border border-blue-500 bg-blue-500 focus:ring-4 focus:ring-blue-200',
         className
       )}
       {...props}
