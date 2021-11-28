@@ -133,9 +133,9 @@ const Label: React.FC<LabelProps> = ({ active, children, ...props }) => {
   return (
     <label
       className={clsx(
-        'text-gray-600 absolute transition-all duration-100 cursor-text',
-        active && '-top-2 left-2 bg-white px-1 text-sm',
-        !active && 'top-2 left-3'
+        'absolute transition-all duration-100 cursor-text',
+        active && 'text-gray-500 -top-2 left-2 bg-white px-1 text-sm',
+        !active && 'text-gray-600 top-2 left-3'
       )}
       {...props}
     >
