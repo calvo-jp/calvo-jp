@@ -54,9 +54,20 @@ const Contact = () => {
                     body: '',
                   }}
                   validationSchema={yup.object().shape({
-                    from: yup.string().email().max(100).required(),
-                    subject: yup.string().min(10).max(50),
-                    body: yup.string().min(15).max(255).required(),
+                    from: yup
+                      .string()
+                      .email('malformed email')
+                      .max(100, 'length too long')
+                      .required('email is required'),
+                    subject: yup
+                      .string()
+                      .min(10, 'subject must be 10 characters or more')
+                      .max(50, 'subject must be 50 characters or less'),
+                    body: yup
+                      .string()
+                      .min(20, 'body must be 10 characters or more')
+                      .max(255, 'body must be 255 characters or less')
+                      .required('body is required'),
                   })}
                   onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
