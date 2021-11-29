@@ -1,18 +1,17 @@
+import items from 'assets/json/projects.json';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import * as services from 'services/projects';
 import IProject from 'types/project';
 
 interface Params {
   [key: string]: string;
-  slug: string;
+  id: string;
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const items = await services.fetchAll();
-  const paths = items.map(({ id: slug }) => ({ params: { slug } }));
+  const paths = items.map(({ id }) => ({ params: { id } }));
 
   return {
     paths,
@@ -22,7 +21,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 
 export const getStaticProps: GetStaticProps<IProject> = async (context) => {
   const params = context.params as Params;
-  const project = await services.fetchOne(params.slug);
+  const project = items.find((item) => item.id === params.id);
 
   if (!project) return { notFound: true };
 

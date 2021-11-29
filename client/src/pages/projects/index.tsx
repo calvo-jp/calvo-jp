@@ -1,3 +1,4 @@
+import items from 'assets/json/projects.json';
 import Footer from 'layouts/Footer';
 import Header from 'layouts/Header';
 import type { GetStaticProps, NextPage } from 'next';
@@ -5,7 +6,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
-import * as services from 'services/projects';
 import IProject from 'types/project';
 
 interface Props {
@@ -13,10 +13,10 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const items = await services.fetchAll();
-
   return {
-    props: { items },
+    props: {
+      items,
+    },
     revalidate: 1800, // 30mins
   };
 };
@@ -33,13 +33,7 @@ const Projects: NextPage<Props> = (props) => {
         <main className="flex-grow p-4 lg:p-16 pt-0 lg:pt-8">
           <section className="grid gap-8 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {props.items.map((item) => (
-              <Project
-                id={item.id}
-                title={item.title}
-                description={item.description}
-                image={item.image}
-                key={item.id}
-              />
+              <Project key={item.id} {...item} />
             ))}
           </section>
         </main>
