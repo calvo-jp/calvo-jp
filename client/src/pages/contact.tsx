@@ -58,8 +58,10 @@ const Contact = () => {
                     subject: yup.string().min(10).max(50),
                     body: yup.string().min(15).max(255).required(),
                   })}
-                  onSubmit={async (values) => {
-                    console.log(values);
+                  onSubmit={(values, { setSubmitting }) => {
+                    setTimeout(() => {
+                      setSubmitting(false);
+                    }, 1500);
                   }}
                 >
                   {({
