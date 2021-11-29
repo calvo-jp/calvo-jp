@@ -54,9 +54,9 @@ const Contact = () => {
                     body: '',
                   }}
                   validationSchema={yup.object().shape({
-                    from: yup.string().email(),
-                    subject: yup.string().min(10).max(50).optional(),
-                    body: yup.string().min(15).max(255),
+                    from: yup.string().email().max(100).required(),
+                    subject: yup.string().min(10).max(50),
+                    body: yup.string().min(15).max(255).required(),
                   })}
                   onSubmit={async (values) => {
                     console.log(values);
@@ -82,7 +82,7 @@ const Contact = () => {
                         onBlur={handleBlur}
                         value={values.from}
                         error={touched.from && !!errors.from}
-                        helperText={errors.from}
+                        errorText={errors.from}
                       />
 
                       <TextField
@@ -94,7 +94,7 @@ const Contact = () => {
                         onBlur={handleBlur}
                         value={values.subject}
                         error={touched.subject && !!errors.subject}
-                        helperText={errors.subject}
+                        errorText={errors.subject}
                       />
 
                       <TextField
@@ -107,7 +107,7 @@ const Contact = () => {
                         onBlur={handleBlur}
                         value={values.body}
                         error={touched.body && !!errors.body}
-                        helperText={errors.body}
+                        errorText={errors.body}
                       />
 
                       <Button

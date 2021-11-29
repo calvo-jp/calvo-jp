@@ -24,7 +24,7 @@ interface TextFieldProps extends BaseProps {
   type?: TextFieldType;
   label?: string;
   error?: boolean;
-  helperText?: string;
+  errorText?: string;
   fullWidth?: boolean;
 
   /** WARNING: Feature not implemented yet */
@@ -34,7 +34,7 @@ interface TextFieldProps extends BaseProps {
 const TextField: React.FC<TextFieldProps> = ({
   label,
   error,
-  helperText,
+  errorText,
   fullWidth,
   multiline,
   className,
@@ -63,13 +63,13 @@ const TextField: React.FC<TextFieldProps> = ({
       <Input
         // @ts-ignore
         ref={inputRef}
-        error={!!error}
+        error={error}
         fullWidth={fullWidth}
         onChange={handleChange}
         {...props}
       />
 
-      {helperText && <HelperText error={error}>{helperText}</HelperText>}
+      <ErrorText open={error && !!errorText}>{errorText}</ErrorText>
     </div>
   );
 };
@@ -99,29 +99,20 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
 Input.displayName = 'Input';
 
-interface HelperTextProps
+interface ErrorTextProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
   > {
-  error?: boolean;
+  open?: boolean;
 }
 
-const HelperText: React.FC<HelperTextProps> = ({
-  error,
-  children,
-  ...props
-}) => {
+const ErrorText: React.FC<ErrorTextProps> = ({ open, children, ...props }) => {
+  if (!open) return <React.Fragment />;
+
   return (
     <div className="mt-1.5 ml-1.5 flex gap-1 items-center" {...props}>
-      <p
-        className={clsx(
-          error && 'text-sm text-red-500',
-          !error && 'text-sm text-gray-500'
-        )}
-      >
-        {children}
-      </p>
+      <p className="text-sm text-red-500">{children}</p>
     </div>
   );
 };
