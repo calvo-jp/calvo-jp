@@ -1,3 +1,4 @@
+import { Form, Formik } from 'formik';
 import Footer from 'layouts/Footer';
 import Header from 'layouts/Header';
 import Head from 'next/head';
@@ -5,6 +6,7 @@ import * as React from 'react';
 import Alert from 'widgets/Alert';
 import Button from 'widgets/Button';
 import TextField from 'widgets/TextField';
+import * as yup from 'yup';
 
 const Contact = () => {
   const [error, setError] = React.useState<string>();
@@ -45,35 +47,79 @@ const Contact = () => {
                   <p>{error}</p>
                 </Alert>
 
-                <form noValidate className="flex flex-col gap-4">
-                  <TextField
-                    id="email"
-                    name="from"
-                    label="Email"
-                    autoFocus
-                    required
-                    fullWidth
-                  />
+                <Formik
+                  initialValues={{
+                    from: '',
+                    subject: '',
+                    body: '',
+                  }}
+                  validationSchema={yup.object().shape({
+                    from: yup.string().email(),
+                    subject: yup.string().min(10).max(50).optional(),
+                    body: yup.string().min(15).max(255),
+                  })}
+                  onSubmit={async (values) => {
+                    console.log(values);
+                  }}
+                >
+                  {({
+                    handleBlur,
+                    handleChange,
+                    values,
+                    errors,
+                    touched,
+                    isSubmitting,
+                  }) => (
+                    <Form noValidate className="flex flex-col gap-4">
+                      <TextField
+                        id="email"
+                        name="from"
+                        label="Email"
+                        autoFocus
+                        required
+                        fullWidth
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.from}
+                        error={touched.from && !!errors.from}
+                        helperText={errors.from}
+                      />
 
-                  <TextField
-                    id="subject"
-                    name="subject"
-                    label="Subject"
-                    fullWidth
-                  />
+                      <TextField
+                        id="subject"
+                        name="subject"
+                        label="Subject"
+                        fullWidth
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.subject}
+                        error={touched.subject && !!errors.subject}
+                        helperText={errors.subject}
+                      />
 
-                  <TextField
-                    id="message"
-                    name="body"
-                    label="Message"
-                    fullWidth
-                    multiline
-                  />
+                      <TextField
+                        id="message"
+                        name="body"
+                        label="Message"
+                        fullWidth
+                        multiline
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.body}
+                        error={touched.body && !!errors.body}
+                        helperText={errors.body}
+                      />
 
-                  <Button variant="primary" type="submit">
-                    Send
-                  </Button>
-                </form>
+                      <Button
+                        variant="primary"
+                        type="submit"
+                        disabled={isSubmitting}
+                      >
+                        Send
+                      </Button>
+                    </Form>
+                  )}
+                </Formik>
               </section>
             </div>
           </div>

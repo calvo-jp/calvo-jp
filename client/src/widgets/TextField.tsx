@@ -20,12 +20,11 @@ type TextFieldType =
   | 'url'
   | 'week';
 
-type BooleanOrString = boolean | string;
-
 interface TextFieldProps extends BaseProps {
   type?: TextFieldType;
   label?: string;
-  error?: BooleanOrString;
+  error?: boolean;
+  helperText?: string;
   fullWidth?: boolean;
 
   /** WARNING: Feature not implemented yet */
@@ -35,6 +34,7 @@ interface TextFieldProps extends BaseProps {
 const TextField: React.FC<TextFieldProps> = ({
   label,
   error,
+  helperText,
   fullWidth,
   multiline,
   className,
@@ -69,7 +69,7 @@ const TextField: React.FC<TextFieldProps> = ({
         {...props}
       />
 
-      <ErrorAlert open={typeof error === 'string'}>{error}</ErrorAlert>
+      {helperText && <HelperText error={error}>{helperText}</HelperText>}
     </div>
   );
 };
@@ -99,24 +99,29 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
 Input.displayName = 'Input';
 
-interface ErrorAlertProps
+interface HelperTextProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
   > {
-  open?: boolean;
+  error?: boolean;
 }
 
-const ErrorAlert: React.FC<ErrorAlertProps> = ({
-  open,
+const HelperText: React.FC<HelperTextProps> = ({
+  error,
   children,
   ...props
 }) => {
-  if (!open) return <React.Fragment />;
-
   return (
     <div className="mt-1.5 ml-1.5 flex gap-1 items-center" {...props}>
-      <p className="text-sm text-red-500">{children}</p>
+      <p
+        className={clsx(
+          error && 'text-sm text-red-500',
+          !error && 'text-sm text-gray-500'
+        )}
+      >
+        {children}
+      </p>
     </div>
   );
 };
