@@ -5,18 +5,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
-
-interface IProject {}
+import * as services from 'services/projects';
+import IProject from 'types/project';
 
 interface Props {
-  data: IProject[];
+  items: IProject[];
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
+  const items = await services.fetchAll();
+
   return {
-    props: {
-      data: [],
-    },
+    props: { items },
     revalidate: 1800, // 30mins
   };
 };
@@ -32,14 +32,15 @@ const Projects: NextPage<Props> = (props) => {
         <Header />
         <main className="flex-grow p-4 lg:p-16 pt-0 lg:pt-8">
           <section className="grid gap-8 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            <Project
-              title="Pedicab"
-              description="Get a shorter, more meaningful url"
-              image="/images/projects-showcase/does-not-exist.jpeg"
-              slug="pedicab"
-            />
-            <ProjectSkeleton />
-            <ProjectSkeleton />
+            {props.items.map((item) => (
+              <Project
+                id={item.id}
+                title={item.title}
+                description={item.description}
+                image={item.image}
+                key={item.id}
+              />
+            ))}
           </section>
         </main>
         <Footer />
@@ -48,33 +49,8 @@ const Projects: NextPage<Props> = (props) => {
   );
 };
 
-const ProjectSkeleton: React.FC = () => {
-  return (
-    <div className="animate-pulse md:p-2 rounded-md outline-none border border-transparent transition-all duration-300">
-      <div className="w-full h-[250px] relative flex items-center justify-center overflow-hidden bg-gray-100" />
-
-      <div className="mt-2">
-        <div className="h-5 w-1/3 bg-gray-100" />
-        <div className="h-4 w-full bg-gray-100 mt-2" />
-      </div>
-    </div>
-  );
-};
-
-interface ProjectProps {
-  slug: string;
-  title: string;
-  description: string;
-  image: string;
-}
-
-const Project: React.FC<ProjectProps> = ({
-  slug,
-  title,
-  description,
-  image,
-}) => {
-  const href = '/projects/' + slug;
+const Project: React.FC<IProject> = ({ id, title, description, image }) => {
+  const href = '/projects/' + id;
 
   return (
     <Link href={href} passHref>
