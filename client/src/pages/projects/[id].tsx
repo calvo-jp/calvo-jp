@@ -39,9 +39,13 @@ const Project: NextPage<IProject> = (props) => {
   return (
     <React.Fragment>
       <Head>
-        <meta property="og:title" content={props.title} />
-        <meta property="og:description" content={props.description} />
-        <meta property="og:image" content={props.image} />
+        <meta property="og:title" content={props.title} key="og.title" />
+        <meta property="og:image" content={props.image} key="og.image" />
+        <meta
+          property="og:description"
+          content={props.description}
+          key="og.description"
+        />
 
         <title>{props.id}</title>
       </Head>
