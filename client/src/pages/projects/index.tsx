@@ -43,7 +43,7 @@ const Projects: NextPage<Props> = (props) => {
   );
 };
 
-const Project: React.FC<IProject> = ({ id, title, description, image }) => {
+const Project: React.FC<IProject> = ({ id, title, description, banner }) => {
   const href = '/projects/' + id;
 
   return (
@@ -52,7 +52,7 @@ const Project: React.FC<IProject> = ({ id, title, description, image }) => {
         <div className="w-full h-[250px] border border-gray-100 relative flex items-center justify-center overflow-hidden">
           <Image
             alt=""
-            src={image}
+            src={banner}
             layout="fill"
             className="max-w-[200%] min-w-[100%] max-h-[200%] min-h-[100%]"
           />
