@@ -43,7 +43,7 @@ const Projects: NextPage<Props> = (props) => {
   );
 };
 
-const Project: React.FC<IProject> = ({ id, title, description, banner }) => {
+const Project: React.FC<IProject> = ({ id, name, description, banner }) => {
   const href = '/projects/' + id;
 
   return (
@@ -59,7 +59,7 @@ const Project: React.FC<IProject> = ({ id, title, description, banner }) => {
         </div>
 
         <div className="mt-2">
-          <h3 className="text-lg">{title}</h3>
+          <h3 className="text-lg">{name}</h3>
           <p className="text-sm">{description}</p>
         </div>
       </a>

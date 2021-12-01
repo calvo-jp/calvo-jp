@@ -23,10 +23,10 @@ type Tag =
 interface IProject {
   id: string;
   tags: Tag[];
-  title: string;
+  name: string;
   description: string;
   banner: string;
-  images: string[];
+  screenshots: string[];
 }
 
 export default IProject;
