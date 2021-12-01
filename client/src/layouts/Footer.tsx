@@ -29,7 +29,7 @@ const Footer = () => {
         </li>
       </ul>
 
-      <div className="text-sm">&copy; juanonweb {currentYear}</div>
+      <div className="text-sm">&copy; JP Calvo {currentYear}</div>
     </footer>
   );
 };
