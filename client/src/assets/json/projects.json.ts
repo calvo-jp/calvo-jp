@@ -3,11 +3,22 @@ import IProject from 'types/project';
 const items: IProject[] = [
   {
     id: 'pedicab',
-    tags: [],
+    tags: [
+      'react',
+      'nextjs',
+      'tailwind',
+      'typescript',
+      'python',
+      'fastapi',
+      'postgres',
+    ],
     title: 'Pedicab',
     description: 'Make urls shorter and more meaningful',
-    banner: '/images/projects-showcase/pedicab.jpeg',
-    images: [],
+    banner: '/images/projects-showcase/pedicab/banner.jpeg',
+    images: [
+      '/images/projects-showcase/pedicab/1.jpeg',
+      '/images/projects-showcase/pedicab/2.jpeg',
+    ],
   },
   {
     id: 'recipes',
