@@ -6,12 +6,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import IProject from 'types/project';
-interface Params {
+
+interface SearchParams {
   [key: string]: string;
   id: string;
 }
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
+export const getStaticPaths: GetStaticPaths<SearchParams> = async () => {
   const paths = items.map(({ id }) => ({ params: { id } }));
 
   return {
@@ -20,9 +21,10 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<IProject> = async (context) => {
-  const params = context.params as Params;
-  const project = items.find((item) => item.id === params.id);
+export const getStaticProps: GetStaticProps<IProject, SearchParams> = async (
+  context
+) => {
+  const project = items.find((item) => item.id === context.params!.id);
 
   if (!project) return { notFound: true };
 
