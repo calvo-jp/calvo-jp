@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import IProject from 'types/project';
+import ChevronLeftIcon from 'widgets/icons/ChevronLeft';
 
 interface SearchParams {
   [key: string]: string;
@@ -35,35 +36,43 @@ export const getStaticProps: GetStaticProps<IProject, SearchParams> = async (
 };
 
 const Project: NextPage<IProject> = ({
-  id,
   tags,
-  title,
+  name,
   description,
+  keywords,
   banner,
-  images,
+  screenshots,
 }) => {
   const router = useRouter();
 
-  if (router.isFallback) return <Skeleton />;
+  if (router.isFallback)
+    return <div className="p-2 text-gray-600 text-md">Loading...</div>;
 
   return (
     <React.Fragment>
       <Head>
-        <meta property="og:title" content={title} key="og.title" />
-        <meta property="og:image" content={banner} key="og.image" />
+        <title>{name}</title>
+        <meta property="og:title" content={name} key="meta.og.title" />
+        <meta property="og:image" content={banner} key="meta.og.image" />
+        <meta
+          property="og:keywords"
+          content={keywords.join()}
+          key="meta.og.keywords"
+        />
         <meta
           property="og:description"
           content={description}
-          key="og.description"
+          key="meta.og.description"
         />
-
-        <title>{id}</title>
       </Head>
 
       <div>
-        <header className="sticky top-0 bg-white py-4 px-6 flex items-center justify-between">
+        <header className="bg-white py-4 px-6 flex items-center justify-between">
           <Link href="/projects" passHref>
-            <a>All Projects</a>
+            <a className="flex items-center gap-1">
+              <ChevronLeftIcon className="h-[18px] w-[18px]" />
+              <span>All Projects</span>
+            </a>
           </Link>
 
           <div>
@@ -72,39 +81,34 @@ const Project: NextPage<IProject> = ({
               target="_blank"
               rel="noreferrer"
             >
-              Source code
+              <span>Source Code</span>
             </a>
           </div>
         </header>
 
         <main>
-          <div className="relative flex items-center justify-center">
-            <Image
-              src={banner}
-              alt=""
-              layout="fill"
-              className="max-w-[200%] min-w-[100%] max-h-[200%] min-h-[100%]"
-            />
+          <div className="relative h-[400px] border-b border-gray-100">
+            <Image src={banner} alt="" layout="fill" />
           </div>
 
-          <div className="p-4 md:p-8 lg:p-16 xl:p-32 flex flex-col gap-4">
+          <div className="p-4 md:p-8 flex flex-col gap-4 max-w-[1200px] mx-auto">
             <div>
-              <h1 className="text-4xl">{title}</h1>
+              <h1 className="text-4xl">{name}</h1>
               <p>{description}</p>
 
               <div className="flex gap-1 mt-2 text-sm flex-wrap">
                 {tags.map((tag) => (
                   <span key={tag} className="bg-blue-200 p-1 px-2">
-                    {tag}
+                    <div>{tag}</div>
                   </span>
                 ))}
               </div>
             </div>
 
             <div className="grid auto-rows-[250px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {images.map((image, index) => (
-                <div className="relative border border-gray-100" key={index}>
-                  <Image src={image} alt="" layout="fill" />
+              {screenshots.map((screnshot, index) => (
+                <div key={index} className="relative border border-gray-100">
+                  <Image src={screnshot} alt="" layout="fill" />
                 </div>
               ))}
             </div>
@@ -113,10 +117,6 @@ const Project: NextPage<IProject> = ({
       </div>
     </React.Fragment>
   );
-};
-
-const Skeleton = () => {
-  return <div></div>;
 };
 
 export default Project;
