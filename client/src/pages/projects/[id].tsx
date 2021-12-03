@@ -18,7 +18,7 @@ export const getStaticPaths: GetStaticPaths<SearchParams> = async () => {
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: true,
   };
 };
 
@@ -70,7 +70,7 @@ const Project: NextPage<IProject> = ({
         <header className="bg-white py-4 px-6 flex items-center justify-between">
           <Link href="/projects" passHref>
             <a className="flex items-center gap-1">
-              <ChevronLeftIcon className="h-[18px] w-[18px]" />
+              <ChevronLeftIcon className="h-[14px] w-[14px]" />
               <span>All Projects</span>
             </a>
           </Link>
