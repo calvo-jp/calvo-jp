@@ -13,17 +13,25 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         <meta name="keywords" content="jp calvo, portfolio" />
         <meta name="author" content="jp calvo" />
 
-        <meta property="og:url" content="calvo-jp.vercel.app" key="og.url" />
-        <meta property="og:title" content="JP Calvo" key="og.title" />
+        <meta
+          property="og:url"
+          content="calvo-jp.vercel.app"
+          key="meta.og.url"
+        />
+        <meta
+          property="og:title"
+          content="JP Calvo (John Paul Calvo)"
+          key="meta.og.title"
+        />
         <meta
           property="og:description"
           content="JP Calvo's portfolio"
-          key="og.description"
+          key="meta.og.description"
         />
         <meta
           property="og:keywords"
           content="jp calvo, portfolio"
-          key="og.keywords"
+          key="meta.og.keywords"
         />
       </Head>
 
