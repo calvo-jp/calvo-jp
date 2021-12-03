@@ -32,15 +32,16 @@ const Landing = () => {
               href="https://www.m.me/calvojp"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-center gap-2 mt-5 border-2 border-blue-500 py-3 px-4 rounded-xl text-lg font-bold bg-blue-500 text-white focus:ring-4 focus:ring-blue-200 transition-colors duration-200 outline-none"
+              className="flex items-center justify-center gap-2 mt-5 py-3 px-6 rounded-xl text-lg font-bold bg-blue-500 text-white hover:ring-4 hover:ring-blue-200 focus:ring-4 focus:ring-blue-200 transition-colors duration-300 outline-none"
             >
               <Image
                 src="/images/icons/messenger.png"
                 alt=""
-                width="28"
-                height="28"
+                width="24"
+                height="24"
+                loading="eager"
               />
-              <div>Chat now</div>
+              <div>Chat me now</div>
             </a>
           </section>
         </main>
