@@ -21,6 +21,7 @@ const items: IProject[] = [
       '/images/projects/screenshots/pedicab/3.jpeg',
       '/images/projects/screenshots/pedicab/4.jpeg',
     ],
+    keywords: [],
   },
   {
     id: 'recipes',
@@ -43,6 +44,7 @@ const items: IProject[] = [
       '/images/projects/screenshots/recipes/4.jpeg',
       '/images/projects/screenshots/recipes/5.jpeg',
     ],
+    keywords: [],
   },
   {
     id: 'cedar-college',
@@ -55,7 +57,7 @@ const items: IProject[] = [
       'fastapi',
       'postgres',
     ],
-    name: 'Cedar',
+    name: 'Cedar College',
     description: 'Official website of Cedar College',
     banner: '/images/projects/banners/cedar.jpeg',
     screenshots: [
@@ -68,6 +70,7 @@ const items: IProject[] = [
       '/images/projects/screenshots/cedar/7.jpeg',
       '/images/projects/screenshots/cedar/8.jpeg',
     ],
+    keywords: [],
   },
 ];
 
