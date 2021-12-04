@@ -1,8 +1,10 @@
 import GlobalAction from './GlobalAction';
 import GlobalState from './GlobalState';
 
-const globalReducer = (state: GlobalState, action: GlobalAction) => {
-  switch (action.type) {
+type GlobalReducer = (state: GlobalState, action: GlobalAction) => GlobalState;
+
+const globalReducer: GlobalReducer = (state, { type }) => {
+  switch (type) {
     case 'navbar.toggle':
       return toggleNavbar(state);
     default:
