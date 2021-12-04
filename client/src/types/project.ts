@@ -1,20 +1,25 @@
-type Tag =
-  // frontend
-  | 'html'
-  | 'css'
-  | 'tailwind'
+type TechStack =
+  // frontend frameworks, ui kit and preprocessors
   | 'react'
   | 'nextjs'
-  | 'typescript'
-  | 'javascript'
-  | 'dart'
   | 'flutter'
-  // backend
+  | 'tailwind'
+  // frontend languages
+  | 'html'
+  | 'css'
+  | 'javascript'
+  | 'typescript'
+  | 'dart'
+  // backend frameworks
   | 'express'
   | 'nestjs'
-  | 'nodejs'
   | 'fastapi'
+  // backend languages
+  | 'nodejs'
   | 'python'
+  // orms and odms
+  | 'prisma'
+  | 'sqlmodel'
   // database
   | 'mongodb'
   | 'sqlite3'
@@ -22,14 +27,14 @@ type Tag =
 
 interface IProject {
   id: string;
-  tags: Tag[];
   name: string;
   description: string;
+  /** aka. keywords */
+  tags: string[];
   banner: string;
   screenshots: string[];
-
-  /** specific to keyword meta tag */
-  keywords: string[];
+  /** techstacks used to develop the app */
+  techstacks: TechStack[];
 }
 
 export default IProject;

@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps<IProject, SearchParams> = async (
 
   return {
     props: project,
-    revalidate: 60 * 60 * 24, // 24hours
+    revalidate: 60 * 15, // 15mins
   };
 };
 
@@ -39,7 +39,7 @@ const Project: NextPage<IProject> = ({
   tags,
   name,
   description,
-  keywords,
+  techstacks,
   banner,
   screenshots,
 }) => {
@@ -56,7 +56,7 @@ const Project: NextPage<IProject> = ({
         <meta property="og:image" content={banner} key="meta.og.image" />
         <meta
           property="og:keywords"
-          content={keywords.join()}
+          content={tags.join()}
           key="meta.og.keywords"
         />
         <meta
@@ -97,9 +97,9 @@ const Project: NextPage<IProject> = ({
               <p>{description}</p>
 
               <div className="flex gap-1 mt-2 text-sm flex-wrap">
-                {tags.map((tag) => (
-                  <span key={tag} className="bg-blue-200 p-1 px-2">
-                    <div>{tag}</div>
+                {techstacks.map((value) => (
+                  <span key={value} className="bg-blue-200 p-1 px-2">
+                    <div>{value}</div>
                   </span>
                 ))}
               </div>

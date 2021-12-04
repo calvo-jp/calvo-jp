@@ -3,15 +3,6 @@ import IProject from 'types/project';
 const items: IProject[] = [
   {
     id: 'pedicab',
-    tags: [
-      'react',
-      'nextjs',
-      'tailwind',
-      'typescript',
-      'nodejs',
-      'express',
-      'mongodb',
-    ],
     name: 'Pedicab',
     description: 'Make urls shorter and more meaningful',
     banner: '/images/projects/banners/pedicab.jpeg',
@@ -21,19 +12,19 @@ const items: IProject[] = [
       '/images/projects/screenshots/pedicab/3.jpeg',
       '/images/projects/screenshots/pedicab/4.jpeg',
     ],
-    keywords: [],
-  },
-  {
-    id: 'recipes',
-    tags: [
+    tags: [],
+    techstacks: [
       'react',
       'nextjs',
       'tailwind',
       'typescript',
-      'python',
-      'fastapi',
-      'postgres',
+      'nodejs',
+      'express',
+      'mongodb',
     ],
+  },
+  {
+    id: 'recipes',
     name: 'Recipes',
     description: 'Share or find awesome recipes',
     banner: '/images/projects/banners/recipes.jpeg',
@@ -44,11 +35,8 @@ const items: IProject[] = [
       '/images/projects/screenshots/recipes/4.jpeg',
       '/images/projects/screenshots/recipes/5.jpeg',
     ],
-    keywords: [],
-  },
-  {
-    id: 'cedar-college',
-    tags: [
+    tags: [],
+    techstacks: [
       'react',
       'nextjs',
       'tailwind',
@@ -57,6 +45,9 @@ const items: IProject[] = [
       'fastapi',
       'postgres',
     ],
+  },
+  {
+    id: 'cedar-college',
     name: 'Cedar College',
     description: 'Official website of Cedar College',
     banner: '/images/projects/banners/cedar.jpeg',
@@ -70,7 +61,16 @@ const items: IProject[] = [
       '/images/projects/screenshots/cedar/7.jpeg',
       '/images/projects/screenshots/cedar/8.jpeg',
     ],
-    keywords: [],
+    tags: [],
+    techstacks: [
+      'react',
+      'nextjs',
+      'tailwind',
+      'typescript',
+      'python',
+      'fastapi',
+      'postgres',
+    ],
   },
 ];
 
