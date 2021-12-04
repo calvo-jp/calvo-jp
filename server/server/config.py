@@ -13,19 +13,15 @@ class Environment(str, Enum):
 
 
 class Config(BaseSettings):
-    env: Optional[Environment]
+    env: Optional[Environment] = None
     redis_host: str
     redis_port: int
     rapidapi_key: str
     gmail_username: str
 
     @property
-    def production(self):
-        return self.env == Environment.PRODUCTION
-
-    @property
-    def development(self):
-        return self.env in [None, Environment.DEVELOPMENT]
+    def debug(self):
+        return self.env == Environment.DEVELOPMENT
 
 
 config = Config()
