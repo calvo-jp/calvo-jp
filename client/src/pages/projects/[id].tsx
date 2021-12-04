@@ -81,7 +81,7 @@ const Project: NextPage<IProject> = ({
               target="_blank"
               rel="noreferrer"
             >
-              <span>Source Code</span>
+              Source Code
             </a>
           </div>
         </header>
