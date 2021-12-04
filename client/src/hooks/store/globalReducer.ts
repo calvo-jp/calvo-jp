@@ -10,7 +10,7 @@ const globalReducer = (state: GlobalState, action: GlobalAction) => {
   }
 };
 
-const toggleNavbar = (state: GlobalState): GlobalState => {
+const toggleNavbar = <T extends GlobalState>(state: T): T => {
   return {
     ...state,
     navbarOpen: !state.navbarOpen,
