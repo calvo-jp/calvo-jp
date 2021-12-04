@@ -78,8 +78,7 @@ class EmailSummary(BaseModel):
     response_model_exclude_none=True
 )
 async def get_summary():
-    key = summary_id()
-    total = summary.get(key) or 0
+    total = summary.get(summary_id()) or 0
 
     if isinstance(total, str):
         total = int(total)
