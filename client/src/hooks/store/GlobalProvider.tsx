@@ -3,12 +3,10 @@ import GlobalContext from './GlobalContext';
 import globalReducer from './globalReducer';
 
 const GlobalProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = React.useReducer(globalReducer, {});
+  const value = React.useReducer(globalReducer, {});
 
   return (
-    <GlobalContext.Provider value={[state, dispatch]}>
-      {children}
-    </GlobalContext.Provider>
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
 };
 
