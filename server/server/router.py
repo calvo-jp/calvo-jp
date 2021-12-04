@@ -6,7 +6,7 @@ from pydantic import BaseModel, EmailStr, Field
 from redis import Redis
 
 from .config import config
-from .utils import send_via_rapidapi
+from .utils import send_email_via_rapidapi
 
 router = APIRouter()
 
@@ -45,7 +45,7 @@ async def send_email(data: CreateEmail):
         counter.setex(data.sender, timedelta(hours=24), 0)
 
     try:
-        response = send_via_rapidapi(
+        response = send_email_via_rapidapi(
             sender=data.sender,
             recipient=config.gmail_username,
             subject=data.subject,

@@ -5,7 +5,7 @@ import httpx
 from .config import config
 
 
-def send_via_rapidapi(
+def send_email_via_rapidapi(
     *,
     sender: str,
     recipient: str,
