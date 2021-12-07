@@ -14,3 +14,4 @@ app.add_middleware(
 )
 
 app.include_router(router=email.router)
+app.include_router(router=project.router)
