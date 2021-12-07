@@ -19,6 +19,7 @@ class Config(BaseSettings):
     redis_port: int
     rapidapi_key: str
     gmail_username: str
+    base_url: str
 
     @property
     def debug(self):
