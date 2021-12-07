@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .config import config
-from .routers import email, project
+from .routers import email, project, stream
 
 app = FastAPI()
 
@@ -15,3 +15,4 @@ app.add_middleware(
 
 app.include_router(router=email.router)
 app.include_router(router=project.router)
+app.include_router(router=stream.router)
