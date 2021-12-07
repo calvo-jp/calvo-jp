@@ -4,6 +4,7 @@ type TechStack =
   | 'nextjs'
   | 'flutter'
   | 'tailwind'
+  | 'material ui'
   // frontend languages
   | 'html'
   | 'css'
