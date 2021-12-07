@@ -5,10 +5,10 @@ from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel, EmailStr, Field
 from redis import Redis
 
-from .config import config
-from .utils import send_email_via_rapidapi
+from ..config import config
+from ..utils import send_email_via_rapidapi
 
-router = APIRouter()
+router = APIRouter(prefix='/emails', tags=['email'])
 counter = Redis(config.redis_host, config.redis_port, 0, decode_responses=True)
 
 
@@ -23,12 +23,12 @@ class CreateEmail(BaseModel):
 
 
 @router.post(
-    path='/emails',
+    path='/',
     status_code=status.HTTP_202_ACCEPTED,
     response_model_by_alias=True,
     response_model_exclude_none=True,
 )
-async def send_email(data: CreateEmail):
+async def send_email(*, data: CreateEmail):
     total_sent = counter.get(data.sender) or 0
 
     if isinstance(total_sent, str):
@@ -80,7 +80,7 @@ class EmailSummary(BaseModel):
 
 
 @router.get(
-    path='/emails/summary',
+    path='/summary',
     response_model=EmailSummary,
     response_model_exclude_none=True
 )
