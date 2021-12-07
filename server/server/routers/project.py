@@ -1,8 +1,8 @@
 import json
 import os
-from typing import Literal
+import typing
 
-from fastapi import APIRouter, HTTPException, Path, status
+from fastapi import APIRouter, Depends, HTTPException, Path, status
 from pydantic import BaseModel
 
 from ..config import config
@@ -10,7 +10,7 @@ from ..config import config
 router = APIRouter(prefix='/projects', tags=['project'])
 
 
-TechStack = Literal[
+TechStack = typing.Literal[
     # frontend frameworks, ui-kit, etc.
     'react',
     'nextjs',
@@ -52,26 +52,38 @@ class Project(BaseModel):
     techstacks: set[TechStack]
 
 
-def get_projects() -> list[Project]:
+async def get_projects():
     fullpath = os.path.join(config.assets_dir, 'json', 'projects.json')
 
     with open(fullpath, encoding='utf-8') as data:
         projects = json.load(data)
+        projects = [Project.parse_obj(project) for project in projects]
 
-        return [Project.parse_obj(project) for project in projects]
+        # appends server base url to files, eg:
+        # original: /streams/images/filename.jpeg
+        # modified: http://localhost:8000/streams/images/filename.jpeg
+        for project in projects:
+            project.banner = config.base_url + project.banner
+            project.screenshots = {
+                config.base_url + screenshot for screenshot in project.screenshots
+            }
+
+        return projects
 
 
-@router.get(path='/', response_model=list[Project])
+@router.get(path='/', response_model=list[Project], response_model_exclude_none=True)
 async def read_all():
-    return get_projects()
+    return await get_projects()
 
 
-@router.get(path='/{id}', response_model=Project)
-async def read_one(id_: str = Path(..., alias='id')):
-    projects = get_projects()
-
+@router.get(path='/{id}', response_model=Project, response_model_exclude_none=True)
+async def read_one(
+    *,
+    slug: str = Path(..., alias='id'),
+    projects: list[Project] = Depends(get_projects)
+):
     for project in projects:
-        if project.id == id_:
+        if project.id == slug:
             return project
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
