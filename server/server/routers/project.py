@@ -1,12 +1,17 @@
 import json
 import os
+import re
 from functools import lru_cache
 from typing import Literal, Optional
 
-from fastapi import APIRouter, Depends, HTTPException, Path, status
-from pydantic import BaseModel, Field
+from fastapi import APIRouter, status
+from fastapi.exceptions import HTTPException
+from fastapi.param_functions import Depends, Path, Query
+from fastapi.responses import Response
+from pydantic import BaseModel
 
 from ..config import config
+from ..utils import camelize
 
 router = APIRouter(prefix='/projects', tags=['project'])
 
@@ -66,20 +71,25 @@ def get_projects():
         # modified: http://localhost:8000/streams/images/filename.jpeg
         for project in projects:
             project.banner = config.base_url + project.banner
-            project.screenshots = {
+            project.screenshots = set(
                 config.base_url + screenshot for screenshot in project.screenshots
-            }
+            )
 
         return sorted(projects, key=lambda p: p.id)
 
 
-class Query:
+class QueryParams:
     def __init__(
         self,
         *,
-        page: Optional[int] = None,
-        page_size: Optional[int] = None,
-        search: Optional[str] = None,
+        page: Optional[int] = Query(default=1, ge=1),
+        page_size: Optional[int] = Query(
+            default=25,
+            alias='pageSize',
+            le=100,
+            ge=1,
+        ),
+        search: Optional[str] = None
     ):
         self.page = page or 1
         self.page_size = page_size or 25
@@ -88,46 +98,65 @@ class Query:
 
 class Paginated(BaseModel):
     page: int
-    page_size: int = Field(..., alias='pageSize')
-    total_rows: int = Field(..., alias='totalRows')
+    page_size: int
+    total_rows: int
     rows: list[Project]
-    has_next: bool = Field(..., alias='hasNext')
+    has_next: bool
+    search: Optional[str] = None
+
+    class Config:
+        alias_generator = camelize
+        allow_population_by_field_name = True
 
 
-@router.get(path='/', response_model=Paginated, response_model_by_alias=True)
+def contains(subject: str, search: str):
+    """Checks whether the subject contains the search string"""
+
+    def normalize(string: str):
+        return string.replace(" ", "").lower()
+
+    search = normalize(search)
+    subject = normalize(subject)
+    pattern = re.compile(search)
+
+    return pattern.search(subject) is not None
+
+
+@router.get(
+    path='/',
+    response_model=Paginated,
+    response_model_exclude_none=True,
+)
 async def read_all(
     *,
-    query: Query = Depends(),
+    query: QueryParams = Depends(),
     projects: list[Project] = Depends(get_projects),
+    response: Response
 ):
     rows = projects if query.search is None else []
 
     if query.search is not None:
         for project in projects:
-            if (
-                project.name.lower().startswith(query.search.lower()) or
-                project.description.lower().startswith(query.search.lower())
-            ):
-                rows.append(project)
-                continue
+            subjects = [
+                project.name,
+                project.description,
+                *project.tags,
+                *project.techstacks,
+            ]
 
-            for tag in project.tags:
-                if tag.lower().startswith(query.search.lower()):
+            for subject in subjects:
+                if contains(subject, query.search):
                     rows.append(project)
-                    continue
-
-            for techstack in project.techstacks:
-                if techstack.lower().startswith(query.search.lower()):
-                    rows.append(project)
-                    continue
+                    break
 
     totalrows = len(rows)
     hasnext = totalrows - (query.page * query.page_size) > 0
-
     start = query.page_size * (query.page - 1)
     until = query.page_size + start
-
     rows = rows[start:until]
+
+    if hasnext:
+        response.status_code = status.HTTP_206_PARTIAL_CONTENT
 
     return dict(
         rows=rows,
@@ -135,6 +164,7 @@ async def read_all(
         has_next=hasnext,
         page=query.page,
         page_size=query.page_size,
+        search=query.search
     )
 
 
