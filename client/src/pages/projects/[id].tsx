@@ -1,10 +1,10 @@
-import items from 'assets/json/projects.json';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
+import services from 'services/projects';
 import IProject from 'types/project';
 import ChevronLeftIcon from 'widgets/icons/ChevronLeft';
 
@@ -14,6 +14,7 @@ interface SearchParams {
 }
 
 export const getStaticPaths: GetStaticPaths<SearchParams> = async () => {
+  const items = await services.fetchAll();
   const paths = items.map(({ id }) => ({ params: { id } }));
 
   return {
@@ -25,7 +26,7 @@ export const getStaticPaths: GetStaticPaths<SearchParams> = async () => {
 export const getStaticProps: GetStaticProps<IProject, SearchParams> = async (
   context
 ) => {
-  const project = items.find((item) => item.id === context.params!.id);
+  const project = await services.fetchOne(context.params!.id);
 
   if (!project) return { notFound: true };
 

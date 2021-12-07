@@ -1,4 +1,3 @@
-import items from 'assets/json/projects.json';
 import Footer from 'layouts/Footer';
 import Header from 'layouts/Header';
 import type { GetStaticProps, NextPage } from 'next';
@@ -6,6 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
+import services from 'services/projects';
 import IProject from 'types/project';
 
 interface Props {
@@ -13,6 +13,8 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
+  const items = await services.fetchAll();
+
   return {
     props: {
       items,
