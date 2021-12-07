@@ -8,7 +8,7 @@ from ..config import config
 router = APIRouter(prefix='/streams', tags=['streams'])
 
 
-@router.get(path='/images/{filename}', response_class=FileResponse)
+@router.get(path='/media/{filename}', response_class=FileResponse)
 async def view_image(filename: str):
     fullpath = os.path.join(config.assets_dir, 'images', filename)
 
