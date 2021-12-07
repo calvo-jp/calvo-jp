@@ -19,6 +19,7 @@ class Config(BaseSettings):
     server_protocol: str
     server_host: str
     server_port: int
+    server_extra: Optional[str] = None
 
     redis_host: str
     redis_port: int
@@ -35,11 +36,14 @@ class Config(BaseSettings):
 
     @property
     def server_base_url(self):
-        return '%s://%s:%s' % (
+        url = '%s://%s:%s/%s' % (
             self.server_protocol,
             self.server_host,
-            self.server_port
+            self.server_port,
+            self.server_extra or ""
         )
+
+        return url.removesuffix("/")
 
 
 config = Config()
