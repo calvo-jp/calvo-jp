@@ -70,9 +70,9 @@ def get_projects():
         # original: /streams/images/filename.jpeg
         # modified: http://localhost:8000/streams/images/filename.jpeg
         for project in projects:
-            project.banner = config.base_url + project.banner
+            project.banner = config.server_base_url + project.banner
             project.screenshots = set(
-                config.base_url + screenshot for screenshot in project.screenshots
+                config.server_base_url + screenshot for screenshot in project.screenshots
             )
 
         return sorted(projects, key=lambda p: p.id)

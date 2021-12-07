@@ -15,10 +15,15 @@ class Environment(str, Enum):
 
 class Config(BaseSettings):
     env: Optional[Environment] = None
+
+    server_protocol: str
+    server_host: str
+    server_port: int
+
     redis_host: str
     redis_port: int
+
     gmail_username: str
-    base_url: str
 
     @property
     def debug(self):
@@ -27,6 +32,14 @@ class Config(BaseSettings):
     @property
     def assets_dir(self):
         return os.path.abspath("assets")
+
+    @property
+    def server_base_url(self):
+        return '%s://%s:%s' % (
+            self.server_protocol,
+            self.server_host,
+            self.server_port
+        )
 
 
 config = Config()
