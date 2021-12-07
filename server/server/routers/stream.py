@@ -1,3 +1,4 @@
+import enum
 import os
 
 from fastapi import APIRouter, HTTPException, status
@@ -8,9 +9,14 @@ from ..config import config
 router = APIRouter(prefix='/streams', tags=['streams'])
 
 
-@router.get(path='/files/{filename}', response_class=FileResponse)
-async def view_image(*,  filename: str):
-    fullpath = os.path.join(config.assets_dir, 'media', filename)
+class Media(str, enum.Enum):
+    IMAGES = 'images'
+    VIDEOS = 'videos'
+
+
+@router.get(path='/{media}/{filename}', response_class=FileResponse)
+async def view_image(*, media: Media,  filename: str):
+    fullpath = os.path.join(config.assets_dir, media, filename)
 
     if not os.path.exists(fullpath):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
