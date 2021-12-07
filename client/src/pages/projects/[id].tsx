@@ -98,17 +98,20 @@ const Project: NextPage<IProject> = ({
               <p>{description}</p>
 
               <div className="flex gap-1 mt-2 text-sm flex-wrap">
-                {techstacks.map((value) => (
-                  <span key={value} className="bg-blue-200 p-1 px-2">
-                    <div>{value}</div>
+                {techstacks.map((techstack) => (
+                  <span key={techstack} className="bg-blue-200 p-1 px-2">
+                    <div>{techstack}</div>
                   </span>
                 ))}
               </div>
             </div>
 
             <div className="grid auto-rows-[250px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {screenshots.map((screnshot, index) => (
-                <div key={index} className="relative border border-gray-100">
+              {screenshots.map((screnshot) => (
+                <div
+                  key={screnshot}
+                  className="relative border border-gray-100"
+                >
                   <Image src={screnshot} alt="" layout="fill" />
                 </div>
               ))}
