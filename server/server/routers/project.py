@@ -1,6 +1,7 @@
 import json
 import os
-import typing
+from functools import lru_cache
+from typing import Literal, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Path, status
 from pydantic import BaseModel
@@ -10,7 +11,7 @@ from ..config import config
 router = APIRouter(prefix='/projects', tags=['project'])
 
 
-TechStack = typing.Literal[
+TechStack = Literal[
     # frontend frameworks, ui-kit, etc.
     'react',
     'nextjs',
@@ -52,6 +53,7 @@ class Project(BaseModel):
     techstacks: set[TechStack]
 
 
+@lru_cache
 async def get_projects():
     fullpath = os.path.join(config.assets_dir, 'json', 'projects.json')
 
@@ -75,9 +77,9 @@ class Query:
     def __init__(
         self,
         *,
-        page: typing.Optional[int] = None,
-        page_size: typing.Optional[int] = None,
-        search: typing.Optional[str] = None,
+        page: Optional[int] = None,
+        page_size: Optional[int] = None,
+        search: Optional[str] = None,
     ):
         self.page = page or 1
         self.page_size = page_size or 25
