@@ -1,0 +1,98 @@
+[
+  {
+    "id": "pedicab",
+    "name": "Pedicab",
+    "description": "Make urls shorter and more meaningful",
+    "banner": "pedicab-banner.jpeg",
+    "screenshots": [
+      "pedicab-screenshot-1.jpeg",
+      "pedicab-screenshot-2.jpeg",
+      "pedicab-screenshot-3.jpeg",
+      "pedicab-screenshot-4.jpeg"
+    ],
+    "tags": [
+      "url",
+      "short",
+      "custom",
+      "shortener",
+      "meaningful",
+      "easy to remember"
+    ],
+    "techstacks": [
+      "react",
+      "nextjs",
+      "tailwind",
+      "typescript",
+      "nodejs",
+      "express",
+      "mongodb"
+    ]
+  },
+  {
+    "id": "recipes",
+    "name": "Recipes",
+    "description": "Share or find awesome recipes",
+    "banner": "recipes-banner.jpeg",
+    "screenshots": [
+      "recipes-screenshot-1.jpeg",
+      "recipes-screenshot-2.jpeg",
+      "recipes-screenshot-3.jpeg",
+      "recipes-screenshot-4.jpeg",
+      "recipes-screenshot-5.jpeg"
+    ],
+    "tags": [
+      "bake",
+      "dish",
+      "tasty",
+      "manual",
+      "recipe",
+      "cooking",
+      "cuisine",
+      "delicious",
+      "how to cook"
+    ],
+    "techstacks": [
+      "react",
+      "nextjs",
+      "tailwind",
+      "typescript",
+      "python",
+      "fastapi",
+      "postgres"
+    ]
+  },
+  {
+    "id": "cedar-college",
+    "name": "Cedar College",
+    "description": "Official website of Cedar College",
+    "banner": "cedar-banner.jpeg",
+    "screenshots": [
+      "cedar-screenshot-1.jpeg",
+      "cedar-screenshot-2.jpeg",
+      "cedar-screenshot-3.jpeg",
+      "cedar-screenshot-4.jpeg",
+      "cedar-screenshot-5.jpeg",
+      "cedar-screenshot-6.jpeg",
+      "cedar-screenshot-7.jpeg",
+      "cedar-screenshot-8.jpeg"
+    ],
+    "tags": [
+      "6100",
+      "cedar",
+      "school",
+      "college",
+      "cadiz city",
+      "official website",
+      "senior highschool"
+    ],
+    "techstacks": [
+      "react",
+      "nextjs",
+      "tailwind",
+      "typescript",
+      "python",
+      "fastapi",
+      "postgres"
+    ]
+  }
+]
