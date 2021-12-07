@@ -38,14 +38,14 @@ class Config(BaseSettings):
 
     @property
     def server_base_url(self):
-        url = '%s://%s:%s/%s' % (
+        baseurl = '%s://%s:%s/%s' % (
             self.server_protocol,
             self.server_host,
             self.server_port,
             self.server_extra or ""
         )
 
-        return url.removesuffix("/")
+        return baseurl.removesuffix("/")
 
 
 config = Config()
