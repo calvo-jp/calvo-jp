@@ -1,3 +1,4 @@
+import os
 from enum import Enum
 from typing import Optional
 
@@ -22,6 +23,10 @@ class Config(BaseSettings):
     @property
     def debug(self):
         return self.env == Environment.DEVELOPMENT
+
+    @property
+    def assets_dir(self):
+        return os.path.abspath("assets")
 
 
 config = Config()
