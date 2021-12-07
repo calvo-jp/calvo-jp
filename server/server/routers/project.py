@@ -68,12 +68,72 @@ async def get_projects():
                 config.base_url + screenshot for screenshot in project.screenshots
             }
 
-        return projects
+        return sorted(projects, key=lambda p: p.id)
 
 
-@router.get(path='/', response_model=list[Project], response_model_exclude_none=True)
-async def read_all():
-    return await get_projects()
+class Query:
+    def __init__(
+        self,
+        *,
+        page: typing.Optional[int] = None,
+        page_size: typing.Optional[int] = None,
+        search: typing.Optional[str] = None,
+    ):
+        self.page = page or 1
+        self.page_size = page_size or 25
+        self.search = search
+
+
+class Paginated(BaseModel):
+    page: int
+    page_size: int
+    total_rows: int
+    rows: list[Project]
+    has_next: bool
+
+
+@router.get(path='/', response_model=Paginated, response_model_exclude_none=True)
+async def read_all(
+    *,
+    query: Query = Depends(),
+    projects: list[Project] = Depends(get_projects),
+):
+    rows = projects if query.search is None else []
+
+    if query.search is not None:
+        for project in projects:
+            if (
+                project.name.lower().startswith(query.search.lower()) or
+                project.description.lower().startswith(query.search.lower())
+            ):
+                rows.append(project)
+                continue
+
+            for tag in project.tags:
+                if tag.lower().startswith(query.search.lower()):
+                    rows.append(project)
+                    continue
+
+            for techstack in project.techstacks:
+                if techstack.lower().startswith(query.search.lower()):
+                    rows.append(project)
+                    continue
+
+    totalrows = len(rows)
+    hasnext = totalrows - (query.page * query.page_size) > 0
+
+    start = query.page_size * (query.page - 1)
+    until = query.page_size + start
+
+    rows = rows[start:until]
+
+    return dict(
+        rows=rows,
+        total_rows=totalrows,
+        has_next=hasnext,
+        page=query.page,
+        page_size=query.page_size,
+    )
 
 
 @router.get(path='/{id}', response_model=Project, response_model_exclude_none=True)
