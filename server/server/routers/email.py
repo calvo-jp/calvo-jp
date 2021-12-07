@@ -1,12 +1,12 @@
 from datetime import date, timedelta
 from typing import Optional
 
+import httpx
 from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel, EmailStr, Field
 from redis import Redis
 
 from ..config import config
-from ..utils import send_email_via_rapidapi
 
 router = APIRouter(prefix='/emails', tags=['email'])
 counter = Redis(config.redis_host, config.redis_port, 0, decode_responses=True)
@@ -25,7 +25,6 @@ class CreateEmail(BaseModel):
 @router.post(
     path='/',
     status_code=status.HTTP_202_ACCEPTED,
-    response_model_by_alias=True,
     response_model_exclude_none=True,
 )
 async def send_email(*, data: CreateEmail):
@@ -91,3 +90,29 @@ async def get_summary():
         total = int(total)
 
     return dict(total=total, quota=total >= 100)
+
+
+def send_email_via_rapidapi(
+    *,
+    sender: str,
+    recipient: str,
+    subject: Optional[str] = None,
+    body: str,
+):
+    url = 'https://fapimail.p.rapidapi.com/email/send'
+
+    data = {
+        'sender': sender,
+        'recipient': recipient,
+        'subject': subject,
+        'message': body
+    }
+
+    headers = {
+        'x-rapidapi-host': 'fapimail.p.rapidapi.com',
+        'x-rapidapi-key': config.rapidapi_key,
+    }
+
+    response = httpx.post(url=url, json=data, headers=headers)
+    response.raise_for_status()
+    return response.json()
