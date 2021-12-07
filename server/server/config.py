@@ -26,6 +26,7 @@ class Config(BaseSettings):
     redis_db: int
 
     gmail_username: str
+    gmail_password: str
 
     @property
     def debug(self):
