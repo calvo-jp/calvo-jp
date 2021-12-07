@@ -9,9 +9,7 @@ from .config import config
 from .utils import send_email_via_rapidapi
 
 router = APIRouter()
-
-summary = Redis(config.redis_host, config.redis_port, 0, decode_responses=True)
-counter = Redis(config.redis_host, config.redis_port, 1, decode_responses=True)
+counter = Redis(config.redis_host, config.redis_port, decode_responses=True)
 
 
 class CreateEmail(BaseModel):
@@ -20,6 +18,7 @@ class CreateEmail(BaseModel):
     body: str = Field(..., min_length=25, max_length=255)
 
     class Config:
+        anystr_lower = True
         anystr_strip_whitespace = True
 
 
@@ -38,7 +37,7 @@ async def send_email(data: CreateEmail):
     if total_sent >= 4:
         raise HTTPException(
             status.HTTP_429_TOO_MANY_REQUESTS,
-            detail='You have reached the limit of 4 emails per day.'
+            detail='Too many emails sent.'
         )
 
     if total_sent == 0:
@@ -53,18 +52,26 @@ async def send_email(data: CreateEmail):
         )
 
         counter.incr(data.sender, 1)
-        summary.incr(summary_id(), 1)
+        counter.incr(summary_id(), 1)
 
         return response
     except Exception as error:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail='Something went wrong. Please try again later.'
+            detail='Something went wrong.'
         ) from error
 
 
 def summary_id():
-    return date.today().isoformat()
+    """returns today's summary id"""
+
+    suffix = '_totalSentEmails'
+    summid = date.today().strftime('%Y%m%d') + suffix
+
+    if counter.get(summid) is None:
+        counter.setex(summid, timedelta(hours=48), 0)
+
+    return summid
 
 
 class EmailSummary(BaseModel):
@@ -78,7 +85,7 @@ class EmailSummary(BaseModel):
     response_model_exclude_none=True
 )
 async def get_summary():
-    total = summary.get(summary_id()) or 0
+    total = counter.get(summary_id()) or 0
 
     if isinstance(total, str):
         total = int(total)
