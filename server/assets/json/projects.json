@@ -3,12 +3,13 @@
     "id": "pedicab",
     "name": "Pedicab",
     "description": "Make urls shorter and more meaningful",
-    "banner": "pedicab-banner.jpeg",
+    "banner": "http://localhost:8000/files/pedicab-banner.jpeg",
     "screenshots": [
-      "pedicab-screenshot-1.jpeg",
-      "pedicab-screenshot-2.jpeg",
-      "pedicab-screenshot-3.jpeg",
-      "pedicab-screenshot-4.jpeg"
+      "http://localhost:8000/streams/files/pedicab-screenshot-1.jpeg",
+      "http://localhost:8000/streams/files/pedicab-screenshot-2.jpeg",
+      "http://localhost:8000/streams/files/pedicab-screenshot-3.jpeg",
+      "http://localhost:8000/streams/files/pedicab-screenshot-4.jpeg",
+      "http://localhost:8000/streams/files/pedicab-screenshot-5.jpeg"
     ],
     "tags": [
       "url",
@@ -23,22 +24,23 @@
       "nextjs",
       "tailwind",
       "typescript",
-      "nodejs",
-      "express",
-      "mongodb"
+      "python",
+      "fastapi",
+      "sqlmodel",
+      "postgres"
     ]
   },
   {
     "id": "recipes",
     "name": "Recipes",
     "description": "Share or find awesome recipes",
-    "banner": "recipes-banner.jpeg",
+    "banner": "http://localhost:8000/files/recipes-banner.jpeg",
     "screenshots": [
-      "recipes-screenshot-1.jpeg",
-      "recipes-screenshot-2.jpeg",
-      "recipes-screenshot-3.jpeg",
-      "recipes-screenshot-4.jpeg",
-      "recipes-screenshot-5.jpeg"
+      "http://localhost:8000/streams/files/recipes-screenshot-1.jpeg",
+      "http://localhost:8000/streams/files/recipes-screenshot-2.jpeg",
+      "http://localhost:8000/streams/files/recipes-screenshot-3.jpeg",
+      "http://localhost:8000/streams/files/recipes-screenshot-4.jpeg",
+      "http://localhost:8000/streams/files/recipes-screenshot-5.jpeg"
     ],
     "tags": [
       "bake",
@@ -58,6 +60,7 @@
       "typescript",
       "python",
       "fastapi",
+      "sqlmodel",
       "postgres"
     ]
   },
@@ -65,24 +68,29 @@
     "id": "cedar-college",
     "name": "Cedar College",
     "description": "Official website of Cedar College",
-    "banner": "cedar-banner.jpeg",
+    "banner": "http://localhost:8000/files/cedar-banner.jpeg",
     "screenshots": [
-      "cedar-screenshot-1.jpeg",
-      "cedar-screenshot-2.jpeg",
-      "cedar-screenshot-3.jpeg",
-      "cedar-screenshot-4.jpeg",
-      "cedar-screenshot-5.jpeg",
-      "cedar-screenshot-6.jpeg",
-      "cedar-screenshot-7.jpeg",
-      "cedar-screenshot-8.jpeg"
+      "http://localhost:8000/streams/files/cedar-screenshot-1.jpeg",
+      "http://localhost:8000/streams/files/cedar-screenshot-2.jpeg",
+      "http://localhost:8000/streams/files/cedar-screenshot-3.jpeg",
+      "http://localhost:8000/streams/files/cedar-screenshot-4.jpeg",
+      "http://localhost:8000/streams/files/cedar-screenshot-5.jpeg",
+      "http://localhost:8000/streams/files/cedar-screenshot-6.jpeg",
+      "http://localhost:8000/streams/files/cedar-screenshot-7.jpeg",
+      "http://localhost:8000/streams/files/cedar-screenshot-8.jpeg",
+      "http://localhost:8000/streams/files/cedar-screenshot-9.jpeg",
+      "http://localhost:8000/streams/files/cedar-screenshot-10.jpeg"
     ],
     "tags": [
+      "blog",
       "6100",
       "cedar",
       "school",
       "college",
+      "education",
       "cadiz city",
       "official website",
+      "negros occidental",
       "senior highschool"
     ],
     "techstacks": [
@@ -92,6 +100,7 @@
       "typescript",
       "python",
       "fastapi",
+      "sqlmodel",
       "postgres"
     ]
   }
