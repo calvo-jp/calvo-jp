@@ -1,7 +1,6 @@
 from datetime import date, timedelta
 from typing import Optional
 
-import httpx
 from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel, EmailStr, Field
 from redis import Redis
@@ -9,7 +8,12 @@ from redis import Redis
 from ..config import config
 
 router = APIRouter(prefix='/emails', tags=['email'])
-counter = Redis(config.redis_host, config.redis_port, 0, decode_responses=True)
+counter = Redis(
+    host=config.redis_host,
+    port=config.redis_port,
+    db=config.redis_db,
+    decode_responses=True
+)
 
 
 class CreateEmail(BaseModel):
@@ -42,23 +46,11 @@ async def send_email(*, data: CreateEmail):
     if total_sent == 0:
         counter.setex(data.sender, timedelta(hours=24), 0)
 
-    try:
-        response = send_email_via_rapidapi(
-            sender=data.sender,
-            recipient=config.gmail_username,
-            subject=data.subject,
-            body=data.body
-        )
+    # TODO
+    # send email here
 
-        counter.incr(data.sender, 1)
-        counter.incr(summary_id(), 1)
-
-        return response
-    except Exception as error:
-        raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail='Something went wrong.'
-        ) from error
+    counter.incr(data.sender, 1)
+    counter.incr(summary_id(), 1)
 
 
 def summary_id():
@@ -90,29 +82,3 @@ async def get_summary():
         total = int(total)
 
     return dict(total=total, quota=total >= 100)
-
-
-def send_email_via_rapidapi(
-    *,
-    sender: str,
-    recipient: str,
-    subject: Optional[str] = None,
-    body: str,
-):
-    url = 'https://fapimail.p.rapidapi.com/email/send'
-
-    data = {
-        'sender': sender,
-        'recipient': recipient,
-        'subject': subject,
-        'message': body
-    }
-
-    headers = {
-        'x-rapidapi-host': 'fapimail.p.rapidapi.com',
-        'x-rapidapi-key': config.rapidapi_key,
-    }
-
-    response = httpx.post(url=url, json=data, headers=headers)
-    response.raise_for_status()
-    return response.json()
