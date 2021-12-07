@@ -17,7 +17,6 @@ class Config(BaseSettings):
     env: Optional[Environment] = None
     redis_host: str
     redis_port: int
-    rapidapi_key: str
     gmail_username: str
     base_url: str
 
