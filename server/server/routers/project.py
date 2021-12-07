@@ -54,7 +54,7 @@ class Project(BaseModel):
 
 
 @lru_cache
-async def get_projects():
+def get_projects():
     fullpath = os.path.join(config.assets_dir, 'json', 'projects.json')
 
     with open(fullpath, encoding='utf-8') as data:
