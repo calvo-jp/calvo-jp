@@ -9,7 +9,7 @@ from .config import config
 from .utils import send_email_via_rapidapi
 
 router = APIRouter()
-counter = Redis(config.redis_host, config.redis_port, decode_responses=True)
+counter = Redis(config.redis_host, config.redis_port, 0, decode_responses=True)
 
 
 class CreateEmail(BaseModel):
