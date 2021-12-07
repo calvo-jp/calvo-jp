@@ -4,7 +4,7 @@ from functools import lru_cache
 from typing import Literal, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Path, status
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from ..config import config
 
@@ -88,13 +88,13 @@ class Query:
 
 class Paginated(BaseModel):
     page: int
-    page_size: int
-    total_rows: int
+    page_size: int = Field(..., alias='pageSize')
+    total_rows: int = Field(..., alias='totalRows')
     rows: list[Project]
-    has_next: bool
+    has_next: bool = Field(..., alias='hasNext')
 
 
-@router.get(path='/', response_model=Paginated, response_model_exclude_none=True)
+@router.get(path='/', response_model=Paginated, response_model_by_alias=True)
 async def read_all(
     *,
     query: Query = Depends(),
@@ -138,7 +138,7 @@ async def read_all(
     )
 
 
-@router.get(path='/{id}', response_model=Project, response_model_exclude_none=True)
+@router.get(path='/{id}', response_model=Project)
 async def read_one(
     *,
     slug: str = Path(..., alias='id'),
