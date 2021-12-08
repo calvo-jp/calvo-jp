@@ -18,7 +18,7 @@ const CodeIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={2}
-        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+        d="M5 15l7-7 7 7"
       />
     </svg>
   );
