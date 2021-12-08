@@ -1,16 +1,13 @@
-import clsx from 'clsx';
 import * as React from 'react';
 
-const CloseIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
-  className,
-  ...props
-}) => {
+const CloseIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
       fill="currentColor"
-      className={clsx('h-6 w-6', className)}
+      width={16}
+      height={16}
       {...props}
     >
       <path

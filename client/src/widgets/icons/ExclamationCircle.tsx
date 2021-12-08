@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import * as React from 'react';
 
 const ExclamationCircleIcon: React.FC<React.SVGProps<SVGSVGElement>> = (
