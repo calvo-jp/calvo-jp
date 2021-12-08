@@ -10,7 +10,7 @@ interface Paginated {
   page: number;
   pageSize: number;
   hasNext: boolean;
-  search?: undefined;
+  search?: string;
 }
 
 interface Query {
