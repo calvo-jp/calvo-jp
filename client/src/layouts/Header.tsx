@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import useGlobalState from 'hooks/store/useGlobalState';
 import Link from 'next/link';
 import * as React from 'react';
+import CloseIcon from 'widgets/icons/Close';
 import MenuIcon from 'widgets/icons/Menu';
 import Navbar from './Navbar';
 
@@ -58,12 +59,8 @@ const Hamburger = () => {
       className={clsx('z-20 md:hidden', state.navbarOpen && 'text-gray-400')}
       onClick={toggleNavbar}
     >
-      <MenuIcon
-        className={clsx(
-          state.navbarOpen && 'text-gray-400',
-          !state.navbarOpen && 'text-gray-600'
-        )}
-      />
+      {state.navbarOpen && <CloseIcon className="text-gray-400" />}
+      {!state.navbarOpen && <MenuIcon className="text-gray-600" />}
     </button>
   );
 };
