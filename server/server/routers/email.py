@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from datetime import timedelta
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException, status
@@ -6,6 +6,7 @@ from pydantic import BaseModel, EmailStr, Field
 from redis import Redis
 
 from ..config import config
+from ..utils import sendmail
 
 router = APIRouter(prefix='/emails', tags=['email'])
 counter = Redis(
@@ -34,51 +35,24 @@ class CreateEmail(BaseModel):
 async def send_email(*, data: CreateEmail):
     total_sent = counter.get(data.sender) or 0
 
-    if isinstance(total_sent, str):
+    if not isinstance(total_sent, int):
         total_sent = int(total_sent)
 
-    if total_sent >= 4:
+    # check for quota
+    if total_sent > 3:
         raise HTTPException(
             status.HTTP_429_TOO_MANY_REQUESTS,
-            detail='Too many emails sent.'
+            detail="You've reached the quota of 3 emails in 24hrs."
         )
 
+    sendmail(
+        to=config.gmail_username,
+        from_=data.sender,
+        subject=data.subject,
+        body=data.body
+    )
+
+    # successful email
     if total_sent == 0:
         counter.setex(data.sender, timedelta(hours=24), 0)
-
-    # TODO
-    # send email here
-
     counter.incr(data.sender, 1)
-    counter.incr(summary_id(), 1)
-
-
-def summary_id():
-    """returns today's summary id"""
-
-    suffix = '_totalSentEmails'
-    summid = date.today().strftime('%Y%m%d') + suffix
-
-    if counter.get(summid) is None:
-        counter.setex(summid, timedelta(hours=48), 0)
-
-    return summid
-
-
-class EmailSummary(BaseModel):
-    total: int
-    quota: bool
-
-
-@router.get(
-    path='/summary',
-    response_model=EmailSummary,
-    response_model_exclude_none=True
-)
-async def get_summary():
-    total = counter.get(summary_id()) or 0
-
-    if isinstance(total, str):
-        total = int(total)
-
-    return dict(total=total, quota=total >= 100)
