@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-const CodeIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
+const ChevronUpIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
   className,
   ...props
 }) => {
@@ -24,4 +24,4 @@ const CodeIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
   );
 };
 
-export default CodeIcon;
+export default ChevronUpIcon;
