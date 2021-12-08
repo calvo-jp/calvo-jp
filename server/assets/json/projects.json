@@ -1,15 +1,15 @@
 [
   {
-    "id": "pedicab",
-    "name": "Pedicab",
-    "description": "Make urls shorter and more meaningful",
-    "banner": "/streams/images/pedicab-banner.jpeg",
+    "id": "rooms",
+    "name": "Rooms",
+    "description": "Get a shorter url",
+    "banner": "/streams/images/rooms-banner.jpeg",
     "screenshots": [
-      "/streams/images/pedicab-screenshot-1.jpeg",
-      "/streams/images/pedicab-screenshot-2.jpeg",
-      "/streams/images/pedicab-screenshot-3.jpeg",
-      "/streams/images/pedicab-screenshot-4.jpeg",
-      "/streams/images/pedicab-screenshot-5.jpeg"
+      "/streams/images/rooms-screenshot-1.jpeg",
+      "/streams/images/rooms-screenshot-2.jpeg",
+      "/streams/images/rooms-screenshot-3.jpeg",
+      "/streams/images/rooms-screenshot-4.jpeg",
+      "/streams/images/rooms-screenshot-5.jpeg"
     ],
     "tags": [
       "url",
@@ -24,10 +24,10 @@
       "nextjs",
       "tailwind",
       "typescript",
-      "python",
-      "fastapi",
-      "sqlmodel",
-      "postgres"
+      "nodejs",
+      "nestjs",
+      "prisma",
+      "mongodb"
     ]
   },
   {
