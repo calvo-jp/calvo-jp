@@ -55,8 +55,8 @@ const Hamburger = () => {
       className={clsx('z-20 md:hidden', state.navbarOpen && 'text-gray-400')}
       onClick={toggleNavbar}
     >
-      {state.navbarOpen && <CloseIcon className="text-gray-400" />}
-      {!state.navbarOpen && <MenuIcon className="text-gray-600" />}
+      {state.navbarOpen && <CloseIcon className="text-gray-300 w-6 h-6" />}
+      {!state.navbarOpen && <MenuIcon className="text-gray-600 w-6 h-6" />}
     </button>
   );
 };
