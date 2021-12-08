@@ -3,7 +3,7 @@
     "id": "pedicab",
     "name": "Pedicab",
     "description": "Make urls shorter and more meaningful",
-    "banner": "/images/pedicab-banner.jpeg",
+    "banner": "/streams/images/pedicab-banner.jpeg",
     "screenshots": [
       "/streams/images/pedicab-screenshot-1.jpeg",
       "/streams/images/pedicab-screenshot-2.jpeg",
@@ -34,7 +34,7 @@
     "id": "recipes",
     "name": "Recipes",
     "description": "Share or find awesome recipes",
-    "banner": "/images/recipes-banner.jpeg",
+    "banner": "/streams/images/recipes-banner.jpeg",
     "screenshots": [
       "/streams/images/recipes-screenshot-1.jpeg",
       "/streams/images/recipes-screenshot-2.jpeg",
@@ -68,7 +68,7 @@
     "id": "cedar-college",
     "name": "Cedar College",
     "description": "Official website of Cedar College",
-    "banner": "/images/cedar-banner.jpeg",
+    "banner": "/streams/images/cedar-banner.jpeg",
     "screenshots": [
       "/streams/images/cedar-screenshot-1.jpeg",
       "/streams/images/cedar-screenshot-2.jpeg",
