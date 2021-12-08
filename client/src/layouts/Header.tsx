@@ -3,6 +3,7 @@ import useGlobalState from 'hooks/store/useGlobalState';
 import Link from 'next/link';
 import * as React from 'react';
 import CloseIcon from 'widgets/icons/Close';
+import ExclamationCircleIcon from 'widgets/icons/ExclamationCircle';
 import MenuIcon from 'widgets/icons/Menu';
 import Navbar from './Navbar';
 
@@ -36,14 +37,9 @@ const Header: React.FC<HeaderProps> = ({ children, className, ...props }) => {
 const Logo = () => {
   return (
     <Link href="/" passHref>
-      <a className="flex items-center">
-        <div className="text-3xl text-blue-400">
-          JUAN
-          <span className="text-blue-600 font-bold">ON</span>W
-          <span className="text-blue-600 font-bold">E</span>B
-        </div>
-        <span className="border-l h-4 border-gray-200 mx-3" />
-        <div className="text-sm text-yellow-600 uppercase">JP CALVO</div>
+      <a className="flex items-center text-red-400">
+        <ExclamationCircleIcon className="w-5 h-5 mr-1" />
+        <span>LOGO COMING SOON</span>
       </a>
     </Link>
   );
