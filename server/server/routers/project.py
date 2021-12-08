@@ -1,6 +1,5 @@
 import json
 import os
-import re
 from functools import lru_cache
 from typing import Literal, Optional
 
@@ -117,9 +116,8 @@ def contains(subject: str, search: str):
 
     search = normalize(search)
     subject = normalize(subject)
-    pattern = re.compile(search)
 
-    return pattern.search(subject) is not None
+    return subject.find(search) > -1
 
 
 @router.get(
