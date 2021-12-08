@@ -1,21 +1,58 @@
 import IProject from 'types/project';
+import getServerBaseUrl from 'utils/getServerBaseUrl';
 
-const fetchAll = async (): Promise<IProject[]> => {
+const baseUrl = getServerBaseUrl();
+const endpoint = baseUrl + '/projects/';
+
+interface Paginated {
+  rows: IProject[];
+  totalRows: number;
+  page: number;
+  pageSize: number;
+  hasNext: boolean;
+  search?: undefined;
+}
+
+interface Query {
+  page?: number;
+  pageSize?: number;
+  search?: string;
+}
+
+const fetchAll = async (query?: Query): Promise<Paginated> => {
+  const defaultQuery = {
+    page: 1,
+    pageSize: 25,
+  };
+
+  query = {
+    ...defaultQuery,
+    ...query,
+  };
+
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(query)) params.append(key, value);
+
   try {
-    const response = await fetch('http://localhost:8000/projects');
+    const response = await fetch(`${endpoint}?${params.toString()}`);
     if (response.ok) return await response.json();
-  } finally {
-    return [];
-  }
+  } catch (e) {}
+
+  return {
+    ...defaultQuery,
+    hasNext: false,
+    totalRows: 0,
+    rows: [],
+  };
 };
 
 const fetchOne = async (id: string): Promise<IProject | null> => {
   try {
-    const response = await fetch('http://localhost:8000/projects/' + id);
+    const response = await fetch(endpoint + id);
     if (response.ok) return await response.json();
-  } finally {
-    return null;
-  }
+  } catch (e) {}
+
+  return null;
 };
 
 const services = {

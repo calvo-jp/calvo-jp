@@ -14,8 +14,8 @@ interface SearchParams {
 }
 
 export const getStaticPaths: GetStaticPaths<SearchParams> = async () => {
-  const items = await services.fetchAll();
-  const paths = items.map(({ id }) => ({ params: { id } }));
+  const table = await services.fetchAll();
+  const paths = table.rows.map(({ id }) => ({ params: { id } }));
 
   return {
     paths,
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<IProject, SearchParams> = async (
 
   return {
     props: project,
-    revalidate: 60 * 15, // 15mins
+    revalidate: 60 * 60 * 48, // 2days
   };
 };
 

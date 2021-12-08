@@ -13,13 +13,14 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const items = await services.fetchAll();
+  const table = await services.fetchAll();
+  const items = table.rows;
 
   return {
     props: {
       items,
     },
-    revalidate: 60 * 15, // 15mins
+    revalidate: 60 * 60 * 48, // 2days
   };
 };
 
