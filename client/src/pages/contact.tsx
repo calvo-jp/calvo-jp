@@ -27,7 +27,7 @@ const Contact = () => {
                 <p>
                   <span>Send an email to </span>
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=calvojp92@gmail.com"
+                    href="mailto:calvojp92@gmail.com"
                     target="_blank"
                     rel="noreferrer"
                     className="text-gray-700 hover:text-blue-600 transition-colors duration-300"
