@@ -7,7 +7,7 @@ from fastapi import APIRouter, status
 from fastapi.exceptions import HTTPException
 from fastapi.param_functions import Depends, Path, Query
 from fastapi.responses import Response
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 from ..config import config
 from ..utils import camelize
@@ -63,6 +63,8 @@ def get_projects():
 
     with open(fullpath, encoding='utf-8') as data:
         projects = json.load(data)
+
+    try:
         projects = [Project.parse_obj(project) for project in projects]
 
         # appends server base url to files, eg:
@@ -75,6 +77,11 @@ def get_projects():
             )
 
         return sorted(projects, key=lambda p: p.id)
+    except ValidationError as error:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=error.errors()
+        ) from error
 
 
 class QueryParams:
