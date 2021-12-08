@@ -3,13 +3,13 @@
     "id": "pedicab",
     "name": "Pedicab",
     "description": "Make urls shorter and more meaningful",
-    "banner": "/files/pedicab-banner.jpeg",
+    "banner": "/images/pedicab-banner.jpeg",
     "screenshots": [
-      "/streams/files/pedicab-screenshot-1.jpeg",
-      "/streams/files/pedicab-screenshot-2.jpeg",
-      "/streams/files/pedicab-screenshot-3.jpeg",
-      "/streams/files/pedicab-screenshot-4.jpeg",
-      "/streams/files/pedicab-screenshot-5.jpeg"
+      "/streams/images/pedicab-screenshot-1.jpeg",
+      "/streams/images/pedicab-screenshot-2.jpeg",
+      "/streams/images/pedicab-screenshot-3.jpeg",
+      "/streams/images/pedicab-screenshot-4.jpeg",
+      "/streams/images/pedicab-screenshot-5.jpeg"
     ],
     "tags": [
       "url",
@@ -34,13 +34,13 @@
     "id": "recipes",
     "name": "Recipes",
     "description": "Share or find awesome recipes",
-    "banner": "/files/recipes-banner.jpeg",
+    "banner": "/images/recipes-banner.jpeg",
     "screenshots": [
-      "/streams/files/recipes-screenshot-1.jpeg",
-      "/streams/files/recipes-screenshot-2.jpeg",
-      "/streams/files/recipes-screenshot-3.jpeg",
-      "/streams/files/recipes-screenshot-4.jpeg",
-      "/streams/files/recipes-screenshot-5.jpeg"
+      "/streams/images/recipes-screenshot-1.jpeg",
+      "/streams/images/recipes-screenshot-2.jpeg",
+      "/streams/images/recipes-screenshot-3.jpeg",
+      "/streams/images/recipes-screenshot-4.jpeg",
+      "/streams/images/recipes-screenshot-5.jpeg"
     ],
     "tags": [
       "bake",
@@ -68,18 +68,18 @@
     "id": "cedar-college",
     "name": "Cedar College",
     "description": "Official website of Cedar College",
-    "banner": "/files/cedar-banner.jpeg",
+    "banner": "/images/cedar-banner.jpeg",
     "screenshots": [
-      "/streams/files/cedar-screenshot-1.jpeg",
-      "/streams/files/cedar-screenshot-2.jpeg",
-      "/streams/files/cedar-screenshot-3.jpeg",
-      "/streams/files/cedar-screenshot-4.jpeg",
-      "/streams/files/cedar-screenshot-5.jpeg",
-      "/streams/files/cedar-screenshot-6.jpeg",
-      "/streams/files/cedar-screenshot-7.jpeg",
-      "/streams/files/cedar-screenshot-8.jpeg",
-      "/streams/files/cedar-screenshot-9.jpeg",
-      "/streams/files/cedar-screenshot-10.jpeg"
+      "/streams/images/cedar-screenshot-1.jpeg",
+      "/streams/images/cedar-screenshot-2.jpeg",
+      "/streams/images/cedar-screenshot-3.jpeg",
+      "/streams/images/cedar-screenshot-4.jpeg",
+      "/streams/images/cedar-screenshot-5.jpeg",
+      "/streams/images/cedar-screenshot-6.jpeg",
+      "/streams/images/cedar-screenshot-7.jpeg",
+      "/streams/images/cedar-screenshot-8.jpeg",
+      "/streams/images/cedar-screenshot-9.jpeg",
+      "/streams/images/cedar-screenshot-10.jpeg"
     ],
     "tags": [
       "blog",
