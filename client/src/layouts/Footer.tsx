@@ -48,7 +48,7 @@ const Link: React.FC<LinkProps> = ({ href, children }) => {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="hover:text-blue-600"
+      className="hover:text-blue-500"
     >
       {children}
     </a>
