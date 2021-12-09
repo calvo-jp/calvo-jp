@@ -1,46 +1,18 @@
 [
   {
-    "id": "rooms",
-    "name": "Rooms",
-    "description": "Get a shorter url",
-    "banner": "/streams/images/rooms-banner.jpeg",
-    "screenshots": [
-      "/streams/images/rooms-screenshot-1.jpeg",
-      "/streams/images/rooms-screenshot-2.jpeg",
-      "/streams/images/rooms-screenshot-3.jpeg",
-      "/streams/images/rooms-screenshot-4.jpeg",
-      "/streams/images/rooms-screenshot-5.jpeg"
-    ],
-    "tags": [
-      "url",
-      "short",
-      "custom",
-      "shortener",
-      "meaningful",
-      "easy to remember"
-    ],
-    "techstacks": [
-      "react",
-      "nextjs",
-      "tailwind",
-      "typescript",
-      "nodejs",
-      "nestjs",
-      "prisma",
-      "mongodb"
-    ]
-  },
-  {
     "id": "recipes",
     "name": "Recipes",
     "description": "Share or find awesome recipes",
-    "banner": "/streams/images/recipes-banner.jpeg",
+    "banner": "/streams/images/recipes-banner.jpg",
     "screenshots": [
-      "/streams/images/recipes-screenshot-1.jpeg",
-      "/streams/images/recipes-screenshot-2.jpeg",
-      "/streams/images/recipes-screenshot-3.jpeg",
-      "/streams/images/recipes-screenshot-4.jpeg",
-      "/streams/images/recipes-screenshot-5.jpeg"
+      "/streams/images/recipes-screenshot-1.jpg",
+      "/streams/images/recipes-screenshot-2.jpg",
+      "/streams/images/recipes-screenshot-3.jpg",
+      "/streams/images/recipes-screenshot-4.jpg",
+      "/streams/images/recipes-screenshot-5.jpg",
+      "/streams/images/recipes-screenshot-6.jpg",
+      "/streams/images/recipes-screenshot-7.jpg",
+      "/streams/images/recipes-screenshot-8.jpg"
     ],
     "tags": [
       "bake",
@@ -68,18 +40,13 @@
     "id": "cedar-college",
     "name": "Cedar College",
     "description": "Official website of Cedar College",
-    "banner": "/streams/images/cedar-banner.jpeg",
+    "banner": "/streams/images/cedar-banner.jpg",
     "screenshots": [
-      "/streams/images/cedar-screenshot-1.jpeg",
-      "/streams/images/cedar-screenshot-2.jpeg",
-      "/streams/images/cedar-screenshot-3.jpeg",
-      "/streams/images/cedar-screenshot-4.jpeg",
-      "/streams/images/cedar-screenshot-5.jpeg",
-      "/streams/images/cedar-screenshot-6.jpeg",
-      "/streams/images/cedar-screenshot-7.jpeg",
-      "/streams/images/cedar-screenshot-8.jpeg",
-      "/streams/images/cedar-screenshot-9.jpeg",
-      "/streams/images/cedar-screenshot-10.jpeg"
+      "/streams/images/cedar-screenshot-1.jpg",
+      "/streams/images/cedar-screenshot-2.jpg",
+      "/streams/images/cedar-screenshot-3.jpg",
+      "/streams/images/cedar-screenshot-4.jpg",
+      "/streams/images/cedar-screenshot-5.jpg"
     ],
     "tags": [
       "blog",
