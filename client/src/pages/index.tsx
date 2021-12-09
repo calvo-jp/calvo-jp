@@ -15,14 +15,17 @@ const Landing = () => {
         <Header />
 
         <main className="flex-grow flex flex-col md:flex-row p-2 items-center justify-center gap-8 lg:gap-16">
-          <section className="w-[200px] h-[200px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] xl:w-[325px] xl:h-[325px] relative rounded-full overflow-hidden border-8 border-gray-100 cursor-pointer">
-            <Image src="/images/calvojp.jpeg" alt="" layout="fill" />
-          </section>
+          <section
+            style={{
+              backgroundImage: 'url(/images/calvojp.jpg)',
+            }}
+            className="w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[275px] md:h-[275px] lg:w-[300px] lg:h-[300px] xl:w-[325px] xl:h-[325px] rounded-full border-8 border-gray-100 bg-cover bg-center bg-no-repeat"
+          />
 
           <section className="flex flex-col items-center justify-center">
             <p className="text-4xl md:text-5xl lg:text-6xl text-center">
               <span>Hi, Iam</span>
-              <strong className="ml-6 font-bold text-blue-500">John</strong>
+              <strong className="ml-6 font-bold text-blue-400">John</strong>
               <span>.</span>
             </p>
 
