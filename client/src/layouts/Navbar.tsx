@@ -57,7 +57,7 @@ const NavbarLink: React.FC<NavbarLinkProps> = ({ href, children }) => {
       <a
         onClick={ensureMobileNavbarCloses}
         className={clsx(
-          router.pathname !== href && 'md:hover:text-yellow-600',
+          router.pathname !== href && 'md:hover:text-amber-700',
           router.pathname === href && 'md:text-blue-500 text-blue-400'
         )}
       >
