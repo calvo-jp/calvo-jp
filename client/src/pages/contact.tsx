@@ -1,12 +1,12 @@
-import { Form, Formik } from 'formik';
-import Footer from 'layouts/Footer';
-import Header from 'layouts/Header';
-import Head from 'next/head';
-import * as React from 'react';
-import Alert from 'widgets/Alert';
-import Button from 'widgets/Button';
-import TextField from 'widgets/TextField';
-import * as yup from 'yup';
+import { Form, Formik } from "formik";
+import Footer from "layouts/Footer";
+import Header from "layouts/Header";
+import Head from "next/head";
+import * as React from "react";
+import Alert from "widgets/Alert";
+import Button from "widgets/Button";
+import TextField from "widgets/TextField";
+import * as yup from "yup";
 
 const Contact = () => {
   const [error, setError] = React.useState<string>();
@@ -49,25 +49,25 @@ const Contact = () => {
 
                 <Formik
                   initialValues={{
-                    from: '',
-                    subject: '',
-                    body: '',
+                    from: "",
+                    subject: "",
+                    body: "",
                   }}
                   validationSchema={yup.object().shape({
                     from: yup
                       .string()
-                      .email('malformed email')
-                      .max(100, 'length too long')
-                      .required('email is required'),
+                      .email("malformed email")
+                      .max(100, "length too long")
+                      .required("email is required"),
                     subject: yup
                       .string()
-                      .min(10, 'subject must be 10 characters or more')
-                      .max(50, 'subject must be 50 characters or less'),
+                      .min(10, "subject must be 10 characters or more")
+                      .max(50, "subject must be 50 characters or less"),
                     body: yup
                       .string()
-                      .min(20, 'body must be 10 characters or more')
-                      .max(255, 'body must be 255 characters or less')
-                      .required('body is required'),
+                      .min(20, "body must be 10 characters or more")
+                      .max(255, "body must be 255 characters or less")
+                      .required("body is required"),
                   })}
                   onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
