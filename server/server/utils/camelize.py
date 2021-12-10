@@ -1,5 +1,5 @@
-def camelize(subject: str):
-    words = subject.split("_")
+def camelize(string: str):
+    words = string.split("_")
     array = []
 
     for index, word in enumerate(words):
