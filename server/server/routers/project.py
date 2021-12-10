@@ -1,87 +1,35 @@
 import json
 import os
 from functools import lru_cache
-from typing import Literal, Optional
+from typing import Optional
 
 from fastapi import APIRouter, status
 from fastapi.exceptions import HTTPException
-from fastapi.param_functions import Depends, Path, Query
+from fastapi.param_functions import Depends, Query
 from fastapi.responses import Response
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel
 
 from ..config import config
+from ..models import Project, ReadProject
 from ..utils import camelize
 
 router = APIRouter(prefix='/projects', tags=['project'])
 
 
-TechStack = Literal[
-    # frontend frameworks, ui-kit, etc.
-    'react',
-    'nextjs',
-    'flutter',
-    'tailwind',
-    'material ui'
-    # frontend languages, pre-processors, etc.
-    'html',
-    'css',
-    'sass',
-    'javascript',
-    'typescript',
-    'dart',
-    # backend frameworks
-    'fastapi',
-    'express',
-    'nestjs',
-    # backend languages
-    'python',
-    'nodejs',
-    # orms and odms
-    'sqlalchemy',
-    'sqlmodel',
-    'prisma',
-    # databases
-    'postgres',
-    'sqlite3',
-    'mongodb',
-]
-
-
-class Project(BaseModel):
-    id: str
-    name: str
-    description: str
-    tags: set[str]
-    banner: str
-    screenshots: set[str]
-    techstacks: set[TechStack]
-
-
 @lru_cache
 def get_projects():
-    fullpath = os.path.join(config.assets_dir, 'json', 'projects.json')
+    fullpath = os.path.join(config.assets_dir, "json", "projects.json")
+
+    if not os.path.exists(fullpath):
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Unable to find 'projects.json'"
+        )
 
     with open(fullpath, encoding='utf-8') as data:
         projects = json.load(data)
 
-    try:
-        projects = [Project.parse_obj(project) for project in projects]
-
-        # appends server base url to files, eg:
-        # original: /streams/images/filename.jpeg
-        # modified: http://localhost:8000/streams/images/filename.jpeg
-        for project in projects:
-            project.banner = config.server_base_url + project.banner
-            project.screenshots = set(
-                config.server_base_url + screenshot for screenshot in project.screenshots
-            )
-
-        return sorted(projects, key=lambda p: p.id)
-    except ValidationError as error:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=error.errors()
-        ) from error
+    return [Project(**project) for project in projects]
 
 
 class QueryParams:
@@ -106,7 +54,7 @@ class Paginated(BaseModel):
     page: int
     page_size: int
     total_rows: int
-    rows: list[Project]
+    rows: list[ReadProject]
     has_next: bool
     search: Optional[str] = None
 
@@ -173,14 +121,14 @@ async def read_all(
     )
 
 
-@router.get(path='/{id}', response_model=Project)
+@router.get(path='/{slug}', response_model=ReadProject)
 async def read_one(
     *,
-    slug: str = Path(..., alias='id'),
+    slug,
     projects: list[Project] = Depends(get_projects)
 ):
     for project in projects:
-        if project.id == slug:
+        if project.slug == slug:
             return project
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
