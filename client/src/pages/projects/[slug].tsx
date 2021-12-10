@@ -92,7 +92,7 @@ const Project: NextPage<IProject> = ({
         </header>
 
         <main>
-          <Jumbotron image={banner} />
+          <Jumbotron {...banner} />
 
           <section className="p-4 md:p-8 flex flex-col gap-4 max-w-[1400px] mx-auto">
             <div>
@@ -110,15 +110,13 @@ const Project: NextPage<IProject> = ({
   );
 };
 
-interface JumbotronProps {
-  image: IProject['banner'];
-}
+type JumbotronProps = IProject['banner'];
 
-const Jumbotron = ({ image }: JumbotronProps) => {
+const Jumbotron = ({ url }: JumbotronProps) => {
   return (
     <section className="relative h-[400px] border-b border-gray-100 cursor-pointer">
       <Image
-        src={image.url}
+        src={url}
         alt=""
         layout="fill"
         objectFit="cover"
