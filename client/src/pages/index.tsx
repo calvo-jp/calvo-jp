@@ -1,8 +1,8 @@
-import Footer from 'layouts/Footer';
-import Header from 'layouts/Header';
-import Head from 'next/head';
-import Image from 'next/image';
-import * as React from 'react';
+import Footer from "layouts/Footer";
+import Header from "layouts/Header";
+import Head from "next/head";
+import Image from "next/image";
+import * as React from "react";
 
 const Landing = () => {
   return (
@@ -15,12 +15,16 @@ const Landing = () => {
         <Header />
 
         <main className="flex-grow flex flex-col md:flex-row p-2 items-center justify-center gap-8 lg:gap-16">
-          <section
-            style={{
-              backgroundImage: 'url(/images/calvojp.jpg)',
-            }}
-            className="w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[275px] md:h-[275px] lg:w-[300px] lg:h-[300px] xl:w-[325px] xl:h-[325px] rounded-full border-8 border-gray-100 bg-cover bg-center bg-no-repeat"
-          />
+          <section className="w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[275px] md:h-[275px] lg:w-[300px] lg:h-[300px] xl:w-[325px] xl:h-[325px] rounded-full border-8 border-gray-100 relative overflow-hidden">
+            <Image
+              src="/images/calvojp.jpg"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+              priority
+            />
+          </section>
 
           <section className="flex flex-col items-center justify-center">
             <p className="text-4xl md:text-5xl lg:text-6xl text-center">
@@ -44,7 +48,6 @@ const Landing = () => {
                 alt=""
                 width="24"
                 height="24"
-                loading="eager"
                 className="block"
               />
               <div>Chat me now</div>
