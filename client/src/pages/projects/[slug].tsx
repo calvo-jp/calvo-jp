@@ -185,13 +185,30 @@ const GridItem = ({ url, height, width, orientation }: GridItemProps) => {
         objectPosition="center"
       />
 
-      <div className="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 z-10 justify-center items-center">
-        <div className="w-[100px] h-[100px] relative group">
-          <div className="absolute top-0 left-0 h-[30px] w-[30px] border-l-8 border-t-8 border-white border-opacity-50" />
-          <div className="absolute bottom-0 left-0 h-[30px] w-[30px] border-l-8 border-b-8 border-white border-opacity-50" />
-          <div className="absolute top-0 right-0 h-[30px] w-[30px] border-r-8 border-t-8 border-white border-opacity-50" />
-          <div className="absolute bottom-0 right-0 h-[30px] w-[30px] border-r-8 border-b-8 border-white border-opacity-50" />
-        </div>
+      <ExpandIcon onClick={function () {}} />
+    </div>
+  );
+};
+
+// prettier-ignore
+type ExpandIconProps = Omit<
+  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+  | 'className' 
+  | 'children'
+  | 'style' 
+>;
+
+const ExpandIcon = (props: ExpandIconProps) => {
+  return (
+    <div
+      className="hidden group-hover:flex absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 z-10 justify-center items-center"
+      {...props}
+    >
+      <div className="w-[100px] h-[100px] relative group">
+        <div className="absolute top-0 left-0 h-[30px] w-[30px] border-l-8 border-t-8 border-white border-opacity-50" />
+        <div className="absolute bottom-0 left-0 h-[30px] w-[30px] border-l-8 border-b-8 border-white border-opacity-50" />
+        <div className="absolute top-0 right-0 h-[30px] w-[30px] border-r-8 border-t-8 border-white border-opacity-50" />
+        <div className="absolute bottom-0 right-0 h-[30px] w-[30px] border-r-8 border-b-8 border-white border-opacity-50" />
       </div>
     </div>
   );
