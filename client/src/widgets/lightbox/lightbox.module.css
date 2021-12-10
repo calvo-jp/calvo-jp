@@ -1,0 +1,39 @@
+.overlay {
+  @apply fixed z-50 w-full h-full top-0 left-0 right-0 bottom-0 cursor-pointer bg-black bg-opacity-90;
+}
+
+.container {
+  @apply w-full h-full p-5 relative;
+}
+
+.container > div,
+.container > span {
+  /* resets */
+  position: unset !important;
+
+  /* overrides */
+  height: 100% !important;
+  display: flex !important;
+
+  /* additional */
+  @apply items-center justify-center;
+}
+
+.image {
+  /* resets */
+  top: unset !important;
+  bottom: unset !important;
+  right: unset !important;
+  left: unset !important;
+  width: unset !important;
+  height: unset !important;
+  min-width: unset !important;
+  min-height: unset !important;
+
+  /* overrides */
+  position: relative !important;
+  padding: 0.4rem !important;
+
+  /* additional */
+  @apply max-w-full max-h-full bg-white rounded-sm cursor-default;
+}
