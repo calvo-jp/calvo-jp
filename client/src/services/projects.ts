@@ -46,9 +46,9 @@ const fetchAll = async (query?: Query): Promise<Paginated> => {
   };
 };
 
-const fetchOne = async (id: string): Promise<IProject | null> => {
+const fetchOne = async (slug: string): Promise<IProject | null> => {
   try {
-    const response = await fetch(endpoint + id);
+    const response = await fetch(endpoint + slug);
     if (response.ok) return await response.json();
   } catch (e) {}
 

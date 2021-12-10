@@ -27,15 +27,24 @@ type TechStack =
   | 'postgres';
 
 interface IProject {
-  id: string;
+  slug: string;
   name: string;
   description: string;
   /** aka. keywords */
   tags: string[];
-  banner: string;
-  screenshots: string[];
+  banner: ImageInfo;
+  screenshots: ImageInfo[];
   /** techstacks used to develop the app */
   techstacks: TechStack[];
+}
+
+type Orientation = 'square' | 'portrait' | 'landscape';
+
+interface ImageInfo {
+  url: string;
+  width: number;
+  height: number;
+  orientation: Orientation;
 }
 
 export default IProject;
