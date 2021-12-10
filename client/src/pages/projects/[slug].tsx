@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import Footer from 'layouts/Footer';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
