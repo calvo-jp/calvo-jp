@@ -6,9 +6,24 @@ import useLightboxState from "./useLightboxState";
 const LightBox = () => {
   const [state, setState] = useLightboxState();
 
+  const handleEscape = React.useMemo(() => {
+    return () => {
+      document.addEventListener("keydown", (e) => {
+        // FIXME: need to add a checker if lb is on top of everything. (using zIndex)
+        if (e.code === "Escape" && state.open) {
+          setState({
+            src: "",
+            open: false,
+          });
+        }
+      });
+    };
+  }, [setState, state.open]);
+
   React.useEffect(() => {
     handleScroll(state.open);
-  }, [state.open]);
+    handleEscape();
+  }, [state.open, handleEscape]);
 
   if (!state.open) return <React.Fragment />;
 
