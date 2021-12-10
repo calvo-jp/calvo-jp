@@ -1,8 +1,10 @@
-import GlobalProvider from 'hooks/store/GlobalProvider';
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import * as React from 'react';
-import 'tailwindcss/tailwind.css';
+import GlobalProvider from "hooks/store/GlobalProvider";
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import * as React from "react";
+import "tailwindcss/tailwind.css";
+import Lightbox from "widgets/lightbox";
+import LightboxProvider from "widgets/lightbox/LightboxProvider";
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -36,7 +38,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
 
       <GlobalProvider>
-        <Component {...pageProps} />
+        <LightboxProvider>
+          <Component {...pageProps} />
+        </LightboxProvider>
       </GlobalProvider>
     </React.Fragment>
   );

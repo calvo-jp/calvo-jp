@@ -3,8 +3,18 @@ import Header from "layouts/Header";
 import Head from "next/head";
 import Image from "next/image";
 import * as React from "react";
+import useLightboxState from "widgets/lightbox/useLightboxState";
 
 const Landing = () => {
+  const [, setLightboxState] = useLightboxState();
+
+  const expand = () => {
+    setLightboxState({
+      open: true,
+      src: "/images/calvojp.jpg",
+    });
+  };
+
   return (
     <React.Fragment>
       <Head>
@@ -15,7 +25,10 @@ const Landing = () => {
         <Header />
 
         <main className="flex-grow flex flex-col md:flex-row p-2 items-center justify-center gap-8 lg:gap-16">
-          <section className="w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[275px] md:h-[275px] lg:w-[300px] lg:h-[300px] xl:w-[325px] xl:h-[325px] rounded-full border-8 border-gray-100 relative overflow-hidden">
+          <section
+            className="w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[275px] md:h-[275px] lg:w-[300px] lg:h-[300px] xl:w-[325px] xl:h-[325px] rounded-full border-8 border-gray-100 relative overflow-hidden cursor-pointer"
+            onClick={expand}
+          >
             <Image
               src="/images/calvojp.jpg"
               alt=""

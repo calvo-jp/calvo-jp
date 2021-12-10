@@ -1,13 +1,16 @@
-import clsx from 'clsx';
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import * as React from 'react';
-import services from 'services/projects';
-import IProject from 'types/project';
-import ChevronLeftIcon from 'widgets/icons/ChevronLeft';
+import clsx from "clsx";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import * as React from "react";
+import services from "services/projects";
+import IProject from "types/project";
+import ChevronLeftIcon from "widgets/icons/ChevronLeft";
+import Lightbox from "widgets/lightbox";
+import LightboxProvider from "widgets/lightbox/LightboxProvider";
+import useLightboxState from "widgets/lightbox/useLightboxState";
 
 interface SearchParams {
   [key: string]: string;
@@ -109,11 +112,23 @@ const Project: NextPage<IProject> = ({
   );
 };
 
-type JumbotronProps = IProject['banner'];
+type JumbotronProps = IProject["banner"];
 
 const Jumbotron = ({ url }: JumbotronProps) => {
+  const [, setState] = useLightboxState();
+
+  const handleClick = () => {
+    setState({
+      open: true,
+      src: url,
+    });
+  };
+
   return (
-    <section className="relative h-[400px] border-b border-gray-100 cursor-pointer">
+    <section
+      className="relative h-[400px] border-b border-gray-100 cursor-pointer"
+      onClick={handleClick}
+    >
       <Image
         src={url}
         alt=""
@@ -128,7 +143,7 @@ const Jumbotron = ({ url }: JumbotronProps) => {
 };
 
 interface ChipsProps {
-  items: IProject['tags'];
+  items: IProject["tags"];
 }
 
 const Chips = ({ items }: ChipsProps) => {
@@ -144,7 +159,7 @@ const Chips = ({ items }: ChipsProps) => {
 };
 
 interface GridProps {
-  items: IProject['screenshots'];
+  items: IProject["screenshots"];
 }
 
 const Grid = ({ items }: GridProps) => {
@@ -157,22 +172,32 @@ const Grid = ({ items }: GridProps) => {
   );
 };
 
-type GridItemProps = IProject['screenshots'][0];
+type GridItemProps = IProject["screenshots"][0];
 
 const GridItem = ({ url, height, width, orientation }: GridItemProps) => {
-  const square = orientation === 'square';
-  const portrait = orientation === 'portrait';
-  const landscape = orientation === 'landscape';
+  const [, setLightboxState] = useLightboxState();
+
+  const square = orientation === "square";
+  const portrait = orientation === "portrait";
+  const landscape = orientation === "landscape";
+
+  const expand = () => {
+    setLightboxState({
+      src: url,
+      open: true,
+    });
+  };
 
   return (
     <div
       key={url}
       className={clsx(
-        'relative cursor-pointer group overflow-hidden',
-        landscape && 'sm:col-span-2 md:col-span-1 lg:col-span-2',
-        portrait && 'md:row-span-2',
-        square && height > 1000 && 'md:row-span-2 md:col-span-2'
+        "relative cursor-pointer group overflow-hidden",
+        landscape && "sm:col-span-2 md:col-span-1 lg:col-span-2",
+        portrait && "md:row-span-2",
+        square && height > 1000 && "md:row-span-2 md:col-span-2"
       )}
+      onClick={expand}
     >
       <Image
         src={url}
@@ -182,7 +207,7 @@ const GridItem = ({ url, height, width, orientation }: GridItemProps) => {
         objectPosition="center"
       />
 
-      <ExpandIcon onClick={function () {}} />
+      <ExpandIcon />
     </div>
   );
 };
