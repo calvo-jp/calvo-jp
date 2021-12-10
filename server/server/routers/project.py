@@ -1,12 +1,13 @@
 import json
 import os
 from functools import lru_cache
-from typing import Optional
+from typing import Any, Optional
 
 from fastapi import APIRouter, status
 from fastapi.exceptions import HTTPException
 from fastapi.param_functions import Depends, Query
 from fastapi.responses import Response
+from PIL import UnidentifiedImageError
 from pydantic import BaseModel
 
 from ..config import config
@@ -27,9 +28,21 @@ def get_projects():
         )
 
     with open(fullpath, encoding='utf-8') as data:
-        projects = json.load(data)
+        items: list[dict[str, Any]] = json.load(data)
 
-    return [Project(**project) for project in projects]
+    projects: list[Project] = []
+
+    for item in items:
+        try:
+            projects.append(Project(**item))
+        except (FileNotFoundError, UnidentifiedImageError) as error:
+            if config.debug:
+                raise HTTPException(
+                    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                    detail=str(error)
+                ) from error
+
+    return projects
 
 
 class QueryParams:

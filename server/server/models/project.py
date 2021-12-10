@@ -2,7 +2,7 @@ import enum
 import os
 from typing import Literal, Optional, TypedDict
 
-from PIL import Image, UnidentifiedImageError
+from PIL import Image
 from pydantic import BaseModel
 
 from ..config import config
@@ -95,23 +95,18 @@ def _imageorient(w: float, h: float) -> Orientation:
 
 
 def _imageinfo(filename: str):
-    try:
-        fullpath = os.path.join(config.assets_dir, "images", filename)
+    fullpath = os.path.join(config.assets_dir, "images", filename)
+    image = Image.open(fullpath)
 
-        image = Image.open(fullpath)
+    info = ImageInfo(
+        url=config.server_base_url + "/streams/images/" + filename,
+        width=image.width,
+        height=image.height,
+        orientation=_imageorient(image.width, image.height)
+    )
 
-        info = ImageInfo(
-            url=config.server_base_url + "/streams/images/" + filename,
-            width=image.width,
-            height=image.height,
-            orientation=_imageorient(image.width, image.height)
-        )
-
-        image.close()
-
-        return info
-    except (FileNotFoundError, UnidentifiedImageError):
-        return None
+    image.close()
+    return info
 
 
 class ReadProject(BaseModel):
@@ -119,7 +114,7 @@ class ReadProject(BaseModel):
     name: str
     description: str
     tags: list[str]
-    banner: Optional[ImageInfo] = None
+    banner: ImageInfo
     screenshots: list[ImageInfo]
     techstacks: list[TechStack]
 
