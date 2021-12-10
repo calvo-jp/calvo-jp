@@ -37,9 +37,9 @@ const Header: React.FC<HeaderProps> = ({ children, className, ...props }) => {
 const Logo = () => {
   return (
     <Link href="/" passHref>
-      <a className="flex items-center text-red-400">
-        <ExclamationCircleIcon className="w-5 h-5 mr-1" />
-        <span>LOGO COMING SOON</span>
+      <a className="flex items-center">
+        <ExclamationCircleIcon className="w-5 h-5 mr-1 fill-red-400" />
+        <span className="text-red-400">LOGO COMING SOON</span>
       </a>
     </Link>
   );
