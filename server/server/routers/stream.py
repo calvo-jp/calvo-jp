@@ -18,7 +18,7 @@ class MediaType(str, enum.Enum):
 @router.get(path='/{media}/{filename}', response_class=FileResponse)
 async def view_media(
     *,
-    type_: MediaType = Path(..., alias='type'),
+    type_: MediaType = Path(..., alias='media'),
     filename: str
 ):
     fullpath = os.path.join(config.assets_dir, type_, filename)
