@@ -15,7 +15,7 @@ class Media(str, enum.Enum):
 
 
 @router.get(path='/{media}/{filename}', response_class=FileResponse)
-async def view_image(*, media: Media,  filename: str):
+async def view_media(*, media: Media,  filename: str):
     fullpath = os.path.join(config.assets_dir, media, filename)
 
     if not os.path.exists(fullpath):
