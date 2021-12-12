@@ -2,20 +2,25 @@ import Image from "next/image";
 import * as React from "react";
 import styles from "./lightbox.module.css";
 import useLightboxState from "./useLightboxState";
+import utils from "./__utils";
 
 const LightBox = () => {
   const [state, setState] = useLightboxState();
+  const lightboxRef = React.useRef<HTMLDivElement>(null);
 
   const handleEscape = React.useMemo(() => {
     return () => {
       document.addEventListener("keydown", (e) => {
-        // FIXME: need to add a checker if lb is on top of everything. (using zIndex)
-        if (e.code === "Escape" && state.open) {
+        if (
+          e.code === "Escape" &&
+          state.open &&
+          lightboxRef.current &&
+          utils.isOnTopOfAllElems(lightboxRef.current)
+        )
           setState({
             src: "",
             open: false,
           });
-        }
       });
     };
   }, [setState, state.open]);
@@ -23,14 +28,15 @@ const LightBox = () => {
   React.useEffect(() => {
     handleScroll(state.open);
     handleEscape();
+
+    // apply highest possible zindex
+    if (lightboxRef.current) utils.applyHighestZIndex(lightboxRef.current);
   }, [state.open, handleEscape]);
 
   if (!state.open) return <React.Fragment />;
 
-  // TODO: need to show something while image is loading
-
   return (
-    <div className={styles.overlay}>
+    <div className={styles.lightbox} ref={lightboxRef}>
       <div
         className={styles.container}
         onClick={() => {
@@ -55,11 +61,11 @@ const LightBox = () => {
   );
 };
 
-let lb__touched = false;
-let lb__bodyWidth = "";
-let lb__bodyPosition = "";
-let lb__bodyOverflowY = "";
-let lb__htmlScrollTop = 0;
+let __lb__touched__ = false;
+let __lb__bodyWidth__ = "";
+let __lb__bodyPosition__ = "";
+let __lb__bodyOverflowY__ = "";
+let __lb__htmlScrollTop__ = 0;
 
 /** Handles body scrolling whenever lightbox is toggled */
 const handleScroll = (disable?: boolean) => {
@@ -73,26 +79,26 @@ const handleScroll = (disable?: boolean) => {
 
   if (disable) {
     // save body style
-    lb__bodyWidth = body.style.width;
-    lb__bodyPosition = body.style.position;
-    lb__bodyOverflowY = body.style.overflowY;
+    __lb__bodyWidth__ = body.style.width;
+    __lb__bodyPosition__ = body.style.position;
+    __lb__bodyOverflowY__ = body.style.overflowY;
     // save scrolltop state
-    lb__htmlScrollTop = html.scrollTop;
+    __lb__htmlScrollTop__ = html.scrollTop;
     // apply
     body.style.width = "100%";
     body.style.position = "fixed";
     body.style.overflowY = "scroll";
     // mark virginized
-    lb__touched = true;
+    __lb__touched__ = true;
   } else {
     // skip initial load
-    if (lb__touched) {
+    if (__lb__touched__) {
       // restore body style
-      body.style.width = lb__bodyWidth;
-      body.style.position = lb__bodyPosition;
-      body.style.overflowY = lb__bodyOverflowY;
+      body.style.width = __lb__bodyWidth__;
+      body.style.position = __lb__bodyPosition__;
+      body.style.overflowY = __lb__bodyOverflowY__;
       // restore scrolltop state
-      html.scrollTo(0, lb__htmlScrollTop);
+      html.scrollTo(0, __lb__htmlScrollTop__);
     }
   }
 };
