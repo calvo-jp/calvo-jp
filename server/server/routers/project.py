@@ -12,7 +12,7 @@ from pydantic import BaseModel
 
 from ..config import config
 from ..models import Project, ReadProject
-from ..utils import camelize
+from ..utils import camelize, strcontains
 
 router = APIRouter(prefix='/projects', tags=['project'])
 
@@ -76,18 +76,6 @@ class Paginated(BaseModel):
         allow_population_by_field_name = True
 
 
-def contains(subject: str, search: str):
-    """Checks whether the subject contains the search string"""
-
-    def normalize(string: str):
-        return string.replace(" ", "").lower()
-
-    search = normalize(search)
-    subject = normalize(subject)
-
-    return subject.find(search) > -1
-
-
 @router.get(
     path='/',
     response_model=Paginated,
@@ -111,7 +99,7 @@ async def read_all(
             ]
 
             for subject in subjects:
-                if contains(subject, query.search):
+                if strcontains(subject, query.search):
                     rows.append(project)
                     break
 
