@@ -2,10 +2,7 @@ import os
 from enum import Enum
 from typing import Optional
 
-from dotenv import load_dotenv
 from pydantic import BaseSettings
-
-load_dotenv()
 
 
 class Environment(str, Enum):
@@ -13,7 +10,7 @@ class Environment(str, Enum):
     DEVELOPMENT = 'development'
 
 
-class Config(BaseSettings):
+class Settings(BaseSettings):
     env: Optional[Environment] = None
 
     server_protocol: str
@@ -47,5 +44,8 @@ class Config(BaseSettings):
 
         return baseurl.removesuffix("/")
 
+    class Config:
+        env_file = ".env"
 
-config = Config()
+
+config = Settings()
