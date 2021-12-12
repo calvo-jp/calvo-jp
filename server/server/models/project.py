@@ -86,10 +86,10 @@ class Project:
         return _imageinfo(self.__banner)
 
 
-def _imageorient(w: float, h: float) -> Orientation:
-    if h > w + h / 4:
+def _imageorient(width: float, height: float) -> Orientation:
+    if height > width + height / 4:
         return Orientation.PORTRAIT
-    if w > h + w / 4:
+    if width > height + width / 4:
         return Orientation.LANDSCAPE
     return Orientation.SQUARE
 
