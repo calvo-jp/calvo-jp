@@ -124,7 +124,7 @@ const Jumbotron = ({ url }: JumbotronProps) => {
 
   return (
     <section
-      className="relative h-[400px] border-b border-gray-100 cursor-pointer"
+      className="relative h-[300px] sm:h-[350px] md:h-[400px] border-b border-gray-100 cursor-pointer"
       onClick={handleClick}
     >
       <Image
