@@ -27,7 +27,7 @@
 }
 
 .main .wrapper {
-  @apply p-1 bg-white;
+  @apply p-1 bg-white relative;
 }
 
 /* reset nextjs image wrapper inline styles */
