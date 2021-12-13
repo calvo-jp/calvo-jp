@@ -1,12 +1,20 @@
-const serverProto = process.env.SERVER_PROTOCOL as string;
-const serverHost = process.env.SERVER_HOST as string;
-const serverPort = process.env.SERVER_PORT as string;
-const serverExtra = process.env.SERVER_EXTRA as string;
-
 const getServerBaseUrl = () => {
-  const baseUrl = `${serverProto}://${serverHost}:${serverPort}/${serverExtra}`;
-  // prettier-ignore
-  return baseUrl.replace(/\/$/, "");
+  const slash = "/";
+  const colon = ":";
+
+  return [
+    process.env.SERVER_PROTOCOL,
+    colon,
+    slash,
+    slash,
+    process.env.SERVER_HOST,
+    colon,
+    process.env.SERVER_PORT,
+    slash,
+    process.env.SERVER_EXTRA,
+  ]
+    .join("")
+    .replace(/\/$/, "");
 };
 
 export default getServerBaseUrl;
