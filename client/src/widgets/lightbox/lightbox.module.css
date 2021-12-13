@@ -1,39 +1,54 @@
-.lightbox {
-  @apply fixed w-full h-full top-0 left-0 right-0 bottom-0 cursor-pointer bg-black bg-opacity-90;
-}
-
 .container {
-  @apply w-full h-full p-5 relative;
+  @apply fixed;
+  @apply w-full h-full;
+  @apply top-0 left-0 right-0 bottom-0;
+  @apply flex flex-col;
+  @apply bg-black bg-opacity-90;
 }
 
-.container > div,
-.container > span {
-  /* resets */
-  position: unset !important;
-
-  /* overrides */
-  height: 100% !important;
-  display: flex !important;
-
-  /* additional */
-  @apply items-center justify-center;
+.toolbar {
+  @apply h-[10vh] flex items-center justify-end px-6;
 }
 
-.image {
-  /* resets */
-  top: unset !important;
-  bottom: unset !important;
-  right: unset !important;
-  left: unset !important;
+.toolbar svg {
+  @apply w-8 h-8 text-white text-opacity-30 hover:text-opacity-70;
+}
+
+.main {
+  @apply flex-grow flex items-center justify-center;
+}
+
+.main .wrapper {
+  @apply p-1 bg-white;
+}
+
+/* reset nextjs image wrapper inline styles */
+.main .wrapper > span,
+.main .wrapper > div {
+  border: unset !important;
+  display: unset !important;
   width: unset !important;
   height: unset !important;
+  position: unset !important;
+  overflow: unset !important;
+  margin: unset !important;
+  padding: unset !important;
+}
+
+.main .wrapper > span > img,
+.main .wrapper > div > img {
+  /* reset nextjs image inline styles */
+  inset: unset !important;
   min-width: unset !important;
   min-height: unset !important;
+  width: unset !important;
+  height: unset !important;
+  border: unset !important;
+  position: unset !important;
+  margin: unset !important;
+  padding: unset !important;
 
-  /* overrides */
-  position: relative !important;
-  padding: 0.4rem !important;
-
-  /* additional */
-  @apply max-w-full max-h-full bg-white rounded-sm cursor-default;
+  /* override */
+  max-width: 85vw !important;
+  max-height: 80vh !important;
 }

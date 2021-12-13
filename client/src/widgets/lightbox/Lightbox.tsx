@@ -1,5 +1,6 @@
 import Image from "next/image";
 import * as React from "react";
+import CloseIcon from "widgets/icons/Close";
 import styles from "./lightbox.module.css";
 import useLightbox from "./useLightbox";
 import * as utils from "./utils";
@@ -7,6 +8,15 @@ import * as utils from "./utils";
 const LightBox = () => {
   const [state, setState] = useLightbox();
   const lightboxRef = React.useRef<HTMLDivElement>(null);
+
+  const closeLightbox = React.useMemo(() => {
+    return () =>
+      setState((state) => ({
+        ...state,
+        open: false,
+        src: "",
+      }));
+  }, [setState]);
 
   const handleEscape = React.useMemo(() => {
     return () => {
@@ -17,13 +27,10 @@ const LightBox = () => {
           lightboxRef.current &&
           utils.isOnTopOfAllElems(lightboxRef.current)
         )
-          setState({
-            src: "",
-            open: false,
-          });
+          closeLightbox();
       });
     };
-  }, [setState, state.open]);
+  }, [closeLightbox, state.open]);
 
   React.useEffect(() => {
     handleScroll(state.open);
@@ -36,27 +43,28 @@ const LightBox = () => {
   if (!state.open) return <React.Fragment />;
 
   return (
-    <div className={styles.lightbox} ref={lightboxRef}>
-      <div
-        className={styles.container}
-        onClick={() => {
-          setState({
-            src: "",
-            open: false,
-          });
-        }}
-      >
-        <Image
-          src={state.src}
-          alt=""
-          layout="fill"
-          className={styles.image}
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-          }}
-        />
-      </div>
+    <div
+      ref={lightboxRef}
+      role="dialog"
+      aria-modal="true"
+      className={styles.container}
+    >
+      <section className={styles.toolbar}>
+        <button onClick={closeLightbox}>
+          <CloseIcon />
+        </button>
+      </section>
+
+      <section className={styles.main}>
+        <div className={styles.wrapper}>
+          <Image
+            layout="fill"
+            alt=""
+            src={state.src}
+            className={styles.image}
+          />
+        </div>
+      </section>
     </div>
   );
 };
