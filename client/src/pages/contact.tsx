@@ -115,10 +115,9 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setStatus((state) => ({
-      ...state,
-      pending: true,
-    }));
+    if (Object.keys(errors).length > 0) return;
+
+    setStatus((state) => ({ ...state, pending: true }));
   };
 
   React.useEffect(() => {
