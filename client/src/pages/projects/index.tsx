@@ -1,12 +1,12 @@
-import Footer from 'layouts/Footer';
-import Header from 'layouts/Header';
-import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import * as React from 'react';
-import services from 'services/projects';
-import IProject from 'types/project';
+import Footer from "layouts/Footer";
+import Header from "layouts/Header";
+import type { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import * as React from "react";
+import * as services from "services/project";
+import IProject from "types/project";
 
 interface Props {
   items: IProject[];
@@ -48,7 +48,7 @@ const Projects: NextPage<Props> = (props) => {
 
 const Project: React.FC<IProject> = ({ slug, name, description, banner }) => {
   return (
-    <Link href={'/projects/'.concat(slug)} passHref>
+    <Link href={"/projects/".concat(slug)} passHref>
       <a className="md:p-2 rounded-md outline-none border border-transparent transition-all duration-300 md:hover:border-blue-200 md:hover:ring-4 md:hover:ring-blue-100 md:focus:border-blue-200 md:focus:ring-4 md:focus:ring-blue-100">
         <div className="relative w-full h-[250px] border border-gray-100">
           <Image

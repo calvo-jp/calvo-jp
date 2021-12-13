@@ -1,8 +1,8 @@
-import IProject from 'types/project';
-import getServerBaseUrl from 'utils/getServerBaseUrl';
+import IProject from "types/project";
+import getServerBaseUrl from "utils/getServerBaseUrl";
 
 const baseUrl = getServerBaseUrl();
-const endpoint = baseUrl + '/projects/';
+const endpoint = baseUrl + "/projects/";
 
 interface Paginated {
   rows: IProject[];
@@ -19,7 +19,7 @@ interface Query {
   search?: string;
 }
 
-const fetchAll = async (query?: Query): Promise<Paginated> => {
+export const fetchAll = async (query?: Query): Promise<Paginated> => {
   const defaultQuery = {
     page: 1,
     pageSize: 25,
@@ -46,7 +46,7 @@ const fetchAll = async (query?: Query): Promise<Paginated> => {
   };
 };
 
-const fetchOne = async (slug: string): Promise<IProject | null> => {
+export const fetchOne = async (slug: string): Promise<IProject | null> => {
   try {
     const response = await fetch(endpoint + slug);
     if (response.ok) return await response.json();
@@ -54,10 +54,3 @@ const fetchOne = async (slug: string): Promise<IProject | null> => {
 
   return null;
 };
-
-const services = {
-  fetchAll,
-  fetchOne,
-};
-
-export default services;

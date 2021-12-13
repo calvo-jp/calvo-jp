@@ -5,11 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
-import services from "services/projects";
+import * as services from "services/project";
 import IProject from "types/project";
 import ChevronLeftIcon from "widgets/icons/ChevronLeft";
-import Lightbox from "widgets/lightbox";
-import LightboxProvider from "widgets/lightbox/LightboxProvider";
 import useLightboxState from "widgets/lightbox/useLightboxState";
 
 interface SearchParams {
