@@ -49,10 +49,14 @@ const LightBox = () => {
       aria-modal="true"
       className={styles.container}
     >
-      <section className={styles.toolbar}>
-        <button onClick={closeLightbox}>
-          <CloseIcon />
-        </button>
+      <section className={styles.header}>
+        <p className={styles.caption}>calvojp &trade;</p>
+
+        <nav className={styles.toolbar}>
+          <button onClick={closeLightbox}>
+            <CloseIcon />
+          </button>
+        </nav>
       </section>
 
       <section className={styles.main}>
