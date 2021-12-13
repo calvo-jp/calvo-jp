@@ -40,7 +40,6 @@ const Projects: NextPage<Props> = (props) => {
             ))}
           </section>
         </main>
-        <Footer />
       </div>
     </React.Fragment>
   );
