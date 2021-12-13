@@ -8,7 +8,7 @@ import * as React from "react";
 import * as services from "services/project";
 import IProject from "types/project";
 import ChevronLeftIcon from "widgets/icons/ChevronLeft";
-import useLightboxState from "widgets/lightbox/useLightboxState";
+import useLightbox from "widgets/lightbox/useLightbox";
 
 interface SearchParams {
   [key: string]: string;
@@ -113,7 +113,7 @@ const Project: NextPage<IProject> = ({
 type JumbotronProps = IProject["banner"];
 
 const Jumbotron = ({ url }: JumbotronProps) => {
-  const [, setState] = useLightboxState();
+  const [, setState] = useLightbox();
 
   const handleClick = () => {
     setState({
@@ -173,7 +173,7 @@ const Grid = ({ items }: GridProps) => {
 type GridItemProps = IProject["screenshots"][0];
 
 const GridItem = ({ url, height, width, orientation }: GridItemProps) => {
-  const [, setLightboxState] = useLightboxState();
+  const [, setLightboxState] = useLightbox();
 
   const square = orientation === "square";
   const portrait = orientation === "portrait";

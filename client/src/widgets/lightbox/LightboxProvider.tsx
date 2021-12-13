@@ -4,7 +4,6 @@ import LightboxContext from "./LightboxContext";
 import LightboxState from "./LightboxState";
 
 const LightboxProvider: React.FC = ({ children }) => {
-  // prettier-ignore
   const [state, setState] = React.useState<LightboxState>({ src: "" });
 
   return (

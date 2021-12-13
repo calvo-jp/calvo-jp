@@ -1,11 +1,11 @@
 import Image from "next/image";
 import * as React from "react";
 import styles from "./lightbox.module.css";
-import useLightboxState from "./useLightboxState";
+import useLightbox from "./useLightbox";
 import utils from "./__utils";
 
 const LightBox = () => {
-  const [state, setState] = useLightboxState();
+  const [state, setState] = useLightbox();
   const lightboxRef = React.useRef<HTMLDivElement>(null);
 
   const handleEscape = React.useMemo(() => {

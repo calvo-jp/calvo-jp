@@ -3,13 +3,13 @@ import Header from "layouts/Header";
 import Head from "next/head";
 import Image from "next/image";
 import * as React from "react";
-import useLightboxState from "widgets/lightbox/useLightboxState";
+import useLightbox from "widgets/lightbox/useLightbox";
 
 const Landing = () => {
-  const [, setLightboxState] = useLightboxState();
+  const [, setLightbox] = useLightbox();
 
   const expand = () => {
-    setLightboxState({
+    setLightbox({
       open: true,
       src: "/images/calvojp.jpg",
     });
