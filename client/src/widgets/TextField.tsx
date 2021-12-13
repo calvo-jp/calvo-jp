@@ -1,5 +1,5 @@
-import clsx from 'clsx';
-import * as React from 'react';
+import clsx from "clsx";
+import * as React from "react";
 
 type BaseProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -7,18 +7,18 @@ type BaseProps = React.DetailedHTMLProps<
 >;
 
 type TextFieldType =
-  | 'date'
-  | 'datetime'
-  | 'email'
-  | 'month'
-  | 'number'
-  | 'password'
-  | 'search'
-  | 'tel'
-  | 'text'
-  | 'time'
-  | 'url'
-  | 'week';
+  | "date"
+  | "datetime"
+  | "email"
+  | "month"
+  | "number"
+  | "password"
+  | "search"
+  | "tel"
+  | "text"
+  | "time"
+  | "url"
+  | "week";
 
 interface TextFieldProps extends BaseProps {
   type?: TextFieldType;
@@ -38,25 +38,18 @@ const TextField: React.FC<TextFieldProps> = ({
   fullWidth,
   multiline,
   className,
-  onChange,
   ...props
 }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const [value, setValue] = React.useState(props.value);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    onChange?.(e);
-  };
 
   const handleClick = (e: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
     e.preventDefault();
-    inputRef.current?.focus();
+    if (inputRef.current) inputRef.current.focus();
   };
 
   return (
     <div className="inline-block relative">
-      <Label active={!!value} htmlFor={props.id} onClick={handleClick}>
+      <Label active={!!props.value} htmlFor={props.id} onClick={handleClick}>
         {label}
       </Label>
 
@@ -65,7 +58,6 @@ const TextField: React.FC<TextFieldProps> = ({
         ref={inputRef}
         error={error}
         fullWidth={fullWidth}
-        onChange={handleChange}
         {...props}
       />
 
@@ -74,7 +66,7 @@ const TextField: React.FC<TextFieldProps> = ({
   );
 };
 
-interface InputProps extends Omit<TextFieldProps, 'label' | 'error'> {
+interface InputProps extends Omit<TextFieldProps, "label" | "error"> {
   error?: boolean;
 }
 
@@ -84,11 +76,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         ref={ref}
         className={clsx(
-          'p-2 border border-gray-300 rounded-md outline-none transition-all duration-300',
+          "p-2 border border-gray-300 rounded-md outline-none transition-all duration-300",
           !error &&
-            'hover:border-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-200',
-          error && 'border-red-400 focus:ring-4 focus:ring-red-200',
-          fullWidth && 'block w-full',
+            "hover:border-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-200",
+          error && "border-red-400 focus:ring-4 focus:ring-red-200",
+          fullWidth && "block w-full",
           className
         )}
         {...props}
@@ -97,7 +89,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-Input.displayName = 'Input';
+Input.displayName = "Input";
 
 interface ErrorTextProps
   extends React.DetailedHTMLProps<
@@ -129,9 +121,9 @@ const Label: React.FC<LabelProps> = ({ active, children, ...props }) => {
   return (
     <label
       className={clsx(
-        'absolute transition-all duration-100 cursor-text',
-        active && 'text-gray-500 -top-2 left-2 bg-white px-1 text-sm',
-        !active && 'text-gray-600 top-2 left-3'
+        "absolute transition-all duration-100 cursor-text",
+        active && "text-gray-500 -top-2 left-2 bg-white px-1 text-sm",
+        !active && "text-gray-600 top-2 left-3"
       )}
       {...props}
     >
