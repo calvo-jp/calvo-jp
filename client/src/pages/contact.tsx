@@ -1,132 +1,15 @@
+import { Field, Form, Formik } from "formik";
 import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import Head from "next/head";
 import * as React from "react";
-import validateEmail from "utils/validateEmail";
 import Alert from "widgets/Alert";
 import Button from "widgets/Button";
 import TextField from "widgets/TextField";
-
-interface Email {
-  from: string;
-  body: string;
-  subject?: string;
-}
-
-type Error = Partial<Email>;
-type Touch = Partial<Record<EmailKey, boolean>>;
-type EmailKey = keyof Email;
-
-interface RequestStatus {
-  error?: boolean;
-  pending?: boolean;
-}
-
-const defaultEmail: Email = {
-  from: "",
-  body: "",
-};
+import * as yup from "yup";
 
 const Contact = () => {
-  const [email, setEmail] = React.useState<Email>(defaultEmail);
-  const [status, setStatus] = React.useState<RequestStatus>({});
-  const [errors, setErrors] = React.useState<Error>({});
-  const [touched, setTouched] = React.useState<Touch>({});
-
-  const markTouched = (key: EmailKey) => {
-    if (!touched[key]) {
-      setTouched((state) => ({
-        ...state,
-        [key]: true,
-      }));
-    }
-  };
-
-  const saveError = (key: EmailKey, error: string) => {
-    if (errors[key] && errors[key] === error) return;
-
-    setErrors((state) => ({
-      ...state,
-      [key]: error,
-    }));
-  };
-
-  const validate = (key: EmailKey, value: string) => {
-    switch (key) {
-      // required, email
-      case "from":
-        if (value === "") return saveError(key, "email is required");
-        if (!validateEmail(value))
-          return saveError(key, "invalid email format");
-        break;
-
-      // required, min 25, max 255
-      case "body":
-        if (value === "") return saveError(key, "body is required");
-        if (value.trim().length < 25)
-          return saveError(key, "body must be 25 characters or more");
-        if (value.trim().length > 255)
-          return saveError(key, "body must be 255 characters or less");
-        break;
-
-      // optional, min 15, max 50
-      case "subject":
-        if (value !== "") {
-          if (value.trim().length < 15)
-            return saveError(key, "body must be 15 characters or more");
-          if (value.trim().length > 50)
-            return saveError(key, "body must be 50 characters or less");
-        }
-
-        break;
-      default:
-        break;
-    }
-
-    setErrors((state) => ({
-      ...state,
-      [key]: false,
-    }));
-  };
-
-  /** textifield event handlers */
-  const listeners = {
-    onBlur: (e: React.FocusEvent<HTMLInputElement, Element>) => {
-      const name = e.target.name as EmailKey;
-      const value = e.target.value;
-
-      markTouched(name);
-      validate(name, value);
-    },
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-      const name = e.target.name as EmailKey;
-      const value = e.target.value;
-
-      markTouched(name);
-      validate(name, value);
-
-      setEmail((state) => ({
-        ...state,
-        [name]: value,
-      }));
-    },
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (Object.keys(errors).length > 0) return;
-
-    setStatus((state) => ({ ...state, pending: true }));
-  };
-
-  React.useEffect(() => {
-    return () => {
-      setEmail(defaultEmail);
-      setErrors({});
-      setTouched({});
-    };
-  }, []);
+  const [error, setError] = React.useState("");
 
   return (
     <React.Fragment>
@@ -155,56 +38,86 @@ const Contact = () => {
               </section>
 
               <section>
-                <Alert variant="error" open={!!status.error} className="mb-4">
-                  {status.error}
+                <Alert
+                  open={!!error}
+                  variant="error"
+                  className="mb-4"
+                  onClose={() => setError("")}
+                >
+                  {error}
                 </Alert>
 
-                <form
-                  noValidate
-                  className="flex flex-col gap-4"
-                  onSubmit={handleSubmit}
+                <Formik
+                  initialValues={{
+                    from: "",
+                    subject: "",
+                    body: "",
+                  }}
+                  validationSchema={yup.object().shape({
+                    from: yup
+                      .string()
+                      .email("invalid email format")
+                      .required("email is required"),
+                    subject: yup
+                      .string()
+                      .min(15, "subject must be 15 or characters more")
+                      .max(50, "subject must be 50 or characters less"),
+                    body: yup
+                      .string()
+                      .min(25, "body must be 25 or characters more")
+                      .max(255, "body must be 255 or characters less")
+                      .required("body is required"),
+                  })}
+                  onSubmit={(values, { resetForm }) => {
+                    console.log(values);
+                    resetForm();
+                  }}
                 >
-                  <TextField
-                    id="email"
-                    name="from"
-                    label="Email"
-                    autoFocus
-                    required
-                    fullWidth
-                    error={touched.from && !!errors.from}
-                    errorText={errors.from}
-                    {...listeners}
-                  />
+                  {({ touched, errors, isSubmitting }) => (
+                    <Form noValidate className="flex flex-col gap-4">
+                      <Field
+                        as={TextField}
+                        id="email"
+                        name="from"
+                        label="Email"
+                        autoFocus
+                        required
+                        fullWidth
+                        error={touched.from && !!errors.from}
+                        errorText={errors.from}
+                      />
 
-                  <TextField
-                    id="subject"
-                    name="subject"
-                    label="Subject"
-                    fullWidth
-                    error={touched.subject && !!errors.subject}
-                    errorText={errors.subject}
-                    {...listeners}
-                  />
+                      <Field
+                        as={TextField}
+                        id="subject"
+                        name="subject"
+                        label="Subject"
+                        fullWidth
+                        error={touched.subject && !!errors.subject}
+                        errorText={errors.subject}
+                      />
 
-                  <TextField
-                    id="message"
-                    name="body"
-                    label="Message"
-                    fullWidth
-                    multiline
-                    error={touched.body && !!errors.body}
-                    errorText={errors.body}
-                    {...listeners}
-                  />
+                      <Field
+                        as={TextField}
+                        id="message"
+                        name="body"
+                        label="Message"
+                        fullWidth
+                        multiline
+                        error={touched.body && !!errors.body}
+                        errorText={errors.body}
+                      />
 
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    disabled={status.pending}
-                  >
-                    Send
-                  </Button>
-                </form>
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        disabled={isSubmitting}
+                      >
+                        Send
+                      </Button>
+                    </Form>
+                  )}
+                </Formik>
               </section>
             </div>
           </div>
