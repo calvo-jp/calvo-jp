@@ -3,10 +3,10 @@ import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import Head from "next/head";
 import * as React from "react";
+import validateEmail from "utils/validateEmail";
 import Alert from "widgets/Alert";
 import Button from "widgets/Button";
 import TextField from "widgets/TextField";
-import * as yup from "yup";
 
 const Contact = () => {
   const [error, setError] = React.useState<string>();
@@ -53,22 +53,21 @@ const Contact = () => {
                     subject: "",
                     body: "",
                   }}
-                  validationSchema={yup.object().shape({
-                    from: yup
-                      .string()
-                      .email("malformed email")
-                      .max(100, "length too long")
-                      .required("email is required"),
-                    subject: yup
-                      .string()
-                      .min(10, "subject must be 10 characters or more")
-                      .max(50, "subject must be 50 characters or less"),
-                    body: yup
-                      .string()
-                      .min(20, "body must be 10 characters or more")
-                      .max(255, "body must be 255 characters or less")
-                      .required("body is required"),
-                  })}
+                  validate={(v) => {
+                    const errors: Partial<Record<keyof typeof v, string>> = {};
+
+                    if (!v.from) errors.from = "email is required";
+                    if (!v.body) errors.body = "body is required";
+
+                    if (!!v.from && !validateEmail(v.from))
+                      errors.from = "Invalid email format";
+                    if (!!v.subject && v.subject.trim().length < 10)
+                      errors.subject = "subject must be 10 or more characters";
+                    if (!!v.body && v.body.trim().length < 25)
+                      errors.body = "body must be 25 or more characters";
+
+                    return errors;
+                  }}
                   onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
                       setSubmitting(false);
