@@ -6,7 +6,7 @@ const getZIndex = (elem: Element) => getComputedStyle(elem).zIndex;
 /** parses string to int without returning NaN */
 const safeParseInt = (str: string) => parseInt(str, Infinity);
 
-const getHighestZIndex = () => {
+export const getHighestZIndex = () => {
   const elems = document.getElementsByTagName("*");
 
   const list = Array.from(elems)
@@ -24,7 +24,7 @@ const getHighestZIndex = () => {
   }
 };
 
-const applyHighestZIndex = (element: HTMLElement) => {
+export const applyHighestZIndex = (element: HTMLElement) => {
   element.style.zIndex = (getHighestZIndex() + 1).toString();
 };
 
@@ -40,11 +40,3 @@ export const isOnTopOfAllElems = (element: HTMLElement) => {
 
   return true;
 };
-
-const utils = {
-  isOnTopOfAllElems,
-  applyHighestZIndex,
-  getHighestZIndex,
-};
-
-export default utils;

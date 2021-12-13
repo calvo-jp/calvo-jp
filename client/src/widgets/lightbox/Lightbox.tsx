@@ -2,7 +2,7 @@ import Image from "next/image";
 import * as React from "react";
 import styles from "./lightbox.module.css";
 import useLightbox from "./useLightbox";
-import utils from "./__utils";
+import * as utils from "./utils";
 
 const LightBox = () => {
   const [state, setState] = useLightbox();
