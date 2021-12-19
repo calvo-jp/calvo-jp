@@ -2,6 +2,7 @@ interface IProject {
   slug: string;
   name: string;
   description: string;
+  keywords: string[];
   banner: string;
   screenshots: ImageInfo[];
   techstacks: string[];
