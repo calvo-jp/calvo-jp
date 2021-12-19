@@ -23,6 +23,15 @@
       "fastify",
       "prisma",
       "postgres"
+    ],
+    "keywords": [
+      "school",
+      "college",
+      "senior high",
+      "cadiz city",
+      "negros occidental",
+      "BSIT",
+      "BSBA"
     ]
   }
 ]
