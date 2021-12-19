@@ -19,7 +19,7 @@ def get_projects(*, config: Settings = Depends(get_config)):
     fullpath = os.path.join(config.assets_dir, "json", "projects.json")
 
     try:
-        with open(fullpath) as file:
+        with open(fullpath, encoding="utf-8") as file:
             items: list[dict[str, Any]] = json.load(file)
 
         return [Project(**item) for item in items]
