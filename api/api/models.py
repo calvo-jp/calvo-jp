@@ -23,7 +23,7 @@ class Project:
         self.description = description
         self.keywords = keywords or []
         self.techstacks = techstacks or []
-        self.banner = banner or ""
+        self.banner = banner or "__defaultbanner__.jpg"
         self.screenshots = screenshots or []
 
 
@@ -31,6 +31,7 @@ class ReadProject(BaseModel):
     slug: str
     name: str
     description: str
+    keywords: list[str]
     techstacks: list[str]
     banner: str
     screenshots: list[str]
