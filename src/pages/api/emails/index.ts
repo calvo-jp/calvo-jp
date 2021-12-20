@@ -9,6 +9,7 @@ const handler: NextApiHandler = async (request, response) => {
         sender: yup
           .string()
           .trim()
+          .lowercase()
           .email("invalid email format")
           .required("email is required"),
         subject: yup
@@ -25,7 +26,10 @@ const handler: NextApiHandler = async (request, response) => {
       });
 
       try {
-        const postfields = await schema.validate(request.body);
+        const postfields = await schema.validate(request.body, {
+          stripUnknown: true,
+          abortEarly: true,
+        });
 
         if (await hasSent3EmailsIn24Hrs(postfields.sender))
           return response.status(429).json({ message: "Too many emails sent" });
