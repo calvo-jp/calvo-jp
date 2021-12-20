@@ -13,7 +13,7 @@ const NotFound = () => {
 
       <div className="min-h-screen flex flex-col">
         <header className="bg-white py-4 px-6 flex items-center justify-between">
-          <Link href="/about" passHref>
+          <Link href="/" passHref>
             <a className="flex items-center gap-1">
               <ChevronLeftIcon className="h-[14px] w-[14px]" />
               <span>Go Home</span>

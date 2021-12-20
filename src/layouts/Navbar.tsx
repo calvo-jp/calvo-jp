@@ -22,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ mobile, open }) => {
     >
       <ul className={clsx("flex gap-3", mobile && "flex-col items-center")}>
         <li>
-          <NavbarLink href="/about">About</NavbarLink>
+          <NavbarLink href="/">About</NavbarLink>
         </li>
         <li>
           <NavbarLink href="/projects">Projects</NavbarLink>
