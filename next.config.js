@@ -4,4 +4,12 @@ module.exports = {
   images: {
     domains: ["localhost"],
   },
+  rewrites: async () => {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://localhost:3000/api/:path*",
+      },
+    ];
+  },
 };
