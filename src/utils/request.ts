@@ -11,7 +11,7 @@ enum Method {
 
 const prefix: string =
   process.env.NODE_ENV === "development"
-    ? "http://127.0.0.1:3000/api"
+    ? "http://localhost:3000/api"
     : "https://calvo-jp.vercel.app/api";
 
 const request = {
