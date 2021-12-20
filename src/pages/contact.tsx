@@ -3,6 +3,7 @@ import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import Head from "next/head";
 import * as React from "react";
+import * as request from "utils/request";
 import Alert from "widgets/Alert";
 import Button from "widgets/Button";
 import TextField from "widgets/TextField";
@@ -81,13 +82,11 @@ const Contact = () => {
                     // yup adds a value of empty string for optional fields left empty
                     if (email.subject === "") delete email.subject;
 
-                    const request = new Request("/api/emails", {
-                      method: "POST",
-                      body: JSON.stringify(email),
-                    });
-
                     try {
-                      const response = await fetch(request);
+                      const response = await request.post("/emails", {
+                        body: JSON.stringify(email),
+                      });
+
                       const parsed = await response.json();
 
                       if (!response.ok) console.error(parsed);
@@ -95,7 +94,6 @@ const Contact = () => {
                       console.log(parsed);
                     } catch (e) {
                       console.error(e);
-                    } finally {
                     }
                   }}
                 >

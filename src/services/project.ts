@@ -1,9 +1,10 @@
 import IProject from "types/project";
+import * as request from "utils/request";
 
 export const read = {
   async one(slug: string): Promise<IProject | null> {
     try {
-      const response = await fetch("/api/projects/" + slug);
+      const response = await request.get("/projects/" + slug);
       return await response.json();
     } catch {
       return null;
@@ -11,7 +12,7 @@ export const read = {
   },
   async all(): Promise<IProject[]> {
     try {
-      const response = await fetch("/api/projects");
+      const response = await request.get("/projects");
       return await response.json();
     } catch {
       return [];
