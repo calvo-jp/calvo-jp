@@ -5,11 +5,9 @@ import IProject from "types/project";
 const handler: NextApiHandler<IProject[]> = (request, response) => {
   switch (request.method) {
     case "GET":
-      response.status(200).json(items);
-      break;
+      return response.status(200).json(items);
     default:
-      response.status(422).end();
-      break;
+      return response.status(422).end();
   }
 };
 

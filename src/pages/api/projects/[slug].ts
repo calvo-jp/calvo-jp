@@ -8,13 +8,11 @@ const handler: NextApiHandler<IProject> = (request, response) => {
       const slug = request.query.slug as string;
       const item = items.find((item) => item.slug === slug);
 
-      if (!item) response.status(404).end();
-      else response.status(200).json(item);
+      if (!item) return response.status(404).end();
 
-      break;
+      return response.status(200).json(item);
     default:
-      response.status(422).end();
-      break;
+      return response.status(422).end();
   }
 };
 
