@@ -51,13 +51,13 @@ const Project: React.FC<IProject> = ({ slug, name, description, banner }) => {
     <Link href={href} passHref>
       <a className="md:p-2 rounded-md outline-none border border-transparent transition-all duration-300 md:hover:border-blue-200 md:hover:ring-4 md:hover:ring-blue-100 md:focus:border-blue-200 md:focus:ring-4 md:focus:ring-blue-100">
         <div className="relative w-full h-[250px] border border-gray-100">
-          {/* <Image
+          <Image
             layout="fill"
-            src=""
+            src={banner}
             alt=""
             objectFit="cover"
             objectPosition="center"
-          /> */}
+          />
         </div>
 
         <div className="mt-2">
