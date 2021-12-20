@@ -49,28 +49,54 @@ const Contact = () => {
 
                 <Formik
                   initialValues={{
-                    from: "",
+                    sender: "",
                     subject: "",
                     body: "",
                   }}
                   validationSchema={yup.object().shape({
-                    from: yup
+                    sender: yup
                       .string()
+                      .trim()
                       .email("invalid email format")
                       .required("email is required"),
                     subject: yup
                       .string()
+                      .trim()
                       .min(15, "subject must be 15 or characters more")
                       .max(50, "subject must be 50 or characters less"),
                     body: yup
                       .string()
+                      .trim()
                       .min(25, "body must be 25 or characters more")
                       .max(255, "body must be 255 or characters less")
                       .required("body is required"),
                   })}
-                  onSubmit={(values, { resetForm }) => {
-                    console.log(values);
-                    resetForm();
+                  onSubmit={async (values) => {
+                    const email: Partial<typeof values> = {
+                      sender: values.sender,
+                      subject: values.subject,
+                      body: values.body,
+                    };
+
+                    // yup adds a value of empty string for optional fields left empty
+                    if (email.subject === "") delete email.subject;
+
+                    const request = new Request("/api/emails", {
+                      method: "POST",
+                      body: JSON.stringify(email),
+                    });
+
+                    try {
+                      const response = await fetch(request);
+                      const parsed = await response.json();
+
+                      if (!response.ok) console.error(parsed);
+
+                      console.log(parsed);
+                    } catch (e) {
+                      console.error(e);
+                    } finally {
+                    }
                   }}
                 >
                   {({ touched, errors, isSubmitting }) => (
@@ -78,13 +104,13 @@ const Contact = () => {
                       <Field
                         as={TextField}
                         id="email"
-                        name="from"
+                        name="sender"
                         label="Email"
                         autoFocus
                         required
                         fullWidth
-                        error={touched.from && !!errors.from}
-                        errorText={errors.from}
+                        error={touched.sender && !!errors.sender}
+                        errorText={errors.sender}
                       />
 
                       <Field

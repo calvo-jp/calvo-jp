@@ -1,15 +1,20 @@
-import config from "config";
 import IProject from "types/project";
 
-const urlPrefix = config.APIPrefix + "/projects/";
-
 export const read = {
-  async one(slug: string): Promise<IProject> {
-    const response = await fetch(urlPrefix + slug);
-    return await response.json();
+  async one(slug: string): Promise<IProject | null> {
+    try {
+      const response = await fetch("/api/projects/" + slug);
+      return await response.json();
+    } catch {
+      return null;
+    }
   },
   async all(): Promise<IProject[]> {
-    const response = await fetch(urlPrefix);
-    return await response.json();
+    try {
+      const response = await fetch("/api/projects");
+      return await response.json();
+    } catch {
+      return [];
+    }
   },
 };

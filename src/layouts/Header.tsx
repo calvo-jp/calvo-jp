@@ -1,11 +1,11 @@
-import clsx from 'clsx';
-import useGlobalState from 'hooks/store/useGlobalState';
-import Link from 'next/link';
-import * as React from 'react';
-import CloseIcon from 'widgets/icons/Close';
-import ExclamationCircleIcon from 'widgets/icons/ExclamationCircle';
-import MenuIcon from 'widgets/icons/Menu';
-import Navbar from './Navbar';
+import clsx from "clsx";
+import useGlobalState from "hooks/store/useGlobalState";
+import Link from "next/link";
+import * as React from "react";
+import CloseIcon from "widgets/icons/Close";
+import ExclamationCircleIcon from "widgets/icons/ExclamationCircle";
+import MenuIcon from "widgets/icons/Menu";
+import Navbar from "./Navbar";
 
 type HeaderProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLElement>,
@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ children, className, ...props }) => {
     <React.Fragment>
       <header
         className={clsx(
-          'flex justify-between items-center py-4 px-6 bg-white',
+          "flex justify-between items-center py-4 px-6 bg-white",
           className
         )}
         {...props}
@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ children, className, ...props }) => {
 
 const Logo = () => {
   return (
-    <Link href="/" passHref>
+    <Link href="/about" passHref>
       <a className="flex items-center">
         <ExclamationCircleIcon className="w-5 h-5 mr-1 fill-red-400" />
         <span className="text-red-400">LOGO COMING SOON</span>
@@ -48,11 +48,11 @@ const Logo = () => {
 const Hamburger = () => {
   const [state, dispatch] = useGlobalState();
 
-  const toggleNavbar = () => dispatch({ type: 'navbar.toggle' });
+  const toggleNavbar = () => dispatch({ type: "navbar.toggle" });
 
   return (
     <button
-      className={clsx('z-20 md:hidden', state.navbarOpen && 'text-gray-400')}
+      className={clsx("z-20 md:hidden", state.navbarOpen && "text-gray-400")}
       onClick={toggleNavbar}
     >
       {state.navbarOpen && <CloseIcon className="text-gray-300 w-6 h-6" />}

@@ -1,8 +1,8 @@
-import Footer from 'layouts/Footer';
-import Head from 'next/head';
-import Link from 'next/link';
-import * as React from 'react';
-import ChevronLeftIcon from 'widgets/icons/ChevronLeft';
+import Footer from "layouts/Footer";
+import Head from "next/head";
+import Link from "next/link";
+import * as React from "react";
+import ChevronLeftIcon from "widgets/icons/ChevronLeft";
 
 const NotFound = () => {
   return (
@@ -13,7 +13,7 @@ const NotFound = () => {
 
       <div className="min-h-screen flex flex-col">
         <header className="bg-white py-4 px-6 flex items-center justify-between">
-          <Link href="/" passHref>
+          <Link href="/about" passHref>
             <a className="flex items-center gap-1">
               <ChevronLeftIcon className="h-[14px] w-[14px]" />
               <span>Go Home</span>
