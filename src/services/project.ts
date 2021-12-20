@@ -1,5 +1,5 @@
 import IProject from "types/project";
-import * as request from "utils/request";
+import request from "utils/request";
 
 export const read = {
   async one(slug: string): Promise<IProject | null> {

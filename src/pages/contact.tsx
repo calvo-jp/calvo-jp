@@ -3,7 +3,7 @@ import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import Head from "next/head";
 import * as React from "react";
-import * as request from "utils/request";
+import request from "utils/request";
 import Alert from "widgets/Alert";
 import Button from "widgets/Button";
 import TextField from "widgets/TextField";
