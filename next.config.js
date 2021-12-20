@@ -1,4 +1,4 @@
-const isDevelopment = process.env.NODE_ENV === "development";
+const debug = process.env.NODE_ENV === "development";
 
 /** @type {import('next').NextConfig} */
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
       {
         source: "/api/:path*",
         destination: (() => {
-          if (isDevelopment) {
+          if (debug) {
             return "http://localhost:3000/api/:path*";
           } else {
             return "https://calvo-jp.vercel.app/api/:path*";
