@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
-import * as services from "services/project";
+import services from "services";
 import IProject from "types/project";
 import ChevronLeftIcon from "widgets/icons/ChevronLeft";
 import useLightbox from "widgets/lightbox/useLightbox";
@@ -16,7 +16,7 @@ interface SearchParams {
 }
 
 export const getStaticPaths: GetStaticPaths<SearchParams> = async () => {
-  const items = await services.read.all();
+  const items = await services.project.read.all();
   const paths = items.map(({ slug }) => ({ params: { slug } }));
 
   return {
@@ -28,7 +28,7 @@ export const getStaticPaths: GetStaticPaths<SearchParams> = async () => {
 export const getStaticProps: GetStaticProps<IProject, SearchParams> = async (
   context
 ) => {
-  const project = await services.read.one(context.params!.slug);
+  const project = await services.project.read.one(context.params!.slug);
 
   if (!project) return { notFound: true };
 
@@ -46,8 +46,6 @@ const Project: NextPage<IProject> = ({
   screenshots,
 }) => {
   const router = useRouter();
-
-  console.log(screenshots);
 
   if (router.isFallback)
     return <div className="p-2 text-gray-600 text-md">Loading...</div>;
