@@ -47,6 +47,8 @@ const Project: NextPage<IProject> = ({
 }) => {
   const router = useRouter();
 
+  console.log(screenshots);
+
   if (router.isFallback)
     return <div className="p-2 text-gray-600 text-md">Loading...</div>;
 
@@ -85,7 +87,7 @@ const Project: NextPage<IProject> = ({
         </header>
 
         <main>
-          <Jumbotron {...banner} />
+          <Jumbotron backgroundUrl={banner} />
 
           <section className="p-4 md:p-8 flex flex-col gap-4 max-w-[1400px] mx-auto">
             <div>
@@ -103,13 +105,17 @@ const Project: NextPage<IProject> = ({
   );
 };
 
-const Jumbotron = (imageUrl: string) => {
+interface JumbotronProps {
+  backgroundUrl: string;
+}
+
+const Jumbotron = ({ backgroundUrl }: JumbotronProps) => {
   const [, setState] = useLightbox();
 
   const handleClick = () => {
     setState({
       open: true,
-      src: imageUrl,
+      src: backgroundUrl,
     });
   };
 
@@ -119,7 +125,7 @@ const Jumbotron = (imageUrl: string) => {
       onClick={handleClick}
     >
       <Image
-        src={imageUrl}
+        src={backgroundUrl}
         alt=""
         layout="fill"
         objectFit="cover"
@@ -152,8 +158,8 @@ interface GridProps {
 const Grid = ({ items }: GridProps) => {
   return (
     <div className="grid auto-rows-[300px] md:auto-rows-[200px] lg:auto-rows-[250px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 grid-flow-row-dense">
-      {items.map(({ url, ...all }) => (
-        <GridItem key={url} url={url} {...all} />
+      {items.map((item, index) => (
+        <GridItem key={index} {...item} />
       ))}
     </div>
   );
@@ -199,12 +205,9 @@ const GridItem = ({ url, orientation }: GridItemProps) => {
   );
 };
 
-// prettier-ignore
 type ExpandIconProps = Omit<
   React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  | 'className' 
-  | 'children'
-  | 'style' 
+  "className" | "children" | "style"
 >;
 
 const ExpandIcon = (props: ExpandIconProps) => {
