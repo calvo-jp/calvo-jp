@@ -41,6 +41,7 @@ export const getStaticProps: GetStaticProps<IProject, SearchParams> = async (
 const Project: NextPage<IProject> = ({
   name,
   description,
+  keywords,
   techstacks,
   banner,
   screenshots,
@@ -60,6 +61,11 @@ const Project: NextPage<IProject> = ({
           property="og:description"
           content={description}
           key="meta.og.description"
+        />
+        <meta
+          property="og:keywords"
+          content={keywords.join()}
+          key="meta.og.keywords"
         />
       </Head>
 
