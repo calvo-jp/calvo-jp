@@ -7,7 +7,7 @@ const schema = yup.object().shape({
     .lowercase()
     .oneOf(["development", "production"])
     .default("production"),
-  DEBUG: yup.bool().default(function () {
+  DEBUG: yup.bool().default(() => {
     return yup
       .string()
       .equals(["development"])
