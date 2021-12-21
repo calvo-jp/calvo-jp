@@ -3,6 +3,7 @@ import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import Head from "next/head";
 import * as React from "react";
+import isObject from "utils/isObject";
 import request from "utils/request";
 import Alert from "widgets/Alert";
 import Button from "widgets/Button";
@@ -17,6 +18,8 @@ interface AlertProps {
 
 const Contact = () => {
   const [alert, setAlert] = React.useState<AlertProps>({});
+
+  const handleAlertClose = () => setAlert({});
 
   return (
     <React.Fragment>
@@ -49,7 +52,7 @@ const Contact = () => {
                   className="mb-4"
                   open={alert.open}
                   variant={alert.variant}
-                  onClose={() => setAlert({})}
+                  onClose={handleAlertClose}
                 >
                   {alert.message}
                 </Alert>
@@ -93,9 +96,10 @@ const Contact = () => {
                         body: JSON.stringify(email),
                       });
 
-                      const parsed = await response.json();
-
-                      if (!response.ok) throw parsed;
+                      // [429] Spamming
+                      // [400] Validation error
+                      // [500] Redis error
+                      if (!response.ok) throw await response.json();
 
                       setAlert((state) => ({
                         ...state,
@@ -105,12 +109,19 @@ const Contact = () => {
                       }));
 
                       helpers.resetForm();
-                    } catch (error: any) {
+                    } catch (exception) {
+                      const message =
+                        isObject(exception) && "message" in exception
+                          ? // Network, server validation or config errors
+                            exception.message
+                          : // Unknown errors
+                            "Something went wrong";
+
                       setAlert((state) => ({
                         ...state,
                         open: true,
                         variant: "error",
-                        message: error.message,
+                        message,
                       }));
                     }
                   }}
@@ -155,7 +166,8 @@ const Contact = () => {
                         variant="primary"
                         disabled={isSubmitting}
                       >
-                        Send
+                        {!isSubmitting && <span>Send</span>}
+                        {isSubmitting && <span>Sending...</span>}
                       </Button>
                     </Form>
                   )}
