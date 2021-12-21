@@ -38,7 +38,6 @@ const handler: NextApiHandler = async (request, response) => {
         await incrementTotalSentEmails(postfields.sender);
         return response.status(202).json(postfields);
       } catch (e) {
-        console.log(e);
         if (e instanceof yup.ValidationError)
           return response.status(400).json(e);
         else return response.status(503).json(e);
@@ -50,12 +49,12 @@ const handler: NextApiHandler = async (request, response) => {
 };
 
 const getSentEmailsCounter = async () => {
-  const counter = createClient({
+  const client = createClient({
     url: globalConfig.REDIS_URL,
   });
 
-  await counter.connect();
-  return counter;
+  await client.connect();
+  return client;
 };
 
 const hasSent3EmailsIn24Hrs = async (email: string) => {
