@@ -4,7 +4,7 @@ import Header from "layouts/Header";
 import Head from "next/head";
 import * as React from "react";
 import cleanValues from "utils/cleanValues";
-import isObject from "utils/isObject";
+import isPlainObject from "utils/isPlainObject";
 import request from "utils/request";
 import Alert from "widgets/Alert";
 import Button from "widgets/Button";
@@ -103,7 +103,7 @@ const Contact = () => {
                       helpers.resetForm();
                     } catch (exception) {
                       const message =
-                        isObject(exception) && "message" in exception
+                        isPlainObject(exception) && "message" in exception
                           ? // Network, server validation or config errors
                             exception.message
                           : // Unknown errors

@@ -1,6 +1,10 @@
+interface PlainObject {
+  [key: string]: any;
+}
+
 /** checks whether subject is a javascript object */
-const isObject = (subject: any): subject is Record<string, any> =>
+const isPlainObject = (subject: any): subject is PlainObject =>
   Object(subject) === subject &&
   Object.prototype.toString.call(subject) === "[object Object]";
 
-export default isObject;
+export default isPlainObject;
