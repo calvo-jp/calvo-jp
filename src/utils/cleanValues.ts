@@ -24,7 +24,7 @@ const cleanObject = (subject: Dictionary) => {
   return values;
 };
 
-/** deeply removes falsy values in object or array of objects */
+/** deeply removes object keys with null and empty string values */
 const cleanValues = (subject: any): any => {
   if (Array.isArray(subject)) return subject.map(cleanValues);
   if (isDictionary(subject)) return cleanObject(subject);
