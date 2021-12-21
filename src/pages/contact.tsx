@@ -9,8 +9,14 @@ import Button from "widgets/Button";
 import TextField from "widgets/TextField";
 import * as yup from "yup";
 
+interface AlertProps {
+  open?: boolean;
+  variant?: "error" | "success";
+  message?: string;
+}
+
 const Contact = () => {
-  const [error, setError] = React.useState("");
+  const [alert, setAlert] = React.useState<AlertProps>({});
 
   return (
     <React.Fragment>
@@ -40,12 +46,12 @@ const Contact = () => {
 
               <section>
                 <Alert
-                  open={!!error}
-                  variant="error"
                   className="mb-4"
-                  onClose={() => setError("")}
+                  open={alert.open}
+                  variant={alert.variant}
+                  onClose={() => setAlert({})}
                 >
-                  {error}
+                  {alert.message}
                 </Alert>
 
                 <Formik
@@ -72,7 +78,7 @@ const Contact = () => {
                       .max(255, "body must be 255 or characters less")
                       .required("body is required"),
                   })}
-                  onSubmit={async (values) => {
+                  onSubmit={async (values, helpers) => {
                     const email: Partial<typeof values> = {
                       sender: values.sender,
                       subject: values.subject,
@@ -89,11 +95,23 @@ const Contact = () => {
 
                       const parsed = await response.json();
 
-                      if (!response.ok) console.error(parsed);
+                      if (!response.ok) throw parsed;
 
-                      console.log(parsed);
-                    } catch (e) {
-                      console.error(e);
+                      setAlert((state) => ({
+                        ...state,
+                        open: true,
+                        variant: "success",
+                        message: "Email sent successfuly",
+                      }));
+
+                      helpers.resetForm();
+                    } catch (error: any) {
+                      setAlert((state) => ({
+                        ...state,
+                        open: true,
+                        variant: "error",
+                        message: error.message,
+                      }));
                     }
                   }}
                 >
