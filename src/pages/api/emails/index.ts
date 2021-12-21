@@ -64,7 +64,7 @@ const hasSent3EmailsIn24Hrs = async (email: string) => {
   const counter = await getSentEmailsCounter();
   const total = await counter.get(email);
 
-  return total && parseInt(total) > 3;
+  return !!total && parseInt(total) > 3;
 };
 
 const incrementTotalSentEmails = async (email: string) => {
