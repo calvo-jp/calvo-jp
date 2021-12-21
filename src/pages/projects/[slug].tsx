@@ -165,7 +165,7 @@ const Grid = ({ items }: GridProps) => {
 
 type GridItemProps = IProject["screenshots"][0];
 
-const GridItem = ({ url, orientation }: GridItemProps) => {
+const GridItem = ({ path, orientation }: GridItemProps) => {
   const [, setLightboxState] = useLightbox();
 
   const square = orientation === "square";
@@ -174,14 +174,14 @@ const GridItem = ({ url, orientation }: GridItemProps) => {
 
   const expand = () => {
     setLightboxState({
-      src: url,
+      src: path,
       open: true,
     });
   };
 
   return (
     <div
-      key={url}
+      key={path}
       className={clsx(
         "relative cursor-pointer group overflow-hidden",
         horizontal && "sm:col-span-2 md:col-span-1 lg:col-span-2",
@@ -191,7 +191,7 @@ const GridItem = ({ url, orientation }: GridItemProps) => {
       onClick={expand}
     >
       <Image
-        src={url}
+        src={path}
         alt=""
         layout="fill"
         objectFit="cover"

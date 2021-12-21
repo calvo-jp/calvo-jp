@@ -11,7 +11,7 @@ interface IProject {
 type Orientation = "square" | "vertical" | "horizontal";
 
 interface ImageInfo {
-  url: string;
+  path: string;
   orientation: Orientation;
 }
 
