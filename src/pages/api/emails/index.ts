@@ -37,10 +37,12 @@ const handler: NextApiHandler = async (request, response) => {
 
         await incrementTotalSentEmails(postfields.sender);
         return response.status(202).json(postfields);
-      } catch (e) {
-        if (e instanceof yup.ValidationError)
-          return response.status(400).json(e);
-        else return response.status(503).json(e); // most probably a redis error
+      } catch (error) {
+        if (error instanceof yup.ValidationError)
+          return response.status(400).json(error);
+
+        // most probably a redis error
+        return response.status(503).json(error);
       }
 
     default:
