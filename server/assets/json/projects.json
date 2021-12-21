@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "recipes",
+    "name": "Recipes",
+    "description": "Share or find awesome recipes",
+    "banner": "recipes-banner.jpg",
+    "screenshots": [
+      "recipes-screenshot-1.jpg",
+      "recipes-screenshot-2.jpg",
+      "recipes-screenshot-3.jpg",
+      "recipes-screenshot-4.jpg",
+      "recipes-screenshot-5.jpg",
+      "recipes-screenshot-6.jpg",
+      "recipes-screenshot-7.jpg",
+      "recipes-screenshot-8.jpg"
+    ],
+    "tags": [
+      "bake",
+      "dish",
+      "tasty",
+      "manual",
+      "recipe",
+      "cooking",
+      "cuisine",
+      "delicious",
+      "how to cook"
+    ],
+    "techstacks": [
+      "react",
+      "nextjs",
+      "tailwind",
+      "typescript",
+      "python",
+      "fastapi",
+      "sqlmodel",
+      "postgres"
+    ]
+  },
+  {
+    "slug": "cedar-college",
+    "name": "Cedar College",
+    "description": "Official website of Cedar College",
+    "banner": "cedar-banner.jpg",
+    "screenshots": [
+      "cedar-screenshot-1.jpg",
+      "cedar-screenshot-2.jpg",
+      "cedar-screenshot-3.jpg",
+      "cedar-screenshot-4.jpg",
+      "cedar-screenshot-5.jpg"
+    ],
+    "tags": [
+      "blog",
+      "6100",
+      "cedar",
+      "school",
+      "college",
+      "education",
+      "cadiz city",
+      "official website",
+      "negros occidental",
+      "senior highschool"
+    ],
+    "techstacks": [
+      "react",
+      "nextjs",
+      "tailwind",
+      "typescript",
+      "python",
+      "fastapi",
+      "sqlmodel",
+      "postgres"
+    ]
+  }
+]
