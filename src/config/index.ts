@@ -13,11 +13,7 @@ const schema = yup.object().shape({
       .equals(["development"])
       .isValidSync(process.env.NODE_ENV);
   }),
-  REDIS_HOST: yup.string().trim().lowercase().required(),
-  REDIS_PORT: yup.number().required(),
-  REDIS_USER: yup.string().trim().lowercase().required(),
-  REDIS_PASSWORD: yup.string().trim().required(),
-  REDIS_DATABASE: yup.number().required(),
+  REDIS_URL: yup.string().trim().lowercase().required(),
 });
 
 const globalConfig = schema.validateSync(process.env, {

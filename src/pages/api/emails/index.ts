@@ -1,3 +1,4 @@
+import globalConfig from "config";
 import { NextApiHandler } from "next";
 import { createClient } from "redis";
 import * as yup from "yup";
@@ -37,7 +38,10 @@ const handler: NextApiHandler = async (request, response) => {
         await incrementTotalSentEmails(postfields.sender);
         return response.status(202).json(postfields);
       } catch (e) {
-        return response.status(400).json(e);
+        console.log(e);
+        if (e instanceof yup.ValidationError)
+          return response.status(400).json(e);
+        else return response.status(503).json(e);
       }
 
     default:
@@ -45,14 +49,12 @@ const handler: NextApiHandler = async (request, response) => {
   }
 };
 
-const getRedisConfig = () => ({});
-
 const getSentEmailsCounter = async () => {
-  const config = getRedisConfig();
-  const counter = createClient(config);
+  const counter = createClient({
+    url: globalConfig.REDIS_URL,
+  });
 
   await counter.connect();
-
   return counter;
 };
 
