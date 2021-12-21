@@ -3,6 +3,7 @@ import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import Head from "next/head";
 import * as React from "react";
+import cleanValues from "utils/cleanValues";
 import isObject from "utils/isObject";
 import request from "utils/request";
 import Alert from "widgets/Alert";
@@ -82,19 +83,10 @@ const Contact = () => {
                       .required("body is required"),
                   })}
                   onSubmit={async (values, helpers) => {
-                    const email: Partial<typeof values> = {
-                      sender: values.sender,
-                      subject: values.subject,
-                      body: values.body,
-                    };
-
-                    // yup adds a value of empty string for optional fields left empty
-                    if (email.subject === "") delete email.subject;
+                    const body = JSON.stringify(cleanValues(values));
 
                     try {
-                      const response = await request.post("/emails", {
-                        body: JSON.stringify(email),
-                      });
+                      const response = await request.post("/emails", { body });
 
                       // [429] Spamming
                       // [400] Validation error
