@@ -40,7 +40,7 @@ const handler: NextApiHandler = async (request, response) => {
       } catch (e) {
         if (e instanceof yup.ValidationError)
           return response.status(400).json(e);
-        else return response.status(503).json(e);
+        else return response.status(503).json(e); // most probably a redis error
       }
 
     default:
