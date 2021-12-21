@@ -10,6 +10,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     "Official website of John Paul Calvo (aka JP Calvo), a web dev based in PH.",
     "I am 29 years old and I am currently a freshman student at Cedar College, Inc.",
     "I develop websites with modern look and feel and always ensures maintainability.",
+    "I love opensource and will probably use opensource softwares forever.",
     "I also like to play guitar during weekends and loves coffee with less sugar.",
   ].join("");
 
@@ -38,6 +39,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     "prisma",
     "fastify",
     "expressjs",
+    "opensource",
+    "ubuntu",
+    "linux",
   ].join();
 
   return (
