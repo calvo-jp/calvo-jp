@@ -6,31 +6,32 @@ import * as yup from "yup";
 const handler: NextApiHandler = async (request, response) => {
   switch (request.method) {
     case "POST":
-      const schema = yup.object().shape({
-        sender: yup
-          .string()
-          .trim()
-          .lowercase()
-          .email("invalid email format")
-          .required("email is required"),
-        subject: yup
-          .string()
-          .trim()
-          .min(15, "subject must be 15 or characters more")
-          .max(50, "subject must be 50 or characters less"),
-        body: yup
-          .string()
-          .trim()
-          .min(25, "body must be 25 or characters more")
-          .max(255, "body must be 255 or characters less")
-          .required("body is required"),
-      });
-
       try {
-        const postfields = await schema.validate(request.body, {
-          stripUnknown: true,
-          abortEarly: true,
-        });
+        const postfields = await yup
+          .object()
+          .shape({
+            sender: yup
+              .string()
+              .trim()
+              .lowercase()
+              .email("invalid email format")
+              .required("email is required"),
+            subject: yup
+              .string()
+              .trim()
+              .min(15, "subject must be 15 or characters more")
+              .max(50, "subject must be 50 or characters less"),
+            body: yup
+              .string()
+              .trim()
+              .min(25, "body must be 25 or characters more")
+              .max(255, "body must be 255 or characters less")
+              .required("body is required"),
+          })
+          .validate(request.body, {
+            stripUnknown: true,
+            abortEarly: true,
+          });
 
         if (await hasSent3EmailsIn24Hrs(postfields.sender))
           return response.status(429).json({ message: "Too many emails sent" });
