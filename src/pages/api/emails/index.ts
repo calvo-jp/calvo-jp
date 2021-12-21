@@ -43,7 +43,7 @@ const handler: NextApiHandler = async (request, response) => {
           return response.status(400).json(error);
 
         // most probably a redis error
-        return response.status(503).json(error);
+        return response.status(500).json({ message: "Something went wrong" });
       }
 
     default:
