@@ -1,4 +1,3 @@
-import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
@@ -23,7 +22,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   };
 };
 
-const Projects: NextPage<Props> = (props) => {
+const Projects: NextPage<Props> = ({ items }) => {
   return (
     <React.Fragment>
       <Head>
@@ -34,7 +33,7 @@ const Projects: NextPage<Props> = (props) => {
         <Header />
         <main className="flex-grow p-4 lg:p-16 pt-0 lg:pt-8">
           <section className="grid gap-8 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {props.items.map((item) => (
+            {items.map((item) => (
               <Project key={item.slug} {...item} />
             ))}
           </section>
@@ -45,10 +44,8 @@ const Projects: NextPage<Props> = (props) => {
 };
 
 const Project: React.FC<IProject> = ({ slug, name, description, banner }) => {
-  const href = "/projects/" + slug;
-
   return (
-    <Link href={href} passHref>
+    <Link href={"/projects/".concat(slug)} passHref>
       <a className="md:p-2 rounded-md outline-none border border-transparent transition-all duration-300 md:hover:border-blue-200 md:hover:ring-4 md:hover:ring-blue-100 md:focus:border-blue-200 md:focus:ring-4 md:focus:ring-blue-100">
         <div className="relative w-full h-[250px] border border-gray-100">
           <Image
