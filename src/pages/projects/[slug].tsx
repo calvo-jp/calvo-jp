@@ -25,10 +25,10 @@ export const getStaticPaths: GetStaticPaths<SearchParams> = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<IProject, SearchParams> = async (
-  context
-) => {
-  const project = await services.project.read.one(context.params!.slug);
+export const getStaticProps: GetStaticProps<IProject, SearchParams> = async ({
+  params,
+}) => {
+  const project = await services.project.read.one(params!.slug);
 
   if (!project) return { notFound: true };
 
