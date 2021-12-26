@@ -1,4 +1,4 @@
-import IProject from "types/project";
+import type IProject from "types/project";
 import request from "utils/request";
 
 export const read = {
