@@ -36,12 +36,12 @@ const Contact = () => {
             <div className="max-w-[350px] mx-auto">
               <section className="mb-4 text-sm text-gray-500 text-center">
                 <p>
-                  <span>Send an email to </span>
+                  <span>Send an email to</span>
                   <a
                     href="mailto:calvojp92@gmail.com"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-gray-700 hover:text-blue-600 transition-colors duration-300"
+                    className="ml-1 text-gray-700 hover:text-blue-600 transition-colors duration-300"
                   >
                     calvojp92@gmail.com
                   </a>
@@ -88,8 +88,8 @@ const Contact = () => {
                     try {
                       const response = await request.post("/emails", { body });
 
-                      // [429] Spamming
                       // [400] Validation error
+                      // [429] Spamming
                       // [500] Redis error
                       if (!response.ok) throw await response.json();
 
