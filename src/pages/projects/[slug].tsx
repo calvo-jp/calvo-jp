@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
 import services from "services";
-import IProject from "types/project";
+import type IProject from "types/project";
 import ChevronLeftIcon from "widgets/icons/ChevronLeft";
 import useLightbox from "widgets/lightbox/useLightbox";
 

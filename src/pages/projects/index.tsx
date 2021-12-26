@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import * as services from "services/project";
-import IProject from "types/project";
+import type IProject from "types/project";
 
 interface Props {
   items: IProject[];
