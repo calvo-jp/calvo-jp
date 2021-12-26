@@ -6,7 +6,7 @@ import * as React from "react";
 import "tailwindcss/tailwind.css";
 import LightboxProvider from "widgets/lightbox/LightboxProvider";
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <React.Fragment>
       <Head>
@@ -42,4 +42,4 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   );
 };
 
-export default MyApp;
+export default App;
