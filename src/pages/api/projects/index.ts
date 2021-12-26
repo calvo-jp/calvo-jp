@@ -1,5 +1,5 @@
 import items from "assets/json/projects.json";
-import { NextApiHandler } from "next";
+import type { NextApiHandler } from "next";
 import IProject from "types/project";
 
 const handler: NextApiHandler<IProject[]> = (request, response) => {

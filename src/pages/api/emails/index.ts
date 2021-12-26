@@ -1,5 +1,5 @@
 import globalConfig from "config";
-import { NextApiHandler } from "next";
+import type { NextApiHandler } from "next";
 import { createClient } from "redis";
 import * as yup from "yup";
 
