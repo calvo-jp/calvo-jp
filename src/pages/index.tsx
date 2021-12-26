@@ -1,20 +1,12 @@
+import selfie from "assets/images/calvojp.jpg";
+import messengerIcon from "assets/images/icons/messenger.png";
 import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import Head from "next/head";
 import Image from "next/image";
 import * as React from "react";
-import useLightbox from "widgets/lightbox/useLightbox";
 
 const Landing = () => {
-  const [, setLightbox] = useLightbox();
-
-  const expand = () => {
-    setLightbox({
-      open: true,
-      src: "/images/calvojp.jpg",
-    });
-  };
-
   return (
     <React.Fragment>
       <Head>
@@ -25,12 +17,9 @@ const Landing = () => {
         <Header />
 
         <main className="flex-grow flex flex-col md:flex-row p-2 items-center justify-center gap-8 lg:gap-16">
-          <section
-            className="w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[275px] md:h-[275px] lg:w-[300px] lg:h-[300px] xl:w-[325px] xl:h-[325px] rounded-full border-8 border-gray-100 relative overflow-hidden cursor-pointer"
-            onClick={expand}
-          >
+          <section className="w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[275px] md:h-[275px] lg:w-[300px] lg:h-[300px] xl:w-[325px] xl:h-[325px] rounded-full border-8 border-gray-100 relative overflow-hidden">
             <Image
-              src="/images/calvojp.jpg"
+              src={selfie}
               alt=""
               layout="fill"
               objectFit="cover"
@@ -57,7 +46,7 @@ const Landing = () => {
               className="flex items-center justify-center gap-2 mt-5 py-3 pr-5 pl-4 rounded-xl text-lg font-bold bg-blue-500 text-white hover:ring-4 hover:ring-blue-200 focus:ring-4 focus:ring-blue-200 transition-colors duration-300 outline-none"
             >
               <Image
-                src="/images/icons/messenger.png"
+                src={messengerIcon}
                 alt=""
                 width="24"
                 height="24"
