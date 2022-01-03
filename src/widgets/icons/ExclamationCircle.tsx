@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const ExclamationCircleIcon: React.FC<React.SVGProps<SVGSVGElement>> = (
+const ExclamationCircleIcon: React.FC<React.ComponentProps<'svg'>> = (
   props
 ) => {
   return (

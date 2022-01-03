@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const ChevronLeftIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+const ChevronLeftIcon: React.FC<React.ComponentProps<'svg'>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

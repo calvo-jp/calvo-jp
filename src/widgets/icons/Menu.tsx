@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const MenuIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+const MenuIcon: React.FC<React.ComponentProps<'svg'>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
