@@ -1,14 +1,14 @@
-import clsx from "clsx";
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import * as React from "react";
-import services from "services";
-import type IProject from "types/project";
-import ChevronLeftIcon from "widgets/icons/ChevronLeft";
-import useLightbox from "widgets/lightbox/useLightbox";
+import clsx from 'clsx';
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import * as React from 'react';
+import services from 'services';
+import type IProject from 'types/project';
+import ChevronLeftIcon from 'widgets/icons/ChevronLeft';
+import useLightbox from 'widgets/lightbox/useLightbox';
 
 interface SearchParams {
   [key: string]: string;
@@ -156,7 +156,7 @@ const Chips = ({ items }: ChipsProps) => {
 };
 
 interface GridProps {
-  items: IProject["screenshots"];
+  items: IProject['screenshots'];
 }
 
 const Grid = ({ items }: GridProps) => {
@@ -169,14 +169,14 @@ const Grid = ({ items }: GridProps) => {
   );
 };
 
-type GridItemProps = IProject["screenshots"][0];
+type GridItemProps = IProject['screenshots'][0];
 
 const GridItem = ({ path, orientation }: GridItemProps) => {
   const [, setLightboxState] = useLightbox();
 
-  const square = orientation === "square";
-  const vertical = orientation === "vertical";
-  const horizontal = orientation === "horizontal";
+  const square = orientation === 'square';
+  const vertical = orientation === 'vertical';
+  const horizontal = orientation === 'horizontal';
 
   const expand = () => {
     setLightboxState({
@@ -189,10 +189,10 @@ const GridItem = ({ path, orientation }: GridItemProps) => {
     <div
       key={path}
       className={clsx(
-        "relative cursor-pointer group overflow-hidden",
-        horizontal && "sm:col-span-2 md:col-span-1 lg:col-span-2",
-        vertical && "md:row-span-2",
-        square && "md:row-span-2 md:col-span-2"
+        'relative cursor-pointer group overflow-hidden',
+        horizontal && 'sm:col-span-2 md:col-span-1 lg:col-span-2',
+        vertical && 'md:row-span-2',
+        square && 'md:row-span-2 md:col-span-2'
       )}
       onClick={expand}
     >
@@ -209,10 +209,7 @@ const GridItem = ({ path, orientation }: GridItemProps) => {
   );
 };
 
-type ExpandIconProps = Omit<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  "className" | "children" | "style"
->;
+type ExpandIconProps = React.ComponentProps<'div'>;
 
 const ExpandIcon = (props: ExpandIconProps) => {
   return (

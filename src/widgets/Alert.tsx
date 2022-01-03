@@ -1,20 +1,15 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-type BaseProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->;
-
 type Variant = 'info' | 'success' | 'warning' | 'error';
 
-interface AlertProps extends BaseProps {
+interface AlertProps {
   open?: boolean;
   variant?: Variant;
   onClose?: () => void;
 }
 
-const Alert: React.FC<AlertProps> = ({
+const Alert: React.FC<AlertProps & React.ComponentProps<'div'>> = ({
   open,
   variant,
   onClose,
@@ -47,12 +42,7 @@ const Alert: React.FC<AlertProps> = ({
   );
 };
 
-const CloseButton: React.FC<
-  React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  >
-> = (props) => {
+const CloseButton: React.FC<React.ComponentProps<'button'>> = (props) => {
   return (
     <button {...props}>
       <svg

@@ -1,24 +1,21 @@
-import clsx from "clsx";
-import * as React from "react";
+import clsx from 'clsx';
+import * as React from 'react';
 
-type BaseProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->;
+type BaseProps = React.ComponentProps<'input'>;
 
 type TextFieldType =
-  | "date"
-  | "datetime"
-  | "email"
-  | "month"
-  | "number"
-  | "password"
-  | "search"
-  | "tel"
-  | "text"
-  | "time"
-  | "url"
-  | "week";
+  | 'date'
+  | 'datetime'
+  | 'email'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week';
 
 interface TextFieldProps extends BaseProps {
   type?: TextFieldType;
@@ -66,7 +63,7 @@ const TextField: React.FC<TextFieldProps> = ({
   );
 };
 
-interface InputProps extends Omit<TextFieldProps, "label" | "error"> {
+interface InputProps extends Omit<TextFieldProps, 'label' | 'error'> {
   error?: boolean;
 }
 
@@ -76,11 +73,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         ref={ref}
         className={clsx(
-          "p-2 border border-gray-300 rounded-md outline-none transition-all duration-300",
-          !error &&
-            "hover:border-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-200",
-          error && "border-red-400 focus:ring-4 focus:ring-red-200",
-          fullWidth && "block w-full",
+          'p-2 border border-gray-300 rounded-md outline-none transition-all duration-300',
+          !error && 'hover:border-gray-400',
+          !error && 'focus:border-blue-400 focus:ring-4 focus:ring-blue-200',
+          error && 'border-red-400 focus:ring-4 focus:ring-red-200',
+          fullWidth && 'block w-full',
           className
         )}
         {...props}
@@ -89,17 +86,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-Input.displayName = "Input";
+Input.displayName = 'Input';
 
-interface ErrorTextProps
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  > {
+interface ErrorTextProps {
   open?: boolean;
 }
 
-const ErrorText: React.FC<ErrorTextProps> = ({ open, children, ...props }) => {
+const ErrorText: React.FC<ErrorTextProps & React.ComponentProps<'div'>> = ({
+  open,
+  children,
+  ...props
+}) => {
   if (!open) return <React.Fragment />;
 
   return (
@@ -109,21 +106,21 @@ const ErrorText: React.FC<ErrorTextProps> = ({ open, children, ...props }) => {
   );
 };
 
-interface LabelProps
-  extends React.DetailedHTMLProps<
-    React.LabelHTMLAttributes<HTMLLabelElement>,
-    HTMLLabelElement
-  > {
+interface LabelProps {
   active?: boolean;
 }
 
-const Label: React.FC<LabelProps> = ({ active, children, ...props }) => {
+const Label: React.FC<LabelProps & React.ComponentProps<'label'>> = ({
+  active,
+  children,
+  ...props
+}) => {
   return (
     <label
       className={clsx(
-        "absolute transition-all duration-100 cursor-text",
-        active && "text-gray-500 -top-2 left-2 bg-white px-1 text-sm",
-        !active && "text-gray-600 top-2 left-3"
+        'absolute transition-all duration-100 cursor-text',
+        active && 'text-gray-500 -top-2 left-2 bg-white px-1 text-sm',
+        !active && 'text-gray-600 top-2 left-3'
       )}
       {...props}
     >
