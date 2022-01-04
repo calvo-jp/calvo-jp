@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import useGlobalState from 'hooks/store/useGlobalState';
+import useStoreState from 'hooks/store/useState';
 import Link from 'next/link';
 import * as React from 'react';
 import CloseIcon from 'widgets/icons/Close';
@@ -12,7 +12,7 @@ const Header: React.FC<React.ComponentProps<'header'>> = ({
   className,
   ...props
 }) => {
-  const [state] = useGlobalState();
+  const [state] = useStoreState();
 
   return (
     <React.Fragment>
@@ -45,7 +45,7 @@ const Logo = () => {
 };
 
 const Hamburger = () => {
-  const [state, dispatch] = useGlobalState();
+  const [state, dispatch] = useStoreState();
 
   const toggleNavbar = () => dispatch({ type: 'navbar.toggle' });
 

@@ -1,10 +1,10 @@
-import metatags from "assets/json/metatags.json";
-import GlobalProvider from "hooks/store/GlobalProvider";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import * as React from "react";
-import "tailwindcss/tailwind.css";
-import LightboxProvider from "widgets/lightbox/LightboxProvider";
+import metatags from 'assets/json/metatags.json';
+import StoreProvider from 'hooks/store/provider';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import * as React from 'react';
+import 'tailwindcss/tailwind.css';
+import LightboxProvider from 'widgets/lightbox/LightboxProvider';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -33,11 +33,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         />
       </Head>
 
-      <GlobalProvider>
+      <StoreProvider>
         <LightboxProvider>
           <Component {...pageProps} />
         </LightboxProvider>
-      </GlobalProvider>
+      </StoreProvider>
     </React.Fragment>
   );
 };
