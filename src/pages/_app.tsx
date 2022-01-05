@@ -7,6 +7,7 @@ import '@fontsource/m-plus-code-latin/600.css';
 import '@fontsource/m-plus-code-latin/700.css';
 import metatags from 'assets/json/metatags.json';
 import StoreProvider from 'hooks/store/provider';
+import Loader from 'layouts/Loader';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import * as React from 'react';
@@ -40,6 +41,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         />
       </Head>
 
+      <Loader />
       <StoreProvider>
         <LightboxProvider>
           <Component {...pageProps} />
