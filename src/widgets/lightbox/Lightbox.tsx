@@ -1,9 +1,9 @@
-import Image from "next/image";
-import * as React from "react";
-import CloseIcon from "widgets/icons/Close";
-import styles from "./lightbox.module.css";
-import useLightbox from "./useLightbox";
-import * as utils from "./utils";
+import CloseIcon from '@heroicons/react/solid/XIcon';
+import Image from 'next/image';
+import * as React from 'react';
+import styles from './lightbox.module.css';
+import useLightbox from './useLightbox';
+import * as utils from './utils';
 
 const LightBox = () => {
   const [state, setState] = useLightbox();
@@ -14,15 +14,15 @@ const LightBox = () => {
       setState((state) => ({
         ...state,
         open: false,
-        src: "",
+        src: '',
       }));
   }, [setState]);
 
   const handleEscape = React.useMemo(() => {
     return () => {
-      document.addEventListener("keydown", (e) => {
+      document.addEventListener('keydown', (e) => {
         if (
-          e.code === "Escape" &&
+          e.code === 'Escape' &&
           state.open &&
           lightboxRef.current &&
           utils.isOnTopOfAllElems(lightboxRef.current)
@@ -74,9 +74,9 @@ const LightBox = () => {
 };
 
 let __lb__touched__ = false;
-let __lb__bodyWidth__ = "";
-let __lb__bodyPosition__ = "";
-let __lb__bodyOverflowY__ = "";
+let __lb__bodyWidth__ = '';
+let __lb__bodyPosition__ = '';
+let __lb__bodyOverflowY__ = '';
 let __lb__htmlScrollTop__ = 0;
 
 /** Handles body scrolling whenever lightbox is toggled */
@@ -97,9 +97,9 @@ const handleScroll = (disable?: boolean) => {
     // save scrolltop state
     __lb__htmlScrollTop__ = html.scrollTop;
     // apply
-    body.style.width = "100%";
-    body.style.position = "fixed";
-    body.style.overflowY = "scroll";
+    body.style.width = '100%';
+    body.style.position = 'fixed';
+    body.style.overflowY = 'scroll';
     // mark virginized
     __lb__touched__ = true;
   } else {

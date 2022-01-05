@@ -1,3 +1,4 @@
+import ChevronLeftIcon from '@heroicons/react/solid/ChevronLeftIcon';
 import clsx from 'clsx';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
@@ -7,7 +8,6 @@ import { useRouter } from 'next/router';
 import * as React from 'react';
 import services from 'services';
 import type IProject from 'types/project';
-import ChevronLeftIcon from 'widgets/icons/ChevronLeft';
 import useLightbox from 'widgets/lightbox/useLightbox';
 
 interface SearchParams {

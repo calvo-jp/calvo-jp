@@ -1,10 +1,10 @@
+import ExclamationCircleIcon from '@heroicons/react/solid/ExclamationCircleIcon';
+import MenuIcon from '@heroicons/react/solid/MenuIcon';
+import CloseIcon from '@heroicons/react/solid/XIcon';
 import clsx from 'clsx';
 import useStoreState from 'hooks/store/useState';
 import Link from 'next/link';
 import * as React from 'react';
-import CloseIcon from 'widgets/icons/Close';
-import ExclamationCircleIcon from 'widgets/icons/ExclamationCircle';
-import MenuIcon from 'widgets/icons/Menu';
 import Navbar from './Navbar';
 
 const Header: React.FC<React.ComponentProps<'header'>> = ({

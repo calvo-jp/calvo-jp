@@ -1,8 +1,8 @@
-import Footer from "layouts/Footer";
-import Head from "next/head";
-import Link from "next/link";
-import * as React from "react";
-import ChevronLeftIcon from "widgets/icons/ChevronLeft";
+import ChevronLeftIcon from '@heroicons/react/solid/ChevronLeftIcon';
+import Footer from 'layouts/Footer';
+import Head from 'next/head';
+import Link from 'next/link';
+import * as React from 'react';
 
 const NotFound = () => {
   return (
