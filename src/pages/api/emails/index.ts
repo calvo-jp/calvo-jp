@@ -1,11 +1,11 @@
-import globalConfig from "config";
-import type { NextApiHandler } from "next";
-import { createClient } from "redis";
-import * as yup from "yup";
+import globalConfig from 'config';
+import type { NextApiHandler } from 'next';
+import { createClient } from 'redis';
+import * as yup from 'yup';
 
 const handler: NextApiHandler = async (request, response) => {
   switch (request.method) {
-    case "POST":
+    case 'POST':
       try {
         const postfields = await yup
           .object()
@@ -14,19 +14,19 @@ const handler: NextApiHandler = async (request, response) => {
               .string()
               .trim()
               .lowercase()
-              .email("invalid email format")
-              .required("email is required"),
+              .email('invalid email format')
+              .required('email is required'),
             subject: yup
               .string()
               .trim()
-              .min(15, "subject must be 15 or characters more")
-              .max(50, "subject must be 50 or characters less"),
+              .min(15, 'subject must be 15 or characters more')
+              .max(50, 'subject must be 50 or characters less'),
             body: yup
               .string()
               .trim()
-              .min(25, "body must be 25 or characters more")
-              .max(255, "body must be 255 or characters less")
-              .required("body is required"),
+              .min(25, 'body must be 25 or characters more')
+              .max(255, 'body must be 255 or characters less')
+              .required('body is required'),
           })
           .validate(request.body, {
             stripUnknown: true,
@@ -34,20 +34,22 @@ const handler: NextApiHandler = async (request, response) => {
           });
 
         if (await hasSent3EmailsIn24Hrs(postfields.sender))
-          return response.status(429).json({ message: "Too many emails sent" });
+          return response.status(429).json({ message: 'Too many emails sent' });
 
         await incrementTotalSentEmails(postfields.sender);
-        return response.status(202).json(postfields);
+        response.status(202).json(postfields);
       } catch (error) {
         if (error instanceof yup.ValidationError)
           return response.status(400).json(error);
 
         // most probably a redis error
-        return response.status(500).json({ message: "Something went wrong" });
+        response.status(500).json({ message: 'Something went wrong' });
       }
 
+      break;
     default:
-      return response.status(422).end();
+      response.status(422).end();
+      break;
   }
 };
 
