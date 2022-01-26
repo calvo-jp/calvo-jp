@@ -1,4 +1,5 @@
 ## Hello there! 😁 I'm John
+
 Web dev based in PH 🇵🇭
 
 **Goals in 2022**
