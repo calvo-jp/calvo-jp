@@ -1,26 +1,9 @@
-import * as yup from "yup";
+const DEBUG = /^(development|dev|test)$/i.test(process.env.NODE_ENV);
+const REDIS_URL = process.env.REDIS_URL as string;
 
-const schema = yup.object().shape({
-  NODE_ENV: yup
-    .string()
-    .trim()
-    .lowercase()
-    .oneOf(["development", "production"])
-    .default("production"),
-  DEBUG: yup.bool().default(() => {
-    return yup
-      .string()
-      .equals(["development"])
-      .isValidSync(process.env.NODE_ENV);
-  }),
-  REDIS_URL: yup.string().trim().lowercase().required(),
-});
-
-const globalConfig = schema.validateSync(process.env, {
-  strict: false,
-  abortEarly: true,
-  stripUnknown: true,
-  recursive: false,
-});
+const globalConfig = {
+  DEBUG,
+  REDIS_URL,
+};
 
 export default globalConfig;
