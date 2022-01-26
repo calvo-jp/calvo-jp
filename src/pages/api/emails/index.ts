@@ -1,7 +1,6 @@
 import globalConfig from 'config';
 import type { NextApiHandler } from 'next';
 import { createClient } from 'redis';
-import mailer from 'utils/mailer';
 import * as yup from 'yup';
 
 const handler: NextApiHandler = async (request, response) => {
@@ -39,14 +38,6 @@ const handler: NextApiHandler = async (request, response) => {
 
         // TODO: secure this please
         const reciever = 'calvojp92@gmail.com';
-        const result = await mailer.sendMail({
-          to: reciever,
-          from: postfields.sender,
-          subject: postfields.subject,
-          text: postfields.body,
-        });
-
-        console.dir(result);
 
         await incrementTotalSentEmails(postfields.sender);
         response.status(202).json(postfields);
