@@ -1,7 +1,10 @@
+import mail from '@sendgrid/mail';
 import globalConfig from 'config';
 import type { NextApiHandler } from 'next';
 import { createClient } from 'redis';
 import * as yup from 'yup';
+
+mail.setApiKey(globalConfig.SENDGRID_API_KEY);
 
 const handler: NextApiHandler = async (request, response) => {
   switch (request.method) {
@@ -38,6 +41,20 @@ const handler: NextApiHandler = async (request, response) => {
 
         // TODO: secure this please
         const reciever = 'calvojp92@gmail.com';
+
+        // FIXME:
+        // as of now, every email is sent by me and routed to me
+        // this should not be the normal behaviour
+        // we will fix this as soon as we get a budget
+        const result = await mail.send({
+          to: reciever,
+          from: reciever,
+          replyTo: postfields.sender,
+          subject: postfields.sender,
+          text: postfields.body,
+        });
+
+        if (globalConfig.DEBUG) console.dir(result);
 
         await incrementTotalSentEmails(postfields.sender);
         response.status(202).json(postfields);
