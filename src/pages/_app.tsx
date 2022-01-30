@@ -1,10 +1,3 @@
-import '@fontsource/m-plus-code-latin/100.css';
-import '@fontsource/m-plus-code-latin/200.css';
-import '@fontsource/m-plus-code-latin/300.css';
-import '@fontsource/m-plus-code-latin/400.css';
-import '@fontsource/m-plus-code-latin/500.css';
-import '@fontsource/m-plus-code-latin/600.css';
-import '@fontsource/m-plus-code-latin/700.css';
 import metatags from 'assets/json/metatags.json';
 import StoreProvider from 'hooks/store/provider';
 import Loader from 'layouts/Loader';

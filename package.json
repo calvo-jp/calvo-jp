@@ -8,7 +8,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fontsource/m-plus-code-latin": "^4.5.2",
     "@heroicons/react": "^1.0.5",
     "@sendgrid/mail": "^7.6.0",
     "clsx": "^1.1.1",
