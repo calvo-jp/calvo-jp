@@ -17,7 +17,7 @@ Web developer based in PH 🇵🇭
 
 <br>
 
-**Tech Stacks**
+**Tech Stacks 🔥**
 
 ```python
 # TODO
@@ -26,7 +26,7 @@ Web developer based in PH 🇵🇭
 
 <br>
 
-**Socials**
+**Socials 👍**
 
 [<img src="https://img.shields.io/badge/calvojp-1877F2?style=for-the-badge&logo=facebook&logoColor=white" />](https://facebook.com/calvojp)
 [<img src="https://img.shields.io/badge/calvo__jp-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />](https://twitter.com/calvo__jp)
