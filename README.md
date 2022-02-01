@@ -4,14 +4,14 @@ Web developer based in PH 🇵🇭
 
 <br>
 
-<div style=width:350px;height:225px;background:#18181b;border-radius:.4rem>
-<div style=box-sizing:border-box;padding:1rem;display:flex;flex-direction:justify-between;width:100%;gap:.25rem>
-<div style=width:.8rem;height:.8rem;border-radius:100%;background-color:#ef4444></div>
-<div style=width:.8rem;height:.8rem;border-radius:100%;background-color:#eab308></div>
-<div style=width:.8rem;height:.8rem;border-radius:100%;background-color:#16a34a></div>
+<div style="width:350px;height:225px;background:#18181b;border-radius:.4rem">
+<div style="box-sizing:border-box;padding:1rem;display:flex;flex-direction:justify-between;width:100%;gap:.25rem">
+<div style="width:.8rem;height:.8rem;border-radius:100%;background-color:#ef4444"></div>
+<div style="width:.8rem;height:.8rem;border-radius:100%;background-color:#eab308"></div>
+<div style="width:.8rem;height:.8rem;border-radius:100%;background-color:#16a34a"></div>
 </div>
 <div style="font-family:monospace;font-size:.9rem;padding:0 1rem 1rem;color:#d4d4d4">
-<div style=display:flex;gap:.5rem;align-items:center>
+<div style="display:flex;gap:.5rem;align-items:center">
 <span>&gt;</span>
 <span>npm install awesomeness</span>
 <span style="height:1rem;width:1px;background-color:#f5f5f5;animation:alternate 1s infinite"></span>
