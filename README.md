@@ -7,6 +7,7 @@ A student and an aspiring web dev from PH 🇵🇭
 ## Toolbox
 
 <div style="display:flex;">
+<img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/ubuntu/ubuntu.png" />
 <img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png"/>
 <img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png"/>
 <img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"/>
@@ -17,7 +18,6 @@ A student and an aspiring web dev from PH 🇵🇭
 <img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/e65ef46ef3e7bc457c93622f6a89fe8d3fd131d5/topics/graphql/graphql.png"/>
 <img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/postgresql/postgresql.png"/>
 <img width="32" height="32" src="https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg" />
-<img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/ubuntu/ubuntu.png" />
 </div>
 
 ## 2022 Goals
