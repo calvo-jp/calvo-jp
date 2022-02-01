@@ -4,7 +4,7 @@ Web developer based in PH 🇵🇭
 
 <br>
 
-<img src="https://raw.githubusercontent.com/calvo-jp/calvo-jp/main/terminal.jpg" />
+<img src="https://raw.githubusercontent.com/calvo-jp/calvo-jp/main/terminal.png" />
 
 <br>
 
