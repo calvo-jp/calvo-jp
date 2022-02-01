@@ -19,6 +19,7 @@ A student and an aspiring web dev from PH 🇵🇭
 <img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/e65ef46ef3e7bc457c93622f6a89fe8d3fd131d5/topics/graphql/graphql.png"/>
 <img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/postgresql/postgresql.png"/>
 <img width="32" height="32" src="https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg" />
+<img width="32" height="32" src="https://avatars.githubusercontent.com/u/17219288?s=200&v=4" />
 </div>
 
 ## 2022 Goals
