@@ -8,7 +8,13 @@ Web developer based in PH 🇵🇭
 
 <br>
 
-**2022 Goals 🚀**
+**🔥 Tech Stacks**
+
+<img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png" />
+
+<br>
+
+**:rocket: 2022 Goals**
 
 - 💼 Get a real job
 - 📋 Contribute (atleast 30) to open source projects
@@ -17,16 +23,7 @@ Web developer based in PH 🇵🇭
 
 <br>
 
-**Tech Stacks 🔥**
-
-```python
-# TODO
-# make this work
-```
-
-<br>
-
-**Socials 👍**
+**👍 Contact**
 
 [<img src="https://img.shields.io/badge/calvojp-1877F2?style=for-the-badge&logo=facebook&logoColor=white" />](https://facebook.com/calvojp)
 [<img src="https://img.shields.io/badge/calvo__jp-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />](https://twitter.com/calvo__jp)
