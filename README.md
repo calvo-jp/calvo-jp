@@ -1,6 +1,6 @@
 # Hello! I'm John 😎
 
-A student and an aspiring web dev from PH 🇵🇭
+A student and an aspiring web dev from Ph 🇵🇭
 
 <img src="https://raw.githubusercontent.com/calvo-jp/calvo-jp/main/terminal.png" />
 
@@ -20,15 +20,13 @@ A student and an aspiring web dev from PH 🇵🇭
 <img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png"/>
 <img width="32" height="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/postgresql/postgresql.png"/>
 <img width="32" height="32" src="https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg" />
-
 </div>
 
-## 2022 Goals
+## Goals
 
-- 💼 Get a real job
-- 📋 Contribute to open source projects
+- 💼 Get a dev job
+- ❤️ Contribute to open source projects
 - 🎯 Learn flutter/dart
-- 📁 More realistic projects
 
 ## Contact
 
