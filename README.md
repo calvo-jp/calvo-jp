@@ -2,7 +2,7 @@
 
 A student and an aspiring web dev from Ph 🇵🇭
 
-<img src="https://raw.githubusercontent.com/calvo-jp/calvo-jp/main/terminal.png" />
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=calvo-jp&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
 
 ## Toolbox
 
