@@ -2,7 +2,11 @@
 
 A student and an aspiring web dev from Ph 🇵🇭
 
+<br />
+
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=calvo-jp&layout=compact&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
+
+<br />
 
 ## Toolbox
 
@@ -22,11 +26,15 @@ A student and an aspiring web dev from Ph 🇵🇭
 <img width="32" height="32" src="https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg" />
 </div>
 
+<br />
+
 ## Goals
 
 - 💼 Get a dev job
 - ❤️ Contribute to open source projects
 - 🎯 Learn flutter/dart
+
+<br />
 
 ## Contact
 
