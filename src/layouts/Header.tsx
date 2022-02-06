@@ -1,8 +1,13 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from '../assets/styles/header.module.scss';
 
 const Header = () => {
+  const [open, setOpen] = React.useState<boolean>();
+
+  const toggle = () => setOpen((value) => !value);
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -10,7 +15,12 @@ const Header = () => {
         <span>STUDIOS</span>
       </div>
 
-      <nav className={styles.nav}>
+      <nav
+        className={clsx({
+          [styles.nav]: true,
+          [styles.active]: open,
+        })}
+      >
         <ul>
           <li>
             <Link href="/about">About</Link>
@@ -23,6 +33,17 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+
+      <button
+        onClick={toggle}
+        className={clsx({
+          [styles.hamburger]: true,
+          [styles.active]: open,
+        })}
+      >
+        <div></div>
+        <div></div>
+      </button>
     </header>
   );
 };

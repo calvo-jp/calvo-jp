@@ -1,4 +1,5 @@
 @import 'vars';
+@import 'animate';
 
 .header {
   padding: 1rem;
@@ -19,13 +20,19 @@
   }
 
   .nav {
+    display: none;
+    animation: fadeIn 250ms linear;
+
+    &.active {
+      display: flex;
+    }
+
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.438);
-    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -44,7 +51,7 @@
         a {
           text-decoration: none;
           color: inherit;
-          font-size: 1.6rem;
+          font-size: 1.4rem;
           font-weight: 300;
           text-transform: uppercase;
 
@@ -55,11 +62,49 @@
       }
     }
   }
+
+  .hamburger {
+    display: block;
+    border: none;
+    width: 32px;
+    height: 24px;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 9;
+
+    div {
+      width: 100%;
+      height: 1px;
+      background-color: darken($color: $primaryColor, $amount: 30);
+      transition: all 200ms ease-in-out;
+    }
+
+    div:first-child {
+      margin-bottom: 0.2rem;
+    }
+
+    div:last-child {
+      margin-top: 0.2rem;
+    }
+
+    &.active {
+      div:first-child {
+        margin-bottom: 0;
+        rotate: 45deg;
+      }
+
+      div:last-child {
+        margin-top: 0;
+        rotate: -45deg;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: $breakpointMd) {
   .header {
     .nav {
+      display: block;
       position: static;
       background-color: unset;
       width: auto;
@@ -82,6 +127,10 @@
           }
         }
       }
+    }
+
+    .hamburger {
+      display: none;
     }
   }
 }
