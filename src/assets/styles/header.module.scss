@@ -35,6 +35,12 @@
       margin: 0;
 
       li {
+        text-align: center;
+
+        &:not(:first-child) {
+          margin-top: 0.5rem;
+        }
+
         a {
           text-decoration: none;
           color: inherit;
@@ -63,9 +69,17 @@
         display: flex;
         gap: 1rem;
 
-        li a {
-          font-weight: 400;
-          font-size: 1rem;
+        li {
+          text-align: unset;
+
+          &:not(:first-child) {
+            margin-top: 0;
+          }
+
+          a {
+            font-weight: 400;
+            font-size: 1rem;
+          }
         }
       }
     }
