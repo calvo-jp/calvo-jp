@@ -1,3 +1,5 @@
+@import 'vars';
+
 *,
 ::before,
 ::after {
@@ -13,10 +15,9 @@ html {
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-  background-color: rgb(255, 255, 255);
-  color: rgb(51, 51, 51);
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: rgb(14, 26, 35);
+  color: rgb(255, 255, 255);
   min-height: 100vh;
 }
 
@@ -133,11 +134,4 @@ progress {
 
 summary {
   display: list-item;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: rgb(48, 49, 65);
-    color: rgb(255, 255, 255);
-  }
 }
