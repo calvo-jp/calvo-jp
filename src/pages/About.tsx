@@ -1,17 +1,7 @@
-import styles from '../assets/styles/about.module.scss';
-import Footer from '../layouts/Footer';
-import Header from '../layouts/Header';
+import Layout from '../layouts/Layout';
 
 const About = () => {
-  return (
-    <div className={styles.container}>
-      <Header />
-
-      <main className={styles.main}></main>
-
-      <Footer />
-    </div>
-  );
+  return <Layout></Layout>;
 };
 
 export default About;
