@@ -15,9 +15,9 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Roboto Condensed', sans-serif;
-  background-color: rgb(14, 26, 35);
-  color: rgb(255, 255, 255);
+  font-family: $primaryFont;
+  color: $primaryColor;
+  background-color: $primaryBgColor;
   min-height: 100vh;
 }
 
