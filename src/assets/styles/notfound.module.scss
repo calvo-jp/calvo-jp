@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 
   article {
     text-align: center;
@@ -27,10 +28,10 @@
     text-decoration: none;
     margin-top: 1.4rem;
     text-transform: uppercase;
-    padding: 1rem;
-    border-radius: 1rem;
-    border: 1px solid darken($color: $primaryColor, $amount: 55);
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid darken($color: $primaryColor, $amount: 50);
     background-color: transparent;
-    color: $primaryColor;
+    color: inherit;
   }
 }
