@@ -3,10 +3,15 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from '../assets/styles/header.module.scss';
 
+// prettier-ignore
+const links = [
+  '/about', 
+  '/projects', 
+  '/contact'
+]
+
 const Header = () => {
   const [open, setOpen] = React.useState<boolean>();
-
-  const toggle = () => setOpen((value) => !value);
 
   return (
     <header className={styles.header}>
@@ -22,20 +27,26 @@ const Header = () => {
         })}
       >
         <ul>
-          <li>
-            <Link href="/about">About</Link>
-          </li>
-          <li>
-            <Link href="/projects">Projects</Link>
-          </li>
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
+          {links.map((link) => (
+            <li>
+              <NavLink
+                to={link}
+                onClick={() => setOpen(false)}
+                className={(props) => (props.isActive ? styles.active : '')}
+              >
+                {link
+                  .substring(1)
+                  .charAt(0)
+                  .toUpperCase()
+                  .concat(link.substring(2))}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
 
       <button
-        onClick={toggle}
+        onClick={() => setOpen((currentState) => !currentState)}
         className={clsx({
           [styles.hamburger]: true,
           [styles.active]: open,
@@ -45,21 +56,6 @@ const Header = () => {
         <div></div>
       </button>
     </header>
-  );
-};
-
-interface LinkProps {
-  href: string;
-}
-
-const Link: React.FC<LinkProps> = ({ href, children }) => {
-  return (
-    <NavLink
-      className={(props) => (props.isActive ? styles.active : '')}
-      to={href}
-    >
-      {children}
-    </NavLink>
   );
 };
 
