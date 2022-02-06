@@ -5,13 +5,15 @@ import {
   Routes,
 } from 'react-router-dom';
 import About from './pages/About';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/about" replace />} />
-        <Route path="/about" element={<About />} />
+        <Route path="about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
