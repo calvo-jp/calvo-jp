@@ -19,7 +19,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className={styles.container}>
+    <footer className={styles.footer}>
       <div className={styles.copywright}>&copy; JP CALVO {currentYear}</div>
 
       <ul className={styles.socials}>
