@@ -1,0 +1,47 @@
+@import 'vars';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+
+  .copywright {
+    order: 1;
+    font-size: 0.8rem;
+  }
+
+  .socials {
+    order: 0;
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .socialIcon {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpointMd) {
+  .container {
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .copywright {
+      order: 0;
+    }
+
+    .socials {
+      order: 1;
+    }
+  }
+}
