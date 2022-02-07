@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
 import styles from '../assets/styles/notfound.module.scss';
 
-const NotFound = () => {
+interface NotFoundProps {
+  redirect?: string;
+  message?: string;
+}
+
+const NotFound = (props: NotFoundProps) => {
+  const { redirect = '/about', message = 'Go back to homepage' } = props;
+
   return (
     <div className={styles.container}>
       <article>
@@ -9,8 +16,8 @@ const NotFound = () => {
         <p>The page you are trying to access does not exist</p>
       </article>
 
-      <Link to="/about" className={styles.backButton}>
-        Go back to homepage
+      <Link to={redirect} className={styles.backButton}>
+        {message}
       </Link>
     </div>
   );
