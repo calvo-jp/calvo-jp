@@ -32,8 +32,11 @@
     font-family: vars.$secondaryFont;
     padding: 0.8rem;
     border-radius: 8px;
-    border: 1px solid darken($color: vars.$primaryColor, $amount: 50);
+    border: 1px solid lighten($color: vars.$primaryBgColor, $amount: 20);
     background-color: transparent;
     color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 }
