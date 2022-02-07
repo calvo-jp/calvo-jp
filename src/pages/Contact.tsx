@@ -1,7 +1,5 @@
-import Layout from '../layouts/Layout';
-
 const Contact = () => {
-  return <Layout></Layout>;
+  return <div></div>;
 };
 
 export default Contact;
