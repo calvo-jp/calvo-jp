@@ -1,19 +1,27 @@
 @use 'vars';
 
 .container {
-  display: flex;
   flex-grow: 1;
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
 
   .about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
     padding: 1.4rem;
 
-    .heading {
+    .heading,
+    .bio {
       margin: 0;
+    }
+
+    .heading {
       font-size: 2.5rem;
+      // TODO: Is this weight available?
       font-weight: 900;
-      text-align: center;
 
       // ref: https://css-tricks.com/snippets/css/gradient-text/
       .gradientText {
@@ -26,14 +34,12 @@
     }
 
     .bio {
-      margin: 0;
       margin-top: 1rem;
       font-size: 1.2rem;
       font-weight: 300;
     }
 
     .buttonContainer {
-      // ref: https://css-tricks.com/gradient-borders-in-css/
       .gradientButton {
         $borderWidth: 2px;
         $borderRadius: 0.6rem;
@@ -45,13 +51,12 @@
         align-items: center;
         text-decoration: none;
         position: relative;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 2rem;
+        margin: 2rem auto 0;
         padding: 0.8rem;
         color: vars.$primaryColor;
         text-transform: uppercase;
 
+        // ref: https://css-tricks.com/gradient-borders-in-css/
         background-clip: padding-box;
         background-color: vars.$primaryBgColor;
         border: $borderWidth solid transparent;
@@ -74,28 +79,9 @@
   }
 }
 
-@media screen and (min-width: vars.$breakpointMd) {
-  .container {
-    .about {
-      .heading {
-        text-align: left;
-      }
-
-      .buttonContainer {
-        .gradientButton {
-          margin-left: 0;
-          margin-right: 0;
-        }
-      }
-    }
-  }
-}
-
 @media screen and (min-width: vars.$breakpointLg) {
   .container {
     .about {
-      width: 80%;
-
       .heading {
         font-size: 3.2rem;
       }
@@ -103,14 +89,6 @@
       .bio {
         font-size: 1.4rem;
       }
-    }
-  }
-}
-
-@media screen and (min-width: vars.$breakpointXl) {
-  .container {
-    .about {
-      width: 60%;
     }
   }
 }
