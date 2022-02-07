@@ -1,6 +1,7 @@
 @use 'vars';
 
 .footer {
+  font-family: vars.$secondaryFont;
   display: flex;
   flex-direction: column;
   align-items: center;
