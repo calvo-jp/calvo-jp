@@ -10,7 +10,7 @@ const About = () => {
           I'm <span className={styles.gradientText}>JP Calvo</span>.
         </h2>
 
-        <p className={styles.description}>
+        <p className={styles.bio}>
           An aspiring web developer who loves to use modern tech stacks.
         </p>
 
