@@ -25,7 +25,7 @@ const Footer = () => {
       <ul className={styles.socials}>
         {socialIcons.map(([SocialIcon, href], index) => (
           <li key={index}>
-            <a href={href} target="_blank">
+            <a href={href} target="_blank" rel="norefferer noopener">
               <SocialIcon className={styles.socialIcon} />
             </a>
           </li>
