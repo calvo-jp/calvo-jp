@@ -2,7 +2,7 @@ interface IProject {
   slug: string;
   name: string;
   description: string;
-  screenshots: string[];
+  screenshots: string;
   repository: string;
 
   /**
