@@ -1,0 +1,21 @@
+import styles from '../assets/styles/footer-skeleton.module.scss';
+
+const FooterSkeleton = () => {
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.copywright}></div>
+
+      <ul className={styles.icons}>
+        {new Array(5).fill(null).map((_, index) => (
+          <li key={index}>
+            <div className={styles.icon}></div>
+          </li>
+        ))}
+      </ul>
+    </footer>
+  );
+};
+
+const currentYear = new Date().getFullYear();
+
+export default FooterSkeleton;

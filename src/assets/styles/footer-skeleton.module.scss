@@ -1,0 +1,56 @@
+@use 'vars';
+@use 'animate' as *;
+
+.footer {
+  font-family: vars.$secondaryFont;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 0.8rem;
+
+  .copywright {
+    order: 1;
+    height: 0.8rem;
+    width: 6rem;
+    background-color: vars.$primaryColor;
+    border-radius: 2rem;
+    animation: pulse 1.5s infinite;
+  }
+
+  .icons {
+    order: 0;
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    animation: pulse 1.5s infinite;
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      background-color: vars.$primaryColor;
+      border-radius: 100%;
+      transition: all 5s ease-in-out;
+    }
+  }
+}
+
+@media screen and (min-width: vars.$breakpointMd) {
+  .footer {
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .copywright {
+      order: 0;
+    }
+
+    .socials {
+      order: 1;
+    }
+  }
+}
