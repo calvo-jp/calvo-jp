@@ -1,21 +1,30 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import styles from '../assets/styles/layout.module.scss';
-import Footer from './Footer';
-import Header from './Header';
+import FooterSkeleton from './FooterSkeleton';
+import HeaderSkeleton from './HeaderSkeleton';
 
-type LayoutProps = React.ComponentProps<'main'>;
+const Header = React.lazy(() => import('./Header'));
+const Footer = React.lazy(() => import('./Footer'));
 
-const Layout: React.FC<LayoutProps> = ({ children, className, ...props }) => {
+const Layout: React.FC<React.ComponentProps<'main'>> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
     <div className={styles.container}>
-      <Header />
+      <React.Suspense fallback={<HeaderSkeleton />}>
+        <Header />
+      </React.Suspense>
 
       <main className={clsx(styles.main, className)} {...props}>
         {children}
       </main>
 
-      <Footer />
+      <React.Suspense fallback={<FooterSkeleton />}>
+        <Footer />
+      </React.Suspense>
     </div>
   );
 };
