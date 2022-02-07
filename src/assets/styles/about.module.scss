@@ -41,7 +41,10 @@
         $borderRadius: 0.6rem;
 
         font-family: vars.$secondaryFont;
-        display: inline-block;
+        display: flex;
+        width: fit-content;
+        gap: 1rem;
+        align-items: center;
         text-decoration: none;
         position: relative;
         margin-top: 2rem;
