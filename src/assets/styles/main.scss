@@ -1,4 +1,4 @@
-@import 'vars';
+@use 'vars';
 
 *,
 ::before,
@@ -15,9 +15,9 @@ html {
 
 body {
   margin: 0;
-  font-family: $primaryFont;
-  color: $primaryColor;
-  background-color: $primaryBgColor;
+  font-family: vars.$primaryFont;
+  color: vars.$primaryColor;
+  background-color: vars.$primaryBgColor;
   min-height: 100vh;
 }
 

@@ -1,5 +1,5 @@
-@import 'vars';
-@import 'animate';
+@use 'vars';
+@use 'animate' as *;
 
 .header {
   padding: 1rem;
@@ -11,7 +11,7 @@
     font-size: 1rem;
 
     span:first-child {
-      color: $accentColor;
+      color: vars.$accentColor;
     }
 
     span:last-child {
@@ -56,7 +56,7 @@
           text-transform: uppercase;
 
           &.active {
-            color: $accentColor;
+            color: vars.$accentColor;
           }
         }
       }
@@ -75,7 +75,7 @@
     div {
       width: 100%;
       height: 1px;
-      background-color: darken($color: $primaryColor, $amount: 30);
+      background-color: darken($color: vars.$primaryColor, $amount: 30);
       transition: all 200ms ease-in-out;
     }
 
@@ -101,7 +101,7 @@
   }
 }
 
-@media screen and (min-width: $breakpointMd) {
+@media screen and (min-width: vars.$breakpointMd) {
   .header {
     .nav {
       display: block;

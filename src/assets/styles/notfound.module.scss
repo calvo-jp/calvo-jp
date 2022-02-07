@@ -1,4 +1,4 @@
-@import 'vars';
+@use 'vars';
 
 .container {
   min-height: 100vh;
@@ -30,7 +30,7 @@
     text-transform: uppercase;
     padding: 0.8rem;
     border-radius: 8px;
-    border: 1px solid darken($color: $primaryColor, $amount: 50);
+    border: 1px solid darken($color: vars.$primaryColor, $amount: 50);
     background-color: transparent;
     color: inherit;
   }
