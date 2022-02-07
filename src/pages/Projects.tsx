@@ -1,34 +1,19 @@
 import { Link } from 'react-router-dom';
+import projects from '../assets/json/projects.json';
 import styles from '../assets/styles/projects.module.scss';
+import IProject from '../types/project';
 
 const Projects = () => {
   return (
     <div className={styles.projects}>
-      <Project
-        slug="recipes"
-        name="Recipes"
-        description="Find or share amazing recipes"
-        repository="https://github.com/calvo-jp/recipes"
-      />
-
-      <Project
-        slug="hermes"
-        name="Hermes"
-        description="An light-weight facebook messenger alternative"
-        repository="https://github.com/calvo-jp/hermes"
-      />
+      {projects.map((project) => (
+        <Project key={project.slug} {...project} />
+      ))}
     </div>
   );
 };
 
-interface ProjectProps {
-  slug: string;
-  name: string;
-  description: string;
-  repository: string;
-}
-
-const Project = ({ slug, name, description }: ProjectProps) => {
+const Project = ({ slug, name, description }: IProject) => {
   const href = '/projects/' + slug;
 
   return (
