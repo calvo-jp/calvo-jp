@@ -15,7 +15,7 @@ const Background = () => {
               enable: true,
               mode: 'repulse',
             },
-            resize: false,
+            resize: true,
           },
           modes: {
             bubble: {
