@@ -1,28 +1,42 @@
-import { Link } from 'react-router-dom';
+import * as React from 'react';
 import projects from '../assets/json/projects.json';
 import styles from '../assets/styles/projects.module.scss';
 import IProject from '../types/project';
+import ArrowRightIcon from '../widgets/icons/ArrowRight';
 
 const Projects = () => {
   return (
     <div className={styles.projects}>
-      {projects.map((project) => (
-        <Project key={project.slug} {...project} />
-      ))}
+      <Project {...projects[0]} />
     </div>
   );
 };
 
-const Project = ({ slug, name, description }: IProject) => {
-  const href = '/projects/' + slug;
+const Project = ({ name, description, screenshots, repository }: IProject) => {
+  const [image, setImage] = React.useState<string>();
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    import(/* @vite-ignore */ '../assets/images/screenshots/' + screenshots[0])
+      .then((module) => setImage(module.default))
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  });
 
   return (
     <div className={styles.item}>
-      <Link to={href} className={styles.image}></Link>
+      <div className={styles.details}>
+        <div className={styles.name}>{name}</div>
+        <div className={styles.description}>{description}</div>
+      </div>
 
-      <div className={styles.info}>
-        <h2 className={styles.name}>{name}</h2>
-        <p className={styles.description}>{description}</p>
+      <div className={styles.image}>{image && <img src={image} alt="" />}</div>
+
+      <div className={styles.actions}>
+        <a href={repository}>
+          <span>Source Code</span>
+          <ArrowRightIcon width={16} height={16} />
+        </a>
       </div>
     </div>
   );

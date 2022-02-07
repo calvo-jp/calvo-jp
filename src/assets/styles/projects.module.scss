@@ -1,57 +1,61 @@
 @use 'vars';
 
 .projects {
-  display: grid;
-  gap: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: vars.$secondaryFont;
+  padding: 1rem;
 
   .item {
-    grid-column: 1fr;
+    display: block;
+    overflow: hidden;
 
     .image {
-      display: block;
-      height: 300px;
-      border: 1px solid #3b444f;
-      overflow: hidden;
-      transition: all 300ms ease-in-out;
-
-      &:hover,
-      &:focus {
-        border: 1px solid darken($color: vars.$accentColor, $amount: 25);
-        box-shadow: 0 0 0 2px #22d3ee2e;
+      img {
+        max-width: 100%;
+        max-height: 400px;
       }
     }
 
-    .info {
-      font-family: vars.$secondaryFont;
-      padding: 0.5rem 0;
+    .details {
+      margin-bottom: 1rem;
 
       .name {
-        margin: 0;
-        font-size: 1.65rem;
-        font-weight: 700;
-      }
-
-      .description {
-        margin: 0;
+        font-size: 1.6rem;
+        font-weight: 900;
       }
     }
-  }
-}
 
-@media screen and (min-width: vars.$breakpointMd) {
-  .projects {
-    grid-template-columns: repeat(2, 1fr);
+    .actions {
+      display: flex;
+      justify-content: end;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
   }
 }
 
 @media screen and (min-width: vars.$breakpointLg) {
   .projects {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+    .item {
+      max-width: 80%;
 
-@media screen and (min-width: vars.$breakpointXl) {
-  .projects {
-    grid-template-columns: repeat(4, 1fr);
+      .details {
+        .name {
+          font-size: 2rem;
+        }
+      }
+    }
   }
 }
