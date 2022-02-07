@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styles from '../assets/styles/header.module.scss';
 
 // prettier-ignore
@@ -15,10 +15,10 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
+      <Link to="/about" className={styles.logo}>
         <span>JOHN</span>
         <span>STUDIOS</span>
-      </div>
+      </Link>
 
       <nav
         className={clsx({
