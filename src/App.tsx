@@ -5,6 +5,7 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
+import Loader from './layouts/Loader';
 
 const About = React.lazy(() => import('./pages/About'));
 const Contact = React.lazy(() => import('./pages/Contact'));
@@ -25,11 +26,6 @@ const App = () => {
       </Router>
     </React.Suspense>
   );
-};
-
-// TODO: use loader svg
-const Loader = () => {
-  return <div>Loading...</div>;
 };
 
 export default App;
