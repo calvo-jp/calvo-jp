@@ -1,22 +1,8 @@
-import * as React from 'react';
 import styles from '../assets/styles/footer.module.scss';
-import FacebookIcon from '../widgets/icons/Facebook';
-import GithubIcon from '../widgets/icons/GithubIcon';
-import MessengerIcon from '../widgets/icons/Messenger';
-import StackoverflowIcon from '../widgets/icons/Stackoverflow';
-import TwitterIcon from '../widgets/icons/Twitter';
+import useSocials from '../hooks/useSocials';
 
 const Footer = () => {
-  const socialIcons: [
-    icon: React.FC<React.ComponentProps<'svg'>>,
-    href: string
-  ][] = [
-    [FacebookIcon, 'https://facebook.com/calvojp'],
-    [MessengerIcon, 'https://m.me/calvojp'],
-    [TwitterIcon, 'https://twitter.com/calvo__jp'],
-    [GithubIcon, 'https://github.com/calvo-jp'],
-    [StackoverflowIcon, 'https://stackoverflow.com/users/calvojp'],
-  ];
+  const socialIcons = useSocials();
 
   return (
     <footer className={styles.footer}>
