@@ -38,7 +38,8 @@ const Background = () => {
   return (
     <Particles
       options={{
-        fpsLimit: 60,
+        fullScreen: true,
+        fpsLimit: 45,
         interactivity: {
           events: {
             onClick: {
@@ -48,7 +49,7 @@ const Background = () => {
               enable: true,
               mode: 'repulse',
             },
-            resize: true,
+            resize: false,
           },
           modes: {
             bubble: {
@@ -65,10 +66,10 @@ const Background = () => {
         },
         particles: {
           color: {
-            value: '#ffffff',
+            value: '#94A3B8',
           },
           links: {
-            color: '#ffffff',
+            color: '#64748B',
             distance: 150,
             enable: true,
             opacity: 0.5,
