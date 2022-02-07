@@ -1,0 +1,69 @@
+@use 'vars';
+
+.contact {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  input,
+  textarea {
+    color: inherit;
+    border: 1px solid lighten($color: vars.$primaryBgColor, $amount: 15);
+    padding: 0.75rem;
+    background-color: lighten($color: vars.$primaryBgColor, $amount: 2);
+    border-radius: 0.5rem;
+    transition: all 250ms ease-in-out;
+
+    &:focus {
+      outline: none;
+      border: 1px solid #1f6f7b;
+      box-shadow: 0 0 0 3px #184b5347;
+    }
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .form {
+    max-width: 350px;
+    margin: 0 auto;
+
+    & > * {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .textfield {
+    width: 100%;
+
+    label {
+      font-family: vars.$secondaryFont;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+    }
+
+    textarea {
+      height: 6.25rem;
+      overflow: hidden;
+    }
+  }
+
+  .button {
+    font-family: vars.$secondaryFont;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: darken($color: vars.$accentColor, $amount: 25);
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+  }
+}
