@@ -1,0 +1,57 @@
+@use 'vars';
+
+.projects {
+  display: grid;
+  gap: 1rem;
+
+  .item {
+    grid-column: 1fr;
+
+    .image {
+      display: block;
+      height: 300px;
+      border: 1px solid #3b444f;
+      overflow: hidden;
+      transition: all 300ms ease-in-out;
+
+      &:hover,
+      &:focus {
+        border: 1px solid darken($color: vars.$accentColor, $amount: 25);
+        box-shadow: 0 0 0 2px #22d3ee2e;
+      }
+    }
+
+    .info {
+      font-family: vars.$secondaryFont;
+      padding: 0.5rem 0;
+
+      .name {
+        margin: 0;
+        font-size: 1.65rem;
+        font-weight: 700;
+      }
+
+      .description {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: vars.$breakpointMd) {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: vars.$breakpointLg) {
+  .projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: vars.$breakpointXl) {
+  .projects {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
