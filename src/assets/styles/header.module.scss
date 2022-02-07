@@ -2,6 +2,7 @@
 @use 'animate' as *;
 
 .header {
+  font-family: vars.$secondaryFont;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -22,6 +23,7 @@
   .nav {
     display: none;
     animation: fadeIn 250ms linear;
+    z-index: 9;
 
     &.active {
       display: flex;
@@ -32,7 +34,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.658);
+    background-color: rgba(0, 0, 0, 0.911);
     align-items: center;
     justify-content: center;
 
