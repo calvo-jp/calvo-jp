@@ -1,0 +1,104 @@
+@use 'vars';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .about {
+    padding: 1.4rem;
+
+    .heading {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-align: center;
+
+      // ref: https://css-tricks.com/snippets/css/gradient-text/
+      .gradientText {
+        background: -webkit-linear-gradient(#67e8f9, #38bdf8);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .description {
+      margin: 0;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    .buttonContainer {
+      text-align: center;
+
+      // ref: https://css-tricks.com/gradient-borders-in-css/
+      .gradientButton {
+        $borderWidth: 2px;
+        $borderRadius: 0.6rem;
+
+        font-family: vars.$secondaryFont;
+        display: inline-block;
+        text-decoration: none;
+        position: relative;
+        margin-top: 2rem;
+        padding: 0.8rem;
+        color: vars.$primaryColor;
+        text-transform: uppercase;
+
+        background-clip: padding-box;
+        background-color: vars.$primaryBgColor;
+        border: $borderWidth solid transparent;
+        border-radius: $borderRadius;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          margin: -$borderWidth;
+          border-radius: inherit;
+          background: linear-gradient(to right, #38bdf8, #67e8f9);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: vars.$breakpointMd) {
+  .container {
+    .about {
+      .heading,
+      .buttonContainer {
+        text-align: left;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: vars.$breakpointLg) {
+  .container {
+    .about {
+      width: 80%;
+
+      .heading {
+        font-size: 3rem;
+      }
+
+      .description {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: vars.$breakpointXl) {
+  .container {
+    .about {
+      width: 60%;
+    }
+  }
+}
