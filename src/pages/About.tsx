@@ -11,8 +11,7 @@ const About = () => {
         </h2>
 
         <p className={styles.description}>
-          An aspiring web developer who loves using new tech stacks to develop
-          fast websites with modern design, maintainable and easy to use.
+          An aspiring web developer who loves to use modern tech stacks.
         </p>
 
         <div className={styles.buttonContainer}>
