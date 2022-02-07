@@ -10,7 +10,7 @@ const NotFound = () => {
       </article>
 
       <Link to="/about" className={styles.backButton}>
-        Go to homepage
+        Go back to homepage
       </Link>
     </div>
   );
