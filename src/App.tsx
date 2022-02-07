@@ -6,7 +6,7 @@ import {
   Routes,
 } from 'react-router-dom';
 import Layout from './layouts/Layout';
-import Project from './pages/Project';
+import Project from './pages/project';
 
 const About = React.lazy(() => import('./pages/About'));
 const Contact = React.lazy(() => import('./pages/Contact'));
