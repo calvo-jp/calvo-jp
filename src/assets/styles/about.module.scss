@@ -18,7 +18,9 @@
       // ref: https://css-tricks.com/snippets/css/gradient-text/
       .gradientText {
         background: -webkit-linear-gradient(#67e8f9, #38bdf8);
+        background: linear-gradient(#67e8f9, #38bdf8);
         background-clip: text;
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
     }
