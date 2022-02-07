@@ -1,5 +1,5 @@
 @use 'vars';
-@use 'animate' as *;
+@use 'mixins';
 
 .header {
   padding: 1rem;
@@ -8,11 +8,10 @@
   align-items: center;
 
   .logo {
+    @include mixins.skeleton;
     height: 1rem;
     width: 6rem;
     border-radius: 2rem;
-    background-color: vars.$primaryColor;
-    animation: pulse 1.5s infinite;
   }
 
   .nav {
@@ -23,20 +22,17 @@
     width: 32px;
     height: 0.8rem;
     border-radius: 1.4rem;
-    background-color: vars.$primaryColor;
-    animation: pulse 1.5s infinite;
   }
 }
 
 @media screen and (min-width: vars.$breakpointMd) {
   .header {
     .nav {
+      @include mixins.skeleton;
       display: block;
       height: 1rem;
       width: 13rem;
       border-radius: 2rem;
-      background-color: vars.$primaryColor;
-      animation: pulse 1.5s infinite;
     }
 
     .hamburger {
