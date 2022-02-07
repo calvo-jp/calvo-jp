@@ -92,12 +92,12 @@
     &.active {
       div:first-child {
         margin-bottom: 0;
-        rotate: 45deg;
+        transform: rotate(45deg);
       }
 
       div:last-child {
         margin-top: 0;
-        rotate: -45deg;
+        transform: rotate(-45deg);
       }
     }
   }
