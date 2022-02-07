@@ -17,7 +17,7 @@ const Project = ({ name, description, screenshots, repository }: IProject) => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    import(/* @vite-ignore */ '../assets/images/screenshots/' + screenshots[0])
+    import(/* @vite-ignore */ '../assets/images/screenshots/' + screenshots)
       .then((module) => setImage(module.default))
       .catch(console.error)
       .finally(() => setLoading(false));
