@@ -32,7 +32,7 @@ const Header = () => {
               <NavLink
                 to={link}
                 onClick={() => setOpen(false)}
-                className={(props) => (props.isActive ? styles.active : '')}
+                className={(props) => clsx({ [styles.active]: props.isActive })}
               >
                 {link
                   .substring(1)
