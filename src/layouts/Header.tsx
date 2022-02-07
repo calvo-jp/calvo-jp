@@ -28,7 +28,7 @@ const Header = () => {
       >
         <ul>
           {links.map((link) => (
-            <li>
+            <li key={link}>
               <NavLink
                 to={link}
                 onClick={() => setOpen(false)}
