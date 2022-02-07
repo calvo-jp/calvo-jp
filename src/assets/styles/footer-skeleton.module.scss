@@ -1,5 +1,5 @@
 @use 'vars';
-@use 'animate' as *;
+@use 'mixins';
 
 .footer {
   font-family: vars.$secondaryFont;
@@ -11,10 +11,11 @@
   padding: 0.8rem;
 
   .copywright {
+    @include mixins.skeleton;
+
     order: 1;
     height: 0.8rem;
     width: 6rem;
-    background-color: vars.$primaryColor;
     border-radius: 2rem;
     animation: pulse 1.5s infinite;
   }
@@ -26,14 +27,12 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    animation: pulse 1.5s infinite;
 
     .icon {
+      @include mixins.skeleton;
       width: 24px;
       height: 24px;
-      background-color: vars.$primaryColor;
       border-radius: 100%;
-      transition: all 5s ease-in-out;
     }
   }
 }
