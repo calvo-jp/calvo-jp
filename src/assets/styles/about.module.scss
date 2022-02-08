@@ -78,7 +78,7 @@
   }
 }
 
-@media screen and (min-width: vars.$breakpointLg) {
+@media screen and (min-width: vars.$breakpointMd) {
   .container {
     .about {
       .heading {
@@ -87,6 +87,20 @@
 
       .bio {
         font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: vars.$breakpointLg) {
+  .container {
+    .about {
+      .heading {
+        font-size: 3.4rem;
+      }
+
+      .bio {
+        font-size: 1.6rem;
       }
     }
   }

@@ -16,7 +16,7 @@ const About = () => {
 
       <section className={styles.about}>
         <h2 className={styles.heading}>
-          I'm <span className={styles.gradientText}>JP Calvo</span>.
+          - <span className={styles.gradientText}>JP Calvo</span>.
         </h2>
 
         <p className={styles.bio}>
