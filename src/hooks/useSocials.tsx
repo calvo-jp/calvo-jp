@@ -1,5 +1,5 @@
 import FacebookIcon from '../widgets/icons/Facebook';
-import GithubIcon from '../widgets/icons/GithubIcon';
+import GithubIcon from '../widgets/icons/Github';
 import MessengerIcon from '../widgets/icons/Messenger';
 import StackoverflowIcon from '../widgets/icons/Stackoverflow';
 import TwitterIcon from '../widgets/icons/Twitter';
