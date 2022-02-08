@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const FacebookIcon: React.FC<React.ComponentProps<'svg'>> = (props) => {
+const FacebookIcon = (props: React.ComponentProps<'svg'>) => {
   return (
     <svg
       role="img"

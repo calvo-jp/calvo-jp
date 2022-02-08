@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const MessengerIcon: React.FC<React.ComponentProps<'svg'>> = (props) => {
+const MessengerIcon = (props: React.ComponentProps<'svg'>) => {
   return (
     <svg
       role="img"

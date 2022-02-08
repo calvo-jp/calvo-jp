@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const StackoverflowIcon: React.FC<React.ComponentProps<'svg'>> = (props) => {
+const StackoverflowIcon = (props: React.ComponentProps<'svg'>) => {
   return (
     <svg
       role="img"

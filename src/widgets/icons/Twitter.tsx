@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const TwitterIcon: React.FC<React.ComponentProps<'svg'>> = (props) => {
+const TwitterIcon = (props: React.ComponentProps<'svg'>) => {
   return (
     <svg
       role="img"

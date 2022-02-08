@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const GithubIcon: React.FC<React.ComponentProps<'svg'>> = (props) => {
+const GithubIcon = (props: React.ComponentProps<'svg'>) => {
   return (
     <svg
       role="img"
