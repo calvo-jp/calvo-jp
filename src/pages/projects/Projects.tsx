@@ -1,11 +1,9 @@
-import clsx from 'clsx';
 import * as React from 'react';
-import styles from '../assets/styles/projects.module.scss';
-import useProjects from '../hooks/useProjects';
-import IProject from '../types/project';
-import ArrowRightIcon from '../widgets/icons/ArrowRight';
-import ChevronLeftIcon from '../widgets/icons/ChevronLeft';
-import ChevronRightIcon from '../widgets/icons/ChevronRight';
+import styles from '../../assets/styles/projects.module.scss';
+import useProjects from '../../hooks/useProjects';
+import IProject from '../../types/project';
+import ArrowRightIcon from '../../widgets/icons/ArrowRight';
+import Control from './Control';
 
 const Projects = () => {
   const projects = useProjects();
@@ -58,35 +56,6 @@ const Project = ({ name, description, screenshots, repository }: IProject) => {
         </a>
       </div>
     </div>
-  );
-};
-
-type ControlType = 'next' | 'prev';
-
-interface ControlProps {
-  type: ControlType;
-  mobile?: boolean;
-  disabled?: boolean;
-  onClick?: () => void;
-}
-
-const Control = ({ type, mobile }: ControlProps) => {
-  const next = type === 'next';
-  const prev = type === 'prev';
-
-  return (
-    <button
-      className={clsx({
-        [styles.controls]: true,
-        [styles.desktop]: !mobile,
-        [styles.mobile]: mobile,
-        [styles.next]: next,
-        [styles.prev]: prev,
-      })}
-    >
-      {next && <ChevronRightIcon />}
-      {prev && <ChevronLeftIcon />}
-    </button>
   );
 };
 

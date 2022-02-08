@@ -10,7 +10,7 @@ import Layout from './layouts/Layout';
 const About = React.lazy(() => import('./pages/About'));
 const Contact = React.lazy(() => import('./pages/Contact'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
-const Projects = React.lazy(() => import('./pages/Projects'));
+const Projects = React.lazy(() => import('./pages/projects'));
 
 const App = () => {
   return (
