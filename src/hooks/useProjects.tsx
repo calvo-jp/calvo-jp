@@ -1,6 +1,6 @@
-import IProject from '../../types/project';
+import IProject from '../types/project';
 
-const projects: IProject[] = [
+const useProjects = (): IProject[] => [
   {
     slug: 'recipes',
     name: 'Recipes',
@@ -17,4 +17,4 @@ const projects: IProject[] = [
   },
 ];
 
-export default projects;
+export default useProjects;

@@ -1,13 +1,15 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import projects from '../assets/json/projects.json';
 import styles from '../assets/styles/projects.module.scss';
+import useProjects from '../hooks/useProjects';
 import IProject from '../types/project';
 import ArrowRightIcon from '../widgets/icons/ArrowRight';
 import ChevronLeftIcon from '../widgets/icons/ChevronLeft';
 import ChevronRightIcon from '../widgets/icons/ChevronRight';
 
 const Projects = () => {
+  const projects = useProjects();
+
   return (
     <div className={styles.projects}>
       <Project {...projects[0]} />
