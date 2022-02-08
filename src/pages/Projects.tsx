@@ -1,8 +1,11 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import projects from '../assets/json/projects.json';
 import styles from '../assets/styles/projects.module.scss';
 import IProject from '../types/project';
 import ArrowRightIcon from '../widgets/icons/ArrowRight';
+import ChevronLeftIcon from '../widgets/icons/ChevronLeft';
+import ChevronRightIcon from '../widgets/icons/ChevronRight';
 
 const Projects = () => {
   return (
@@ -15,11 +18,12 @@ const Projects = () => {
 const Project = ({ name, description, screenshots, repository }: IProject) => {
   const [image, setImage] = React.useState<string>();
   const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<boolean>();
 
   React.useEffect(() => {
     import(/* @vite-ignore */ '../assets/images/screenshots/' + screenshots)
       .then((module) => setImage(module.default))
-      .catch(console.error)
+      .catch(() => setError(true))
       .finally(() => setLoading(false));
   });
 
@@ -30,15 +34,57 @@ const Project = ({ name, description, screenshots, repository }: IProject) => {
         <div className={styles.description}>{description}</div>
       </div>
 
-      <div className={styles.image}>{image && <img src={image} alt="" />}</div>
+      <div className={styles.box}>
+        <Control type="prev" />
+
+        <div className={styles.image}>
+          <img src={image} alt="" />
+        </div>
+
+        <Control type="next" />
+      </div>
 
       <div className={styles.actions}>
+        <div className={styles.mobileControlsWrapper}>
+          <Control type="prev" mobile />
+          <Control type="next" mobile />
+        </div>
+
         <a href={repository}>
           <span>Source Code</span>
-          <ArrowRightIcon width={16} height={16} />
+          <ArrowRightIcon />
         </a>
       </div>
     </div>
+  );
+};
+
+type ControlType = 'next' | 'prev';
+
+interface ControlProps {
+  type: ControlType;
+  mobile?: boolean;
+  disabled?: boolean;
+  onClick?: () => void;
+}
+
+const Control = ({ type, mobile }: ControlProps) => {
+  const next = type === 'next';
+  const prev = type === 'prev';
+
+  return (
+    <button
+      className={clsx({
+        [styles.controls]: true,
+        [styles.desktop]: !mobile,
+        [styles.mobile]: mobile,
+        [styles.next]: next,
+        [styles.prev]: prev,
+      })}
+    >
+      {next && <ChevronRightIcon />}
+      {prev && <ChevronLeftIcon />}
+    </button>
   );
 };
 
