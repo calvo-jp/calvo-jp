@@ -1,3 +1,5 @@
+import hermes from '../assets/images/screenshots/hermes/1.png';
+import recipes from '../assets/images/screenshots/recipes/1.png';
 import IProject from '../types/project';
 
 const useProjects = (): IProject[] => [
@@ -5,14 +7,14 @@ const useProjects = (): IProject[] => [
     slug: 'recipes',
     name: 'Recipes',
     description: 'Search or find amazing recipes',
-    screenshots: 'recipes/1.png',
+    screenshots: recipes,
     repository: 'https://github.com/calvo-jp/recipes',
   },
   {
     slug: 'hermes',
     name: 'Hermes',
     description: 'A light-weight fb messenger alternative',
-    screenshots: 'recipes/1.png',
+    screenshots: hermes,
     repository: 'https://github.com/calvo-jp/hermes',
   },
 ];

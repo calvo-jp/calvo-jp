@@ -18,16 +18,8 @@ const Projects = () => {
 const imagesDir = '../../assets/images/screenshots/';
 
 const Project = ({ name, description, screenshots, repository }: IProject) => {
-  const [image, setImage] = React.useState<string>();
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<boolean>();
-
-  React.useEffect(() => {
-    import(/* @vite-ignore */ imagesDir + screenshots)
-      .then((module) => setImage(module.default))
-      .catch(() => setError(true))
-      .finally(() => setLoading(false));
-  });
 
   return (
     <div className={styles.item}>
@@ -40,7 +32,7 @@ const Project = ({ name, description, screenshots, repository }: IProject) => {
         <Control type="prev" />
 
         <div className={styles.image}>
-          <img src={image} alt="" />
+          <img src={screenshots} alt="" />
         </div>
 
         <Control type="next" />
