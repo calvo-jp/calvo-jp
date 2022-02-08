@@ -13,6 +13,10 @@ const links = [
 const Header = () => {
   const [open, setOpen] = React.useState<boolean>();
 
+  React.useEffect(() => {
+    return () => setOpen(false);
+  }, []);
+
   return (
     <header className={styles.header}>
       <Link to="/about" className={styles.logo}>

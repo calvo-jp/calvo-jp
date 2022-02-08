@@ -24,22 +24,22 @@
   }
 
   .nav {
-    display: none;
-    animation: fadeIn 250ms linear;
+    display: flex;
     z-index: 99;
-
-    &.active {
-      display: flex;
-    }
+    transition: right 200ms ease-in-out;
 
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
-    left: 0;
+    right: -100%;
     background-color: vars.$overlayBgColor;
     align-items: center;
     justify-content: center;
+
+    &.active {
+      right: 0;
+    }
 
     ul {
       list-style: none;
