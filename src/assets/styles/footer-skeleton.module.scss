@@ -1,8 +1,7 @@
 @use 'vars';
 @use 'mixins';
 
-.footer {
-  font-family: vars.$secondaryFont;
+.footerSkeleton {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +37,7 @@
 }
 
 @media screen and (min-width: vars.$breakpointMd) {
-  .footer {
+  .footerSkeleton {
     padding: 1rem;
     flex-direction: row;
     justify-content: space-between;

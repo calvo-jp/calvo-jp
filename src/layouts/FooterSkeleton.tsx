@@ -2,7 +2,7 @@ import styles from '../assets/styles/footer-skeleton.module.scss';
 
 const FooterSkeleton = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footerSkeleton}>
       <div className={styles.copywright}></div>
 
       <ul className={styles.icons}>

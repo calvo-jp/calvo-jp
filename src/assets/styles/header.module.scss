@@ -1,8 +1,10 @@
 @use 'vars';
 @use 'animate' as *;
+@use 'mixins' as *;
 
 .header {
-  font-family: vars.$secondaryFont;
+  font-family: vars.$RobotoCondensed;
+
   padding: 1rem;
   display: flex;
   justify-content: space-between;

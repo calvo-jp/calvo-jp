@@ -1,7 +1,7 @@
 @use 'vars';
 @use 'mixins';
 
-.header {
+.headerSkeleton {
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -27,7 +27,7 @@
 }
 
 @media screen and (min-width: vars.$breakpointMd) {
-  .header {
+  .headerSkeleton {
     .nav {
       @include mixins.skeleton;
       display: block;
