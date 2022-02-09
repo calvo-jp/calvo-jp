@@ -12,13 +12,14 @@ interface ControlProps {
   onClick?: () => void;
 }
 
-const Control = ({ type, mobile, onClick }: ControlProps) => {
+const Control = ({ type, mobile, disabled, onClick }: ControlProps) => {
   const next = type === 'next';
   const prev = type === 'prev';
 
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
       className={clsx({
         [styles.controls]: true,
         [styles.desktop]: !mobile,
