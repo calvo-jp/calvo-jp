@@ -6,7 +6,7 @@ const FooterSkeleton = () => {
       <div className={styles.copywright}></div>
 
       <ul className={styles.icons}>
-        {new Array(5).fill(null).map((_, index) => (
+        {new Array(4).fill(null).map((_, index) => (
           <li key={index}>
             <div className={styles.icon}></div>
           </li>
