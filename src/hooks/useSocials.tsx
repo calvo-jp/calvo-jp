@@ -1,7 +1,6 @@
 import FacebookIcon from '../widgets/icons/Facebook';
 import GithubIcon from '../widgets/icons/Github';
 import MessengerIcon from '../widgets/icons/Messenger';
-import StackoverflowIcon from '../widgets/icons/Stackoverflow';
 import TwitterIcon from '../widgets/icons/Twitter';
 
 const useSocials = (): [
@@ -12,7 +11,6 @@ const useSocials = (): [
   [MessengerIcon, 'https://m.me/calvojp'],
   [TwitterIcon, 'https://twitter.com/calvo__jp'],
   [GithubIcon, 'https://github.com/calvo-jp'],
-  [StackoverflowIcon, 'https://stackoverflow.com/users/calvojp'],
 ];
 
 export default useSocials;
