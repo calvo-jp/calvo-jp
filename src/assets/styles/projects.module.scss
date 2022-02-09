@@ -14,12 +14,26 @@
     align-items: center;
     cursor: pointer;
     border-radius: 100%;
+    position: relative;
+
+    &:active::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 100%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.103);
+      border-radius: 100%;
+      animation: ripple 200ms linear;
+    }
 
     svg {
       display: block;
     }
 
-    // DESKTOP
+    // DESKTOP CONTROLS
     &.desktop {
       background-color: #363e42;
       border: 0.5rem solid vars.$primaryBgColor;
@@ -48,7 +62,7 @@
       }
     }
 
-    // MOBILE
+    // MOBILE CONTROLS
     &.mobile {
       border: none;
       background-color: #a8c0ca14;
@@ -72,6 +86,7 @@
   .item {
     flex-grow: 1;
 
+    // BOX
     .box {
       height: 60vh;
       border-radius: 1rem;
@@ -152,5 +167,12 @@
     .actions {
       justify-content: flex-end;
     }
+  }
+}
+
+@keyframes ripple {
+  from {
+    width: 0;
+    height: 0;
   }
 }
