@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import image from '../assets/images/404.png';
 import styles from '../assets/styles/notfound.module.scss';
 import ArrowLeftIcon from '../widgets/icons/ArrowLeft';
 
@@ -12,15 +13,21 @@ const NotFound = (props: NotFoundProps) => {
 
   return (
     <div className={styles.container}>
-      <article>
-        <h1>Error 404</h1>
-        <p>The page you are trying to access does not exist</p>
-      </article>
+      <div className={styles.image}>
+        <img src={image} alt="" />
+      </div>
 
-      <Link to={redirect} className={styles.backButton}>
-        <ArrowLeftIcon width={16} height={16} />
-        <span>{message}</span>
-      </Link>
+      <div className={styles.text}>
+        <article>
+          <h1>Error 404</h1>
+          <p>The page you are trying to access does not exist</p>
+        </article>
+
+        <Link to={redirect} className={styles.backButton}>
+          <ArrowLeftIcon width={16} height={16} />
+          <span>{message}</span>
+        </Link>
+      </div>
     </div>
   );
 };
