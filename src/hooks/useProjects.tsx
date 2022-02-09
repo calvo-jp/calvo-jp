@@ -1,5 +1,6 @@
-import hermes from '../assets/images/screenshots/hermes/1.png';
-import recipes from '../assets/images/screenshots/recipes/1.png';
+import hermes from '../assets/images/screenshots/hermes.png';
+import pets from '../assets/images/screenshots/pets.png';
+import recipes from '../assets/images/screenshots/recipes.png';
 import IProject from '../types/project';
 
 const useProjects = (): IProject[] => [
@@ -21,7 +22,7 @@ const useProjects = (): IProject[] => [
     slug: 'pets',
     name: 'Pets',
     description: 'Buy or sell a pet',
-    screenshots: hermes,
+    screenshots: pets,
     repository: 'https://github.com/calvo-jp/pets',
   },
 ];
