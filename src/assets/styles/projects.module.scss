@@ -89,6 +89,7 @@
     // BOX
     .box {
       height: 60vh;
+      min-height: 375px;
       border-radius: 1rem;
       background-color: lighten($color: vars.$primaryBgColor, $amount: 3.5);
       position: relative;
