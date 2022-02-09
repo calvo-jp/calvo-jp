@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from '../../assets/styles/projects.module.scss';
 import useProjects from '../../hooks/useProjects';
 import Project from './Project';
@@ -5,9 +6,22 @@ import Project from './Project';
 const Projects = () => {
   const projects = useProjects();
 
+  const [current, setCurrent] = useState(0);
+
+  const handleNext = () => setCurrent((state) => state + 1);
+  const handlePrev = () => setCurrent((state) => state - 1);
+
   return (
     <div className={styles.projects}>
-      <Project {...projects[0]} />
+      <Project
+        data={projects[current]}
+        onNext={handleNext}
+        onPrev={handlePrev}
+        controls={{
+          next: current < projects.length - 1,
+          prev: current > 0,
+        }}
+      />
     </div>
   );
 };
