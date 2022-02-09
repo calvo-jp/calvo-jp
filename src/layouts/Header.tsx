@@ -22,6 +22,8 @@ const Header = () => {
       <Link to="/about" className={styles.logo}>
         <span>JOHN</span>
         <span>STUDIOS</span>
+
+        <div className={styles.preview}>PREVIEW</div>
       </Link>
 
       <nav
