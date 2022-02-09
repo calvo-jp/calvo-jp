@@ -10,6 +10,7 @@ const useProjects = (): IProject[] => [
     description: 'Search or find amazing recipes',
     screenshots: recipes,
     repository: 'https://github.com/calvo-jp/recipes',
+    hostedAt: 'https://recipes.vercel.app',
   },
   {
     slug: 'hermes',

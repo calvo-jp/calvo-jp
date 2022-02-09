@@ -67,7 +67,7 @@ const Project = (props: ProjectProps) => {
           target="_blank"
           rel="norefferer noopener"
         >
-          <span>{hostedAt ? 'Go live' : 'Source Code'}</span>
+          <span>{hostedAt ? 'Go to website' : 'Source code'}</span>
           <ArrowRightIcon />
         </a>
       </div>
