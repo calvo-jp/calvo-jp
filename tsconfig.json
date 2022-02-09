@@ -12,7 +12,8 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    // please see github issue: https://github.com/matteobruni/tsparticles/issues/3073
+    "isolatedModules": false,
     "noEmit": true,
     "jsx": "react-jsx"
   },
