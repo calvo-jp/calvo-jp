@@ -3,20 +3,24 @@
 .container {
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   padding: 1rem;
+  font-family: vars.$RobotoCondensed;
+
+  img {
+    max-width: 100%;
+  }
 
   article {
     text-align: center;
 
     h1 {
       font-weight: 700;
-      font-size: 3rem;
+      font-size: 2.8rem;
       text-transform: uppercase;
       margin: 0;
-      font-family: vars.$RobotoCondensed;
     }
 
     p {
@@ -27,7 +31,8 @@
 
   .backButton {
     text-decoration: none;
-    margin-top: 1.4rem;
+    margin: 1.4rem auto 0;
+    width: fit-content;
     text-transform: uppercase;
     font-family: vars.$RobotoCondensed;
     padding: 0.8rem;
@@ -38,5 +43,12 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+}
+
+@media screen and (min-width: vars.$breakpointLg) {
+  .container {
+    flex-direction: row;
+    gap: 2rem;
   }
 }
