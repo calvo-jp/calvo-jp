@@ -17,6 +17,13 @@ const useProjects = (): IProject[] => [
     screenshots: hermes,
     repository: 'https://github.com/calvo-jp/hermes',
   },
+  {
+    slug: 'pets',
+    name: 'Pets',
+    description: 'Buy or sell a pet',
+    screenshots: hermes,
+    repository: 'https://github.com/calvo-jp/pets',
+  },
 ];
 
 export default useProjects;
