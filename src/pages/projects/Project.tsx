@@ -17,7 +17,7 @@ interface ProjectProps {
 
 const Project = (props: ProjectProps) => {
   const {
-    data: { name, description, screenshots, repository },
+    data: { name, description, screenshots, repository, hostedAt },
 
     controls = {
       next: false,
@@ -62,13 +62,21 @@ const Project = (props: ProjectProps) => {
           />
         </div>
 
-        <a href={repository}>
-          <span>Source Code</span>
+        <a
+          href={unsafeCoalesce(hostedAt, repository)}
+          target="_blank"
+          rel="norefferer noopener"
+        >
+          <span>{hostedAt ? 'Go live' : 'Source Code'}</span>
           <ArrowRightIcon />
         </a>
       </div>
     </div>
   );
+};
+
+const unsafeCoalesce = (...args: any[]): any => {
+  for (const arg of args) if (!!arg) return arg;
 };
 
 export default Project;
