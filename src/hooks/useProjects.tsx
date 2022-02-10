@@ -10,7 +10,6 @@ const useProjects = (): IProject[] => [
     description: 'Search or find amazing recipes',
     screenshots: recipes,
     repository: 'https://github.com/calvo-jp/recipes',
-    hostedAt: 'https://amazingrecipes.vercel.app',
   },
   {
     slug: 'hermes',
@@ -18,6 +17,7 @@ const useProjects = (): IProject[] => [
     description: 'A light-weight fb messenger alternative',
     screenshots: hermes,
     repository: 'https://github.com/calvo-jp/hermes',
+    hostedAt: 'https://messengerhermes.vercel.app/',
   },
   {
     slug: 'pets',
