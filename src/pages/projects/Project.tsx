@@ -63,7 +63,7 @@ const Project = (props: ProjectProps) => {
         </div>
 
         <a
-          href={unsafeCoalesce(hostedAt, repository)}
+          href={hostedAt ? hostedAt : repository}
           target="_blank"
           rel="norefferer noopener"
         >
@@ -73,10 +73,6 @@ const Project = (props: ProjectProps) => {
       </div>
     </div>
   );
-};
-
-const unsafeCoalesce = (...args: any[]): any => {
-  for (const arg of args) if (!!arg) return arg;
 };
 
 export default Project;
