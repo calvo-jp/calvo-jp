@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import image from '../assets/images/404.png';
+import png from '../assets/images/404.png';
+import webp from '../assets/images/404.webp';
 import styles from '../assets/styles/notfound.module.scss';
 import ArrowLeftIcon from '../widgets/icons/ArrowLeft';
 
@@ -14,7 +15,7 @@ const NotFound = (props: NotFoundProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.image}>
-        <img src={image} alt="" />
+        <img src={webp} />
       </div>
 
       <div className={styles.text}>
