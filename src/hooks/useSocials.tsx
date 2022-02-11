@@ -6,11 +6,13 @@ import TwitterIcon from '../widgets/icons/Twitter';
 const useSocials = (): [
   icon: React.FC<React.ComponentProps<'svg'>>,
   url: string
-][] => [
-  [FacebookIcon, 'https://facebook.com/calvojp'],
-  [MessengerIcon, 'https://m.me/calvojp'],
-  [TwitterIcon, 'https://twitter.com/calvo__jp'],
-  [GithubIcon, 'https://github.com/calvo-jp'],
-];
+][] => {
+  return [
+    [FacebookIcon, 'https://facebook.com/calvojp'],
+    [MessengerIcon, 'https://m.me/calvojp'],
+    [TwitterIcon, 'https://twitter.com/calvo__jp'],
+    [GithubIcon, 'https://github.com/calvo-jp'],
+  ];
+};
 
 export default useSocials;
