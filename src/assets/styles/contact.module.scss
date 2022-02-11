@@ -34,10 +34,10 @@
 
       .background {
         position: absolute;
-        width: 116%;
-        height: 116%;
-        top: -8%;
-        left: -8%;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
         z-index: -1;
       }
 
@@ -97,6 +97,22 @@
         width: 20px;
         height: 20px;
         fill: white;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: vars.$breakpointSm) {
+  .contact {
+    .wrapper {
+      .content {
+        .background {
+          position: absolute;
+          width: 116%;
+          height: 116%;
+          top: -8%;
+          left: -8%;
+        }
       }
     }
   }
