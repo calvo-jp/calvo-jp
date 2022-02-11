@@ -1,37 +1,42 @@
 import * as React from 'react';
 import styles from '../assets/styles/contact.module.scss';
-import useSocials from '../hooks/useSocials';
-import ArrowRightIcon from '../widgets/icons/ArrowRight';
+import FooterSkeleton from '../layouts/FooterSkeleton';
+
+const Footer = React.lazy(() => import('../layouts/Footer'));
 
 const Contact = () => {
-  const socials = useSocials();
-
   return (
-    <div className={styles.contact}>
-      <div className={styles.wrapper}>
-        <section className={styles.content}>
-          <p>Looking for a developer?</p>
-          <h1>Let's Talk</h1>
+    <React.Fragment>
+      <div className={styles.contact}>
+        <div className={styles.wrapper}>
+          <section className={styles.content}>
+            <p>Looking for a developer?</p>
+            <h1>Let's Talk</h1>
 
-          <div className={styles.background}>
-            <Blob />
-          </div>
-        </section>
+            <div className={styles.background}>
+              <Blob />
+            </div>
+          </section>
 
-        <section className={styles.items}>
-          <Item
-            icon={PhoneIcon}
-            label="phone number"
-            value="+63 956-741-6960"
-          />
-          <Item
-            icon={EmailIcon}
-            label="email address"
-            value="calvojp92@gmail.com"
-          />
-        </section>
+          <section className={styles.items}>
+            <Item
+              icon={PhoneIcon}
+              label="phone number"
+              value="+63 956-741-6960"
+            />
+            <Item
+              icon={EmailIcon}
+              label="email address"
+              value="calvojp92@gmail.com"
+            />
+          </section>
+        </div>
       </div>
-    </div>
+
+      <React.Suspense fallback={<FooterSkeleton />}>
+        <Footer />
+      </React.Suspense>
+    </React.Fragment>
   );
 };
 
