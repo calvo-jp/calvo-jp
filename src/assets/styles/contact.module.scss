@@ -1,4 +1,148 @@
 @use 'vars';
 
 .contact {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  overflow: hidden;
+
+  p,
+  h1,
+  h2,
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100%;
+      color: #fff;
+      width: 400px;
+      height: 400px;
+      position: relative;
+
+      .background {
+        position: absolute;
+        width: 116%;
+        height: 116%;
+        top: -8%;
+        left: -8%;
+        z-index: -1;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        font-weight: 300;
+      }
+    }
+
+    .items {
+      margin-top: -6rem;
+
+      .item {
+        box-shadow: vars.$dropShadow;
+        background-color: #1047599c;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        &:not(:first-of-type) {
+          margin-top: 0.5rem;
+        }
+
+        .icon {
+          width: 24px;
+          height: 24px;
+          stroke: #4c8da2;
+        }
+
+        .label {
+          font-family: vars.$RobotoCondensed;
+          text-transform: uppercase;
+          font-size: 0.75rem;
+          color: #4ea3bf;
+        }
+
+        .value {
+          margin-top: 0.2rem;
+          font-size: 1rem;
+          color: #e0f7ff;
+        }
+      }
+    }
+
+    .socials {
+      margin-top: 1rem;
+      list-style: none;
+      display: flex;
+      gap: 0.25rem;
+
+      .icon {
+        width: 20px;
+        height: 20px;
+        fill: white;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: vars.$breakpointLg) {
+  .contact {
+    .wrapper {
+      flex-direction: row;
+      gap: 1rem;
+
+      .content {
+        h1 {
+          font-size: 3.4rem;
+        }
+
+        p {
+          font-size: 1.4rem;
+          font-weight: 300;
+        }
+      }
+
+      .items {
+        margin-top: 0;
+
+        .item {
+          padding: 1.5rem;
+
+          &:not(:first-of-type) {
+            margin-top: 0.75rem;
+          }
+
+          .icon {
+            width: 32px;
+            height: 32px;
+          }
+
+          .label {
+            font-size: 0.75rem;
+          }
+
+          .value {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
 }
