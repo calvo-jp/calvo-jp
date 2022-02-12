@@ -2,6 +2,7 @@ import styles from '../../assets/styles/projects.module.scss';
 import IProject from '../../types/project';
 import ArrowRightIcon from '../../widgets/icons/ArrowRight';
 import Control from './Control';
+import Image from './Image';
 
 interface ControlsConfig {
   next?: boolean;
@@ -39,7 +40,7 @@ const Project = (props: ProjectProps) => {
         {controls.prev && <Control type="prev" onClick={onPrev} />}
 
         <div className={styles.image}>
-          <img src={screenshots} alt="" />
+          <Image src={screenshots} alt="" placeholder={<div>Loading...</div>} />
         </div>
 
         {controls.next && <Control type="next" onClick={onNext} />}
