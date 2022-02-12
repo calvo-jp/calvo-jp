@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import image from '../assets/images/404.png';
 import styles from '../assets/styles/notfound.module.scss';
+import Container from '../layouts/Container';
 import ArrowLeftIcon from '../widgets/icons/ArrowLeft';
 
 const NotFound = () => {
   return (
-    <div className={styles.container}>
+    <Container className={styles.container}>
       <div className={styles.image}>
         <img src={image} alt="" draggable={false} />
       </div>
@@ -21,7 +22,7 @@ const NotFound = () => {
           <span>GO HOME</span>
         </Link>
       </div>
-    </div>
+    </Container>
   );
 };
 
