@@ -24,16 +24,16 @@ const Image = (props: ImageProps) => {
     } else {
       const image = new window.Image();
 
-      image.src = src;
-
-      image.addEventListener('load', () => {
+      image.onload = () => {
         previouslyLoaded.push(src);
         setPending(false);
-      });
+      };
+      
+      image.src = src;
     }
 
     return () => setPending(true);
-  }, [src]);
+  }, []);
 
   return (
     <React.Fragment>
