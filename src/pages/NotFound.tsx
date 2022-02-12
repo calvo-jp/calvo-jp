@@ -20,7 +20,7 @@ const NotFound = () => {
 
         <Link to="/about" className={styles.backButton}>
           <ArrowLeftIcon width={16} height={16} />
-          <span>GO HOME</span>
+          <span>GO TO HOMEPAGE</span>
         </Link>
       </div>
     </Container>
