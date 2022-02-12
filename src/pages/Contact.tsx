@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from '../assets/styles/contact.module.scss';
+import Container from '../layouts/Container';
 import FooterSkeleton from '../layouts/FooterSkeleton';
 import EnvelopeIcon from '../widgets/icons/Envelope';
 import PhoneIcon from '../widgets/icons/Phone';
@@ -9,7 +10,7 @@ const Footer = React.lazy(() => import('../layouts/Footer'));
 const Contact = () => {
   return (
     <React.Fragment>
-      <div className={styles.contact}>
+      <Container className={styles.contact}>
         <div className={styles.wrapper}>
           <section className={styles.content}>
             <p>Looking for a developer?</p>
@@ -33,7 +34,7 @@ const Contact = () => {
             />
           </section>
         </div>
-      </div>
+      </Container>
 
       <React.Suspense fallback={<FooterSkeleton />}>
         <Footer />
