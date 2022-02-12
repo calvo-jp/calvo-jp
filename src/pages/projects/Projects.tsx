@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from '../../assets/styles/projects.module.scss';
 import useProjects from '../../hooks/useProjects';
+import Container from '../../layouts/Container';
 import Project from './Project';
 
 const Projects = () => {
@@ -12,7 +13,7 @@ const Projects = () => {
   const handlePrev = () => setCurrent((state) => state - 1);
 
   return (
-    <div className={styles.projects}>
+    <Container className={styles.projects}>
       <Project
         data={projects[current]}
         onNext={handleNext}
@@ -22,7 +23,7 @@ const Projects = () => {
           prev: current > 0,
         }}
       />
-    </div>
+    </Container>
   );
 };
 
