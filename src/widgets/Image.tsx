@@ -14,7 +14,7 @@ interface ImageProps extends BaseProps {
 }
 
 const Image = (props: ImageProps) => {
-  const { src, placeholder = <React.Fragment />, ...all } = props;
+  const { src, alt, placeholder = <React.Fragment />, ...all } = props;
 
   const [pending, setPending] = React.useState(true);
 
@@ -28,8 +28,9 @@ const Image = (props: ImageProps) => {
         previouslyLoaded.push(src);
         setPending(false);
       };
-      
+
       image.src = src;
+      image.alt = alt;
     }
 
     return () => setPending(true);
