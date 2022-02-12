@@ -2,17 +2,20 @@ import * as React from 'react';
 
 const previouslyLoaded: string[] = [];
 
-interface ImageProps {
+type BaseProps = Omit<
+  React.ComponentProps<'img'>,
+  'src' | 'alt' | 'placeholder'
+>;
+
+interface ImageProps extends BaseProps {
   src: string;
-  alt?: string;
+  alt: string;
   placeholder?: any;
 }
 
-const Image = ({
-  src,
-  alt = '',
-  placeholder = <React.Fragment />,
-}: ImageProps) => {
+const Image = (props: ImageProps) => {
+  const { src, placeholder = <React.Fragment />, ...all } = props;
+
   const [pending, setPending] = React.useState(true);
 
   React.useEffect(() => {
@@ -34,8 +37,7 @@ const Image = ({
 
   return (
     <React.Fragment>
-      {pending && placeholder}
-      {!pending && <img src={src} alt={alt} />}
+      {pending ? placeholder : <img src={src} {...all} />}
     </React.Fragment>
   );
 };
