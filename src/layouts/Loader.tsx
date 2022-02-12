@@ -1,15 +1,10 @@
 import spinner from '../assets/images/spinner.svg';
 import styles from '../assets/styles/loader.module.scss';
 
-interface LoaderProps {
-  width?: number;
-  height?: number;
-}
-
-const Loader = (props: LoaderProps) => {
+const Loader = () => {
   return (
     <div className={styles.loader}>
-      <img src={spinner} alt="" {...props} />
+      <img src={spinner} alt="" />
     </div>
   );
 };
