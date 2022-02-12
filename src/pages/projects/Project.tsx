@@ -1,4 +1,3 @@
-import spinner from '../../assets/images/spinner.svg';
 import styles from '../../assets/styles/projects.module.scss';
 import IProject from '../../types/project';
 import ArrowRightIcon from '../../widgets/icons/ArrowRight';
