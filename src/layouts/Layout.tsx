@@ -18,7 +18,7 @@ const Layout: React.FC<React.ComponentProps<'div'>> = ({
         <Header />
       </React.Suspense>
 
-      <div className={clsx(styles.wrapper, className)} {...props}>
+      <div className={clsx(styles.outerWrapper, className)} {...props}>
         <React.Suspense fallback={<Loader />}>
           <Outlet />
         </React.Suspense>
