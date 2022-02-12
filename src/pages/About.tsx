@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../assets/styles/about.module.scss';
+import Container from '../layouts/Container';
 import FooterSkeleton from '../layouts/FooterSkeleton';
 import ArrowRightIcon from '../widgets/icons/ArrowRight';
 
@@ -9,7 +10,7 @@ const Background = React.lazy(() => import('../layouts/Background'));
 
 const About = () => {
   return (
-    <div className={styles.container}>
+    <Container className={styles.container}>
       <React.Suspense fallback={<React.Fragment />}>
         <Background />
       </React.Suspense>
@@ -34,7 +35,7 @@ const About = () => {
       <React.Suspense fallback={<FooterSkeleton />}>
         <Footer />
       </React.Suspense>
-    </div>
+    </Container>
   );
 };
 
