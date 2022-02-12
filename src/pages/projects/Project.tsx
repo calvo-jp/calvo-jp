@@ -1,3 +1,4 @@
+import spinner from '../../assets/images/spinner.svg';
 import styles from '../../assets/styles/projects.module.scss';
 import IProject from '../../types/project';
 import ArrowRightIcon from '../../widgets/icons/ArrowRight';
@@ -40,7 +41,11 @@ const Project = (props: ProjectProps) => {
         {controls.prev && <Control type="prev" onClick={onPrev} />}
 
         <div className={styles.image}>
-          <Image src={screenshots} alt="" placeholder={<div>Loading...</div>} />
+          <Image
+            src={screenshots}
+            alt=""
+            placeholder={<div className={styles.loader}>Loading...</div>}
+          />
         </div>
 
         {controls.next && <Control type="next" onClick={onNext} />}
