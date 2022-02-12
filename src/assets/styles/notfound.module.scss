@@ -2,14 +2,17 @@
 
 .container {
   display: flex;
-  align-items: center;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
   padding: 1rem;
-  font-family: vars.$RobotoCondensed;
+  color: #a1abb0;
 
-  img {
-    max-width: 100%;
+  .image {
+    margin: 0 auto;
+
+    img {
+      width: 350px;
+    }
   }
 
   article {
@@ -17,7 +20,7 @@
 
     h1 {
       font-weight: 700;
-      font-size: 2.8rem;
+      font-size: 2.4rem;
       text-transform: uppercase;
       margin: 0;
     }
@@ -25,6 +28,7 @@
     p {
       margin: 0;
       margin-top: 0.4rem;
+      font-size: 0.9rem;
     }
   }
 
@@ -48,6 +52,21 @@
 @media screen and (min-width: vars.$breakpointLg) {
   .container {
     flex-direction: row;
+    align-items: center;
     gap: 2rem;
+
+    .image {
+      margin: 0;
+    }
+
+    article {
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
   }
 }

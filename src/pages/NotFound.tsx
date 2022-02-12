@@ -3,12 +3,13 @@ import image from '../assets/images/404.png';
 import styles from '../assets/styles/notfound.module.scss';
 import Container from '../layouts/Container';
 import ArrowLeftIcon from '../widgets/icons/ArrowLeft';
+import Image from '../widgets/Image';
 
 const NotFound = () => {
   return (
     <Container className={styles.container}>
       <div className={styles.image}>
-        <img src={image} alt="" draggable={false} />
+        <Image src={image} alt="" draggable={false} />
       </div>
 
       <div className={styles.text}>
