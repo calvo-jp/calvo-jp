@@ -33,7 +33,7 @@ const Image = (props: ImageProps) => {
     }
 
     return () => setPending(true);
-  }, []);
+  }, [src]);
 
   return (
     <React.Fragment>
