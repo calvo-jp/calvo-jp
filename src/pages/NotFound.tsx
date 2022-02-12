@@ -1,21 +1,13 @@
 import { Link } from 'react-router-dom';
-import png from '../assets/images/404.png';
-import webp from '../assets/images/404.webp';
+import image from '../assets/images/404.png';
 import styles from '../assets/styles/notfound.module.scss';
 import ArrowLeftIcon from '../widgets/icons/ArrowLeft';
 
-interface NotFoundProps {
-  redirect?: string;
-  message?: string;
-}
-
-const NotFound = (props: NotFoundProps) => {
-  const { redirect = '/about', message = 'Go back to homepage' } = props;
-
+const NotFound = () => {
   return (
     <div className={styles.container}>
       <div className={styles.image}>
-        <img src={webp} />
+        <img src={image} alt="" draggable={false} />
       </div>
 
       <div className={styles.text}>
@@ -24,9 +16,9 @@ const NotFound = (props: NotFoundProps) => {
           <p>The page you are trying to access does not exist</p>
         </article>
 
-        <Link to={redirect} className={styles.backButton}>
+        <Link to="/about" className={styles.backButton}>
           <ArrowLeftIcon width={16} height={16} />
-          <span>{message}</span>
+          <span>GO HOME</span>
         </Link>
       </div>
     </div>
