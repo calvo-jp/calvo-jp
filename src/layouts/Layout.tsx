@@ -3,9 +3,9 @@ import * as React from 'react';
 import { Outlet } from 'react-router-dom';
 import styles from '../assets/styles/layout.module.scss';
 import HeaderSkeleton from './HeaderSkeleton';
-import Loader from './Loader';
 
 const Header = React.lazy(() => import('./Header'));
+const SpinnerIcon = React.lazy(() => import('../widgets/icons/Spinner'));
 
 const Layout: React.FC<React.ComponentProps<'div'>> = ({
   children,
@@ -23,6 +23,16 @@ const Layout: React.FC<React.ComponentProps<'div'>> = ({
           <Outlet />
         </React.Suspense>
       </div>
+    </div>
+  );
+};
+
+const Loader = () => {
+  return (
+    <div className={styles.spinner}>
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <SpinnerIcon />
+      </React.Suspense>
     </div>
   );
 };
