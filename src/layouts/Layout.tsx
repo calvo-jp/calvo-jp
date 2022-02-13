@@ -19,7 +19,7 @@ const Layout: React.FC<React.ComponentProps<'div'>> = ({
       </React.Suspense>
 
       <div className={clsx(styles.outerWrapper, className)} {...props}>
-        <React.Suspense fallback={<Loader />}>
+        <React.Suspense fallback={<Spinner />}>
           <Outlet />
         </React.Suspense>
       </div>
@@ -27,7 +27,7 @@ const Layout: React.FC<React.ComponentProps<'div'>> = ({
   );
 };
 
-const Loader = () => {
+const Spinner = () => {
   return (
     <div className={styles.spinner}>
       <React.Suspense fallback={<div>Loading...</div>}>
