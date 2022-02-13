@@ -4,12 +4,6 @@ interface IProject {
   description: string;
   screenshots: string;
   repository: string;
-
-  /**
-   *
-   * The url where the project is currently hosted
-   *
-   */
   hostedAt?: string;
 }
 
