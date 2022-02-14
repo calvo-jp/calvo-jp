@@ -4,7 +4,8 @@ A student and an aspiring web dev from Ph 🇵🇭
 
 <br />
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=calvo-jp&layout=compact&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=calvo-jp&layout=compact&theme=dark)](https://github.com/anuraghazra/github-readme-stats)
 
 <br />
 
