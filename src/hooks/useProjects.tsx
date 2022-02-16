@@ -3,7 +3,7 @@ import pets from '../assets/images/screenshots/pets.png';
 import recipes from '../assets/images/screenshots/recipes.png';
 import IProject from '../types/project';
 
-const useProjects = (): IProject[] => [
+const items: IProject[] = [
   {
     slug: 'recipes',
     name: 'Recipes',
@@ -28,4 +28,5 @@ const useProjects = (): IProject[] => [
   },
 ];
 
+const useProjects = () => items;
 export default useProjects;
