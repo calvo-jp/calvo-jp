@@ -16,7 +16,6 @@ const items: IProject[] = [
     description: 'A light-weight fb messenger alternative',
     image: hermes,
     repository: 'https://github.com/calvo-jp/hermes',
-    hostedAt: 'https://messengerhermes.vercel.app/',
   },
   {
     slug: 'pets',
