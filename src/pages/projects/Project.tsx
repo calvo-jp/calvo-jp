@@ -18,7 +18,7 @@ interface ProjectProps {
 
 const Project = (props: ProjectProps) => {
   const {
-    data: { name, description, screenshots, repository, hostedAt },
+    data: { name, description, image, repository, hostedAt },
 
     controls = {
       next: false,
@@ -40,11 +40,14 @@ const Project = (props: ProjectProps) => {
         {controls.prev && <Control type="prev" onClick={onPrev} />}
 
         <div className={styles.image}>
-          <Image
-            src={screenshots}
-            alt=""
-            placeholder={<div className={styles.loader}>Loading...</div>}
-          />
+          {!image && <div className={styles.alert}>No image available</div>}
+          {image && (
+            <Image
+              src={image}
+              alt=""
+              placeholder={<div className={styles.loader}>Loading...</div>}
+            />
+          )}
         </div>
 
         {controls.next && <Control type="next" onClick={onNext} />}

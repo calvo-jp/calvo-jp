@@ -2,8 +2,8 @@ interface IProject {
   slug: string;
   name: string;
   description: string;
-  screenshots: string;
   repository: string;
+  image?: string;
   hostedAt?: string;
 }
 

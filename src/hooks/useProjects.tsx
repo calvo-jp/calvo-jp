@@ -1,5 +1,4 @@
 import hermes from '../assets/images/screenshots/hermes.png';
-import pets from '../assets/images/screenshots/pets.png';
 import recipes from '../assets/images/screenshots/recipes.png';
 import IProject from '../types/project';
 
@@ -8,14 +7,14 @@ const items: IProject[] = [
     slug: 'recipes',
     name: 'Recipes',
     description: 'Search or find amazing recipes',
-    screenshots: recipes,
+    image: recipes,
     repository: 'https://github.com/calvo-jp/recipes',
   },
   {
     slug: 'hermes',
     name: 'Hermes',
     description: 'A light-weight fb messenger alternative',
-    screenshots: hermes,
+    image: hermes,
     repository: 'https://github.com/calvo-jp/hermes',
     hostedAt: 'https://messengerhermes.vercel.app/',
   },
@@ -23,7 +22,6 @@ const items: IProject[] = [
     slug: 'pets',
     name: 'Pets',
     description: 'Buy or sell a pet',
-    screenshots: pets,
     repository: 'https://github.com/calvo-jp/pets',
   },
 ];
