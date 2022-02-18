@@ -8,6 +8,7 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.8rem;
+  height: vars.$footerHeightMobile;
 
   .copywright {
     order: 1;
@@ -21,6 +22,14 @@
     list-style: none;
     padding: 0;
     margin: 0;
+
+    & > li {
+      font-size: 0;
+
+      & > a {
+        display: block;
+      }
+    }
 
     .socialIcon {
       width: 24px;
@@ -37,10 +46,11 @@
 
 @media screen and (min-width: vars.$breakpointMd) {
   .footer {
+    height: vars.$footerHeightDesktop;
     padding: 1rem;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-end;
 
     .copywright {
       order: 0;

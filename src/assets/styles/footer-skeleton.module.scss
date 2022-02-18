@@ -2,11 +2,12 @@
 @use 'mixins';
 
 .footerSkeleton {
+  height: vars.$footerHeightMobile;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
   padding: 0.8rem;
 
   .copywright {
@@ -29,8 +30,8 @@
 
     .icon {
       @include mixins.skeleton;
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       border-radius: 100%;
     }
   }
@@ -38,10 +39,11 @@
 
 @media screen and (min-width: vars.$breakpointMd) {
   .footerSkeleton {
+    height: vars.$footerHeightDesktop;
     padding: 1rem;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-end;
 
     .copywright {
       order: 0;
