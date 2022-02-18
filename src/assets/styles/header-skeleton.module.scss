@@ -9,9 +9,9 @@
 
   .logo {
     @include mixins.skeleton;
-    height: 1rem;
-    width: 6rem;
-    border-radius: 2rem;
+    height: 24px;
+    width: 24px;
+    border-radius: 100%;
   }
 
   .nav {
