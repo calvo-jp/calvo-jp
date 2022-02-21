@@ -41,13 +41,7 @@ const Project = (props: ProjectProps) => {
 
         <div className={styles.image}>
           {!image && <div className={styles.alert}>No image available</div>}
-          {image && (
-            <Image
-              src={image}
-              alt=""
-              placeholder={<div className={styles.loader}>Loading...</div>}
-            />
-          )}
+          {image && <Image src={image} alt="" placeholder={<Loader />} />}
         </div>
 
         {controls.next && <Control type="next" onClick={onNext} />}
@@ -79,6 +73,16 @@ const Project = (props: ProjectProps) => {
           <ArrowRightIcon />
         </a>
       </div>
+    </div>
+  );
+};
+
+const Loader = () => {
+  return (
+    <div className={styles.loader}>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   );
 };
