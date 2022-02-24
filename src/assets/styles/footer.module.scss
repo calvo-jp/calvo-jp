@@ -1,0 +1,63 @@
+@use 'vars';
+
+.footer {
+  font-family: vars.$RobotoCondensed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  height: vars.$footerHeightMobile;
+
+  .copywright {
+    order: 1;
+    font-size: 0.8rem;
+  }
+
+  .socials {
+    order: 0;
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    & > li {
+      font-size: 0;
+
+      & > a {
+        display: block;
+      }
+    }
+
+    .socialIcon {
+      width: 24px;
+      height: 24px;
+      fill: vars.$primaryColor;
+      transition: all 300ms ease-in-out;
+
+      &:hover {
+        fill: white;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: vars.$breakpointMd) {
+  .footer {
+    height: vars.$footerHeightDesktop;
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .copywright {
+      order: 0;
+    }
+
+    .socials {
+      order: 1;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@use 'vars';
+@use 'animate' as *;
+
+@mixin skeleton {
+  background-color: lighten($color: vars.$primaryBgColor, $amount: 15);
+  animation: pulse 1.5s infinite;
+}

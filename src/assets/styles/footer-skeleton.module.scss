@@ -1,0 +1,56 @@
+@use 'vars';
+@use 'mixins';
+
+.footerSkeleton {
+  height: vars.$footerHeightMobile;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem;
+
+  .copywright {
+    @include mixins.skeleton;
+
+    order: 1;
+    height: 0.8rem;
+    width: 6rem;
+    border-radius: 2rem;
+    animation: pulse 1.5s infinite;
+  }
+
+  .icons {
+    order: 0;
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .icon {
+      @include mixins.skeleton;
+      width: 26px;
+      height: 26px;
+      border-radius: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: vars.$breakpointMd) {
+  .footerSkeleton {
+    height: vars.$footerHeightDesktop;
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .copywright {
+      order: 0;
+    }
+
+    .socials {
+      order: 1;
+    }
+  }
+}

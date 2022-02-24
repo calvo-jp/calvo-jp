@@ -1,0 +1,75 @@
+@use 'vars';
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+
+  .image {
+    margin: 0 auto;
+
+    img {
+      width: 300px;
+    }
+  }
+
+  article {
+    text-align: center;
+
+    h1 {
+      font-weight: 900;
+      font-size: 2.4rem;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .backButton {
+    text-decoration: none;
+    margin: 1.4rem auto 0;
+    width: fit-content;
+    text-transform: uppercase;
+    font-family: vars.$RobotoCondensed;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid lighten($color: vars.$primaryBgColor, $amount: 20);
+    background-color: transparent;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (min-width: vars.$breakpointLg) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+
+    .image {
+      margin: 0;
+
+      img {
+        width: 350px;
+      }
+    }
+
+    article {
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}

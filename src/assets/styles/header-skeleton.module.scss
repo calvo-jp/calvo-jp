@@ -1,0 +1,43 @@
+@use 'vars';
+@use 'mixins';
+
+.headerSkeleton {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    @include mixins.skeleton;
+    height: 24px;
+    width: 24px;
+    border-radius: 100%;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .hamburger {
+    @include mixins.skeleton;
+    width: 32px;
+    height: 0.8rem;
+    border-radius: 1.4rem;
+  }
+}
+
+@media screen and (min-width: vars.$breakpointLg) {
+  .headerSkeleton {
+    .nav {
+      @include mixins.skeleton;
+      display: block;
+      height: 1rem;
+      width: 13rem;
+      border-radius: 2rem;
+    }
+
+    .hamburger {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+import * as React from 'react';
+
+const previouslyLoaded: string[] = [];
+
+type BaseProps = Omit<
+  React.ComponentProps<'img'>,
+  'src' | 'alt' | 'placeholder'
+>;
+
+interface ImageProps extends BaseProps {
+  src: string;
+  alt: string;
+  placeholder?: any;
+}
+
+const Image = (props: ImageProps) => {
+  const { src, alt, placeholder = <React.Fragment />, ...all } = props;
+
+  const [pending, setPending] = React.useState(true);
+
+  React.useEffect(() => {
+    if (previouslyLoaded.includes(src)) {
+      setPending(false);
+    } else {
+      const image = new window.Image();
+
+      image.onload = () => {
+        previouslyLoaded.push(src);
+        setPending(false);
+      };
+
+      image.src = src;
+      image.alt = alt;
+    }
+
+    return () => setPending(true);
+  }, [src]);
+
+  return (
+    <React.Fragment>
+      {pending ? placeholder : <img src={src} {...all} />}
+    </React.Fragment>
+  );
+};
+
+export default Image;
