@@ -1,16 +1,16 @@
-import * as React from 'react';
+import { lazy } from "react";
 import {
   BrowserRouter as Router,
   Navigate,
   Route,
   Routes,
-} from 'react-router-dom';
-import Layout from './layouts/Layout';
+} from "react-router-dom";
+import Layout from "./layouts/Layout";
 
-const About = React.lazy(() => import('./pages/About'));
-const Contact = React.lazy(() => import('./pages/Contact'));
-const NotFound = React.lazy(() => import('./pages/NotFound'));
-const Projects = React.lazy(() => import('./pages/projects'));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Projects = lazy(() => import("./pages/projects"));
 
 const App = () => {
   return (
