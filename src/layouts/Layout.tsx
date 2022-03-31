@@ -1,27 +1,27 @@
 import clsx from "clsx";
-import * as React from "react";
+import { ComponentProps, lazy, PropsWithChildren, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import styles from "../assets/styles/layout.module.scss";
 import HeaderSkeleton from "./HeaderSkeleton";
 
-const Header = React.lazy(() => import("./Header"));
-const SpinnerIcon = React.lazy(() => import("../widgets/icons/Spinner"));
+const Header = lazy(() => import("./Header"));
+const SpinnerIcon = lazy(() => import("../widgets/icons/Spinner"));
 
-const Layout: React.FC<React.ComponentProps<"div">> = ({
+const Layout = ({
   children,
   className,
   ...props
-}) => {
+}: PropsWithChildren<ComponentProps<"div">>) => {
   return (
     <div className={styles.container}>
-      <React.Suspense fallback={<HeaderSkeleton />}>
+      <Suspense fallback={<HeaderSkeleton />}>
         <Header />
-      </React.Suspense>
+      </Suspense>
 
       <div className={clsx(styles.outerWrapper, className)} {...props}>
-        <React.Suspense fallback={<Spinner />}>
+        <Suspense fallback={<Spinner />}>
           <Outlet />
-        </React.Suspense>
+        </Suspense>
       </div>
     </div>
   );
@@ -30,9 +30,9 @@ const Layout: React.FC<React.ComponentProps<"div">> = ({
 const Spinner = () => {
   return (
     <div className={styles.spinner}>
-      <React.Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
         <SpinnerIcon />
-      </React.Suspense>
+      </Suspense>
     </div>
   );
 };
