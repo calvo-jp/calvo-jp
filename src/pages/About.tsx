@@ -1,19 +1,19 @@
-import * as React from "react";
+import { Fragment, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import styles from "../assets/styles/about.module.scss";
 import Container from "../layouts/Container";
 import FooterSkeleton from "../layouts/FooterSkeleton";
 import ArrowRightIcon from "../widgets/icons/ArrowRight";
 
-const Footer = React.lazy(() => import("../layouts/Footer"));
-const Background = React.lazy(() => import("../layouts/Background"));
+const Footer = lazy(() => import("../layouts/Footer"));
+const Background = lazy(() => import("../layouts/Background"));
 
 const About = () => {
   return (
     <Container className={styles.container}>
-      <React.Suspense fallback={<React.Fragment />}>
+      <Suspense fallback={<Fragment />}>
         <Background />
-      </React.Suspense>
+      </Suspense>
 
       <section className={styles.about}>
         <h2 className={styles.heading}>
@@ -32,9 +32,9 @@ const About = () => {
         </div>
       </section>
 
-      <React.Suspense fallback={<FooterSkeleton />}>
+      <Suspense fallback={<FooterSkeleton />}>
         <Footer />
-      </React.Suspense>
+      </Suspense>
     </Container>
   );
 };

@@ -1,15 +1,15 @@
-import * as React from "react";
+import { ComponentProps, lazy, Suspense } from "react";
 import styles from "../assets/styles/contact.module.scss";
 import Container from "../layouts/Container";
 import FooterSkeleton from "../layouts/FooterSkeleton";
 import EnvelopeIcon from "../widgets/icons/Envelope";
 import PhoneIcon from "../widgets/icons/Phone";
 
-const Footer = React.lazy(() => import("../layouts/Footer"));
+const Footer = lazy(() => import("../layouts/Footer"));
 
 const Contact = () => {
   return (
-    <React.Fragment>
+    <>
       <Container className={styles.contact}>
         <div className={styles.wrapper}>
           <section className={styles.content}>
@@ -36,14 +36,14 @@ const Contact = () => {
         </div>
       </Container>
 
-      <React.Suspense fallback={<FooterSkeleton />}>
+      <Suspense fallback={<FooterSkeleton />}>
         <Footer />
-      </React.Suspense>
-    </React.Fragment>
+      </Suspense>
+    </>
   );
 };
 
-type SVGIcon = (props: React.ComponentProps<"svg">) => JSX.Element;
+type SVGIcon = (props: ComponentProps<"svg">) => JSX.Element;
 
 interface ItemProps {
   label: string;
