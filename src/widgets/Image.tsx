@@ -1,45 +1,57 @@
-import * as React from 'react';
+import { ComponentProps, useEffect, useState } from "react";
 
-const previouslyLoaded: string[] = [];
+type BaseProps = Omit<ComponentProps<"img">, "placeholder">;
 
-type BaseProps = Omit<
-  React.ComponentProps<'img'>,
-  'src' | 'alt' | 'placeholder'
->;
-
-interface ImageProps extends BaseProps {
+interface ImageProps {
   src: string;
-  alt: string;
+  fallback?: string;
   placeholder?: any;
 }
 
-const Image = (props: ImageProps) => {
-  const { src, alt, placeholder = <React.Fragment />, ...all } = props;
+const previouslyLoaded: string[] = [];
 
-  const [pending, setPending] = React.useState(true);
+const Image = ({
+  src,
+  fallback,
+  placeholder,
+  ...props
+}: ImageProps & BaseProps) => {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
-    if (previouslyLoaded.includes(src)) {
-      setPending(false);
-    } else {
-      const image = new window.Image();
+  useEffect(() => {
+    if (previouslyLoaded.includes(src)) return setLoading(false);
 
-      image.onload = () => {
-        previouslyLoaded.push(src);
-        setPending(false);
-      };
+    const image = new window.Image();
 
-      image.src = src;
-      image.alt = alt;
-    }
+    image.onload = () => {
+      previouslyLoaded.push(src);
+      setLoading(false);
+    };
 
-    return () => setPending(true);
+    image.onerror = () => {
+      setError(true);
+      setLoading(false);
+    };
+
+    image.src = src;
+
+    return () => {
+      setError(false);
+      setLoading(true);
+
+      image.onload = null;
+      image.onerror = null;
+    };
   }, [src]);
 
   return (
-    <React.Fragment>
-      {pending ? placeholder : <img src={src} {...all} />}
-    </React.Fragment>
+    <>
+      {loading && placeholder}
+      {!loading && (
+        <img src={error ? fallback : src} loading="lazy" {...props} />
+      )}
+    </>
   );
 };
 
