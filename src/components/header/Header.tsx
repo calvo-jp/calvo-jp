@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import styles from "../assets/styles/header.module.scss";
+import styles from "../../assets/styles/header.module.scss";
 import CodeIcon from "../widgets/icons/Code";
 
 const links = ["/about", "/projects", "/contact"] as const;
