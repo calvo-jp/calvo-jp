@@ -1,4 +1,4 @@
-import styles from '../assets/styles/footer-skeleton.module.scss';
+import styles from "../assets/styles/footer-skeleton.module.scss";
 
 const FooterSkeleton = () => {
   return (

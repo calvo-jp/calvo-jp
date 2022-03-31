@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
-import image from '../assets/images/404.png';
-import styles from '../assets/styles/notfound.module.scss';
-import Container from '../layouts/Container';
-import ArrowLeftIcon from '../widgets/icons/ArrowLeft';
-import Image from '../widgets/Image';
+import { Link } from "react-router-dom";
+import image from "../assets/images/404.png";
+import styles from "../assets/styles/notfound.module.scss";
+import Container from "../layouts/Container";
+import ArrowLeftIcon from "../widgets/icons/ArrowLeft";
+import Image from "../widgets/Image";
 
 const NotFound = () => {
   return (

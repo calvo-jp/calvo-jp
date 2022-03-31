@@ -1,14 +1,9 @@
-import clsx from 'clsx';
-import * as React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import styles from '../assets/styles/header.module.scss';
+import clsx from "clsx";
+import * as React from "react";
+import { Link, NavLink } from "react-router-dom";
+import styles from "../assets/styles/header.module.scss";
 
-// prettier-ignore
-const links = [
-  '/about', 
-  '/projects', 
-  '/contact'
-]
+const links = ["/about", "/projects", "/contact"] as const;
 
 const Header = () => {
   const [open, setOpen] = React.useState<boolean>();

@@ -1,8 +1,8 @@
-import styles from '../../assets/styles/projects.module.scss';
-import IProject from '../../types/project';
-import ArrowRightIcon from '../../widgets/icons/ArrowRight';
-import Image from '../../widgets/Image';
-import Control from './Control';
+import styles from "../../assets/styles/projects.module.scss";
+import IProject from "../../types/project";
+import ArrowRightIcon from "../../widgets/icons/ArrowRight";
+import Image from "../../widgets/Image";
+import Control from "./Control";
 
 interface ControlsConfig {
   next?: boolean;
@@ -69,7 +69,7 @@ const Project = (props: ProjectProps) => {
           target="_blank"
           rel="norefferer noopener"
         >
-          <span>{hostedAt ? 'Go to website' : 'Source code'}</span>
+          <span>{hostedAt ? "Go to website" : "Source code"}</span>
           <ArrowRightIcon />
         </a>
       </div>

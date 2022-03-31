@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import styles from '../assets/styles/about.module.scss';
-import Container from '../layouts/Container';
-import FooterSkeleton from '../layouts/FooterSkeleton';
-import ArrowRightIcon from '../widgets/icons/ArrowRight';
+import * as React from "react";
+import { Link } from "react-router-dom";
+import styles from "../assets/styles/about.module.scss";
+import Container from "../layouts/Container";
+import FooterSkeleton from "../layouts/FooterSkeleton";
+import ArrowRightIcon from "../widgets/icons/ArrowRight";
 
-const Footer = React.lazy(() => import('../layouts/Footer'));
-const Background = React.lazy(() => import('../layouts/Background'));
+const Footer = React.lazy(() => import("../layouts/Footer"));
+const Background = React.lazy(() => import("../layouts/Background"));
 
 const About = () => {
   return (

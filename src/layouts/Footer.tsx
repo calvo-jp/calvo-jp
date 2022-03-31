@@ -1,5 +1,5 @@
-import styles from '../assets/styles/footer.module.scss';
-import useSocials from '../hooks/useSocials';
+import styles from "../assets/styles/footer.module.scss";
+import useSocials from "../hooks/useSocials";
 
 const Footer = () => {
   const socialIcons = useSocials();

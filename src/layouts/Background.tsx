@@ -1,4 +1,4 @@
-import Particles from 'react-tsparticles';
+import Particles from "react-tsparticles";
 
 const Background = () => {
   return (
@@ -13,7 +13,7 @@ const Background = () => {
             },
             onHover: {
               enable: true,
-              mode: 'repulse',
+              mode: "repulse",
             },
             resize: true,
           },
@@ -32,10 +32,10 @@ const Background = () => {
         },
         particles: {
           color: {
-            value: '#94A3B8',
+            value: "#94A3B8",
           },
           links: {
-            color: '#64748B',
+            color: "#64748B",
             distance: 150,
             enable: true,
             opacity: 0.5,
@@ -45,9 +45,9 @@ const Background = () => {
             enable: true,
           },
           move: {
-            direction: 'none',
+            direction: "none",
             enable: true,
-            outMode: 'bounce',
+            outMode: "bounce",
             random: false,
             speed: 6,
             straight: false,
@@ -63,7 +63,7 @@ const Background = () => {
             value: 0.5,
           },
           shape: {
-            type: 'circle',
+            type: "circle",
           },
           size: {
             random: true,

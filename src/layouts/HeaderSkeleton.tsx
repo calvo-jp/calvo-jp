@@ -1,4 +1,4 @@
-import styles from '../assets/styles/header-skeleton.module.scss';
+import styles from "../assets/styles/header-skeleton.module.scss";
 
 const HeaderSkeleton = () => {
   return (

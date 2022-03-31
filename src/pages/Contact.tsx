@@ -1,11 +1,11 @@
-import * as React from 'react';
-import styles from '../assets/styles/contact.module.scss';
-import Container from '../layouts/Container';
-import FooterSkeleton from '../layouts/FooterSkeleton';
-import EnvelopeIcon from '../widgets/icons/Envelope';
-import PhoneIcon from '../widgets/icons/Phone';
+import * as React from "react";
+import styles from "../assets/styles/contact.module.scss";
+import Container from "../layouts/Container";
+import FooterSkeleton from "../layouts/FooterSkeleton";
+import EnvelopeIcon from "../widgets/icons/Envelope";
+import PhoneIcon from "../widgets/icons/Phone";
 
-const Footer = React.lazy(() => import('../layouts/Footer'));
+const Footer = React.lazy(() => import("../layouts/Footer"));
 
 const Contact = () => {
   return (
@@ -43,7 +43,7 @@ const Contact = () => {
   );
 };
 
-type SVGIcon = (props: React.ComponentProps<'svg'>) => JSX.Element;
+type SVGIcon = (props: React.ComponentProps<"svg">) => JSX.Element;
 
 interface ItemProps {
   label: string;
