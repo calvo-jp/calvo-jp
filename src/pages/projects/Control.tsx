@@ -1,9 +1,9 @@
-import clsx from 'clsx';
-import styles from '../../assets/styles/projects.module.scss';
-import ChevronLeftIcon from '../../widgets/icons/ChevronLeft';
-import ChevronRightIcon from '../../widgets/icons/ChevronRight';
+import clsx from "clsx";
+import styles from "../../assets/styles/projects.module.scss";
+import ChevronLeftIcon from "../../widgets/icons/ChevronLeft";
+import ChevronRightIcon from "../../widgets/icons/ChevronRight";
 
-type ControlType = 'next' | 'prev';
+type ControlType = "next" | "prev";
 
 interface ControlProps {
   type: ControlType;
@@ -13,8 +13,8 @@ interface ControlProps {
 }
 
 const Control = ({ type, mobile, disabled, onClick }: ControlProps) => {
-  const next = type === 'next';
-  const prev = type === 'prev';
+  const next = type === "next";
+  const prev = type === "prev";
 
   return (
     <button
