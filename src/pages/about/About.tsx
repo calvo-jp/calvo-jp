@@ -1,12 +1,12 @@
 import { Fragment, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
+import Container from "../../components/Container";
+import FooterSkeleton from "../../components/footer/Skeleton";
+import ArrowRightIcon from "../../components/widgets/icons/ArrowRight";
 import styles from "../assets/styles/about.module.scss";
-import Container from "../layouts/Container";
-import FooterSkeleton from "../layouts/FooterSkeleton";
-import ArrowRightIcon from "../widgets/icons/ArrowRight";
 
-const Footer = lazy(() => import("../layouts/Footer"));
-const Background = lazy(() => import("../layouts/Background"));
+const Footer = lazy(() => import("../../components/footer"));
+const Background = lazy(() => import("./Background"));
 
 const About = () => {
   return (

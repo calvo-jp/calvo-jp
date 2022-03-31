@@ -1,7 +1,7 @@
-import FacebookIcon from "../widgets/icons/Facebook";
-import GithubIcon from "../widgets/icons/Github";
-import MessengerIcon from "../widgets/icons/Messenger";
-import TwitterIcon from "../widgets/icons/Twitter";
+import FacebookIcon from "../components/widgets/icons/Facebook";
+import GithubIcon from "../components/widgets/icons/Github";
+import MessengerIcon from "../components/widgets/icons/Messenger";
+import TwitterIcon from "../components/widgets/icons/Twitter";
 
 const useSocials = (): [
   icon: React.FC<React.ComponentProps<"svg">>,

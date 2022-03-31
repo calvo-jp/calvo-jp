@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import styles from "../../assets/styles/projects.module.scss";
-import ChevronLeftIcon from "../../widgets/icons/ChevronLeft";
-import ChevronRightIcon from "../../widgets/icons/ChevronRight";
+import ChevronLeftIcon from "../../components/widgets/icons/ChevronLeft";
+import ChevronRightIcon from "../../components/widgets/icons/ChevronRight";
 
 type ControlType = "next" | "prev";
 

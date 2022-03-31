@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "../../assets/styles/projects.module.scss";
+import Container from "../../components/Container";
 import useProjects from "../../hooks/useProjects";
-import Container from "../../layouts/Container";
 import Project from "./Project";
 
 const Projects = () => {

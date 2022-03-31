@@ -2,10 +2,10 @@ import clsx from "clsx";
 import { ComponentProps, lazy, PropsWithChildren, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import styles from "../assets/styles/layout.module.scss";
-import HeaderSkeleton from "./HeaderSkeleton";
+import HeaderSkeleton from "./header/Skeleton";
 
-const Header = lazy(() => import("./Header"));
-const SpinnerIcon = lazy(() => import("../widgets/icons/Spinner"));
+const Header = lazy(() => import("./header"));
+const SpinnerIcon = lazy(() => import("./widgets/icons/Spinner"));
 
 const Layout = ({
   children,

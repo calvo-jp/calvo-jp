@@ -5,9 +5,9 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import Layout from "./layouts/Layout";
+import Layout from "./components/Layout";
 
-const About = lazy(() => import("./pages/About"));
+const About = lazy(() => import("./pages/about"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Projects = lazy(() => import("./pages/projects"));

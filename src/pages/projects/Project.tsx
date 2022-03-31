@@ -1,7 +1,7 @@
 import styles from "../../assets/styles/projects.module.scss";
+import ArrowRightIcon from "../../components/widgets/icons/ArrowRight";
+import Image from "../../components/widgets/Image";
 import IProject from "../../types/project";
-import ArrowRightIcon from "../../widgets/icons/ArrowRight";
-import Image from "../../widgets/Image";
 import Control from "./Control";
 
 interface ControlsConfig {

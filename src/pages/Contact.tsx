@@ -1,11 +1,11 @@
 import { ComponentProps, lazy, Suspense } from "react";
 import styles from "../assets/styles/contact.module.scss";
-import Container from "../layouts/Container";
-import FooterSkeleton from "../layouts/FooterSkeleton";
-import EnvelopeIcon from "../widgets/icons/Envelope";
-import PhoneIcon from "../widgets/icons/Phone";
+import Container from "../components/Container";
+import FooterSkeleton from "../components/footer/Skeleton";
+import EnvelopeIcon from "../components/widgets/icons/Envelope";
+import PhoneIcon from "../components/widgets/icons/Phone";
 
-const Footer = lazy(() => import("../layouts/Footer"));
+const Footer = lazy(() => import("../components/footer"));
 
 const Contact = () => {
   return (
