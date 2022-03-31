@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { ComponentProps } from "react";
 
-const GmailIcon = (props: React.ComponentProps<'svg'>) => {
+const GmailIcon = (props: ComponentProps<"svg">) => {
   return (
     <svg
       role="img"

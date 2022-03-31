@@ -1,12 +1,12 @@
-import * as React from 'react';
+import { ComponentProps } from "react";
 
-const SpinnerIcon = (props: React.ComponentProps<'svg'>) => {
+const SpinnerIcon = (props: ComponentProps<"svg">) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       style={{
-        margin: 'auto',
-        background: 'rgba(0, 0, 0, 0) none repeat scroll 0% 0%',
+        margin: "auto",
+        background: "rgba(0, 0, 0, 0) none repeat scroll 0% 0%",
       }}
       width="207"
       height="207"

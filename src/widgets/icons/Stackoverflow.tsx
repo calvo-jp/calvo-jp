@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { ComponentProps } from "react";
 
-const StackoverflowIcon = (props: React.ComponentProps<'svg'>) => {
+const StackoverflowIcon = (props: ComponentProps<"svg">) => {
   return (
     <svg
       role="img"

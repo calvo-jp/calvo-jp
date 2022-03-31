@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { ComponentProps } from "react";
 
-const EnvelopeIcon = (props: React.ComponentProps<'svg'>) => {
+const EnvelopeIcon = (props: ComponentProps<"svg">) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
