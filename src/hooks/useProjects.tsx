@@ -36,6 +36,16 @@ const items: IProject[] = [
     repository:
       "https://github.com/calvo-jp/react-collections/tree/main/amazing-recipes",
   },
+  {
+    slug: "pokedex",
+    name: "Pokedex",
+    description: "ReactJS FE internship final project",
+    image:
+      "https://raw.githubusercontent.com/calvo-jp/internship-projects/main/pokedex/docs/screenshot.png",
+    repository:
+      "https://github.com/calvo-jp/internship-projects/tree/main/pokedex",
+    hostedAt: "https://internship-project-pokedex.vercel.app/",
+  },
 ];
 
 const useProjects = () => items;
