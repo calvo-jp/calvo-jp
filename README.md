@@ -1,5 +1,3 @@
-<br/>
-
 ![Calvo JP's GitHub stats](https://github-readme-stats.vercel.app/api?username=calvo-jp&show_icons=true&theme=dark)
 
 <br/>
