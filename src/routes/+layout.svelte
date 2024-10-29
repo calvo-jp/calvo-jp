@@ -5,11 +5,25 @@
   import '@fontsource/inter/700.css';
   import '../app.css';
 
-  import {ThemeProvider} from 'svelte-os-themes';
+  import {toaster} from '$lib/toaster.svelte';
+  import {XCloseIcon} from '@untitled-theme/icons-svelte';
+  import {Toast, Toaster} from 'ui-ingredients';
 
   let {children} = $props();
 </script>
 
-<ThemeProvider>
-  <main>{@render children()}</main>
-</ThemeProvider>
+<svelte:head>
+  <title>Calvo JP</title>
+</svelte:head>
+
+<main>{@render children()}</main>
+
+<Toaster {toaster}>
+  <Toast.Root>
+    <Toast.Title />
+    <Toast.Description />
+    <Toast.CloseTrigger>
+      <XCloseIcon />
+    </Toast.CloseTrigger>
+  </Toast.Root>
+</Toaster>
