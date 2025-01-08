@@ -1,5 +1,6 @@
 import {withTV} from 'tailwind-variants/transformer';
 import defaultTheme from 'tailwindcss/defaultTheme';
+import uiIngredients from 'ui-ingredients-plugin-tailwindcss';
 
 /** @type {import('tailwindcss').Config} */
 export default withTV({
@@ -9,13 +10,6 @@ export default withTV({
     fontFamily: {
       sans: ["'Inter'", ...defaultTheme.fontFamily.sans],
     },
-    extend: {
-      data: {
-        open: 'state="open"',
-        closed: 'state="closed"',
-        invalid: 'invalid',
-      },
-    },
   },
-  plugins: [],
+  plugins: [uiIngredients],
 });
